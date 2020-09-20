@@ -25,6 +25,9 @@ use ReactParallel\Pool\Worker\Worker as WorkerPool;
 use ReactParallel\Streams\RecvObservable;
 use ReactParallel\Streams\SingleRecv;
 use Thruway\Middleware;
+use WyriHaximus\Metrics\Label;
+use WyriHaximus\Metrics\Label\Name;
+use WyriHaximus\Metrics\Registry;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
@@ -44,7 +47,10 @@ abstract class AbstractConfiguration
     {
         \Thruway\Logging\Logger::set($logger);
         $rpFactory = $container->get(Factory::class);
+        $container->get(Registry::class)->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'HTTP'))->incrBy({{ servers|length }});
         {% for server in servers %}
+        $container->get(Registry::class)->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'WebSocket'))->incrBy({{ server.realms()|length }});
+        $container->get(Registry::class)->counter('vhost_realm', 'Currently active realms per vhosts', new Name('type'), new Name('vhost'))->counter(new Label('type', 'WebSocket'), new Label('vhost', '{{ server.vhost().name() }}'))->incrBy({{ server.realms()|length }});
         $workerPool_{{ server.vhost().name() }}    = new WorkerPool(
             $rpFactory,
             $container->get(RequestWorkerFactory_{{ server.vhost().name() }}::class),
