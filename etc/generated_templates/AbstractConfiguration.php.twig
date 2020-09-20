@@ -47,10 +47,11 @@ abstract class AbstractConfiguration
     {
         \Thruway\Logging\Logger::set($logger);
         $rpFactory = $container->get(Factory::class);
-        $container->get(Registry::class)->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'HTTP'))->incrBy({{ servers|length }});
+        $metricsRegistry = $container->get(Registry::class);
+        $metricsRegistry->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'HTTP'))->incrBy({{ servers|length }});
         {% for server in servers %}
-        $container->get(Registry::class)->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'WebSocket'))->incrBy({{ server.realms()|length }});
-        $container->get(Registry::class)->counter('vhost_realm', 'Currently active realms per vhosts', new Name('type'), new Name('vhost'))->counter(new Label('type', 'WebSocket'), new Label('vhost', '{{ server.vhost().name() }}'))->incrBy({{ server.realms()|length }});
+        $metricsRegistry->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'WebSocket'))->incrBy({{ server.realms()|length }});
+        $metricsRegistry->counter('vhost_realm', 'Currently active realms per vhosts', new Name('type'), new Name('vhost'))->counter(new Label('type', 'WebSocket'), new Label('vhost', '{{ server.vhost().name() }}'))->incrBy({{ server.realms()|length }});
         $workerPool_{{ server.vhost().name() }}    = new WorkerPool(
             $rpFactory,
             $container->get(RequestWorkerFactory_{{ server.vhost().name() }}::class),
@@ -61,7 +62,7 @@ abstract class AbstractConfiguration
                 [
                     new LimitConcurrentRequestsMiddleware(PHP_INT_MAX),
                     new StreamingRequestMiddleware(),
-                    new MiddlewareCollector('{{ server.vhost().name() }}'),
+                    new MiddlewareCollector('{{ server.vhost().name() }}', $metricsRegistry),
                     {% if server.realms()|length > 0 %}
                         new Middleware(['/', '/ws/'], $loop, $container->get(RouterFactory_{{ server.vhost().name() }}::class)->router()),
                     {% endif %}
