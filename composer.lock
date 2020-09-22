@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59b8574a2b80180003bdde8870e377c4",
+    "content-hash": "0b6e1d3c7f88798cc2a21a04f49931bb",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1648,16 +1648,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "fda190b62b962d96a069fcc414d781db66d65b69"
+                "reference": "ea2fbfc988bade315acd5967e6d02274086d0f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/fda190b62b962d96a069fcc414d781db66d65b69",
-                "reference": "fda190b62b962d96a069fcc414d781db66d65b69",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/ea2fbfc988bade315acd5967e6d02274086d0f28",
+                "reference": "ea2fbfc988bade315acd5967e6d02274086d0f28",
                 "shasum": ""
             },
             "require": {
@@ -1695,7 +1695,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-09T10:34:01+00:00"
+            "time": "2020-09-21T18:10:53+00:00"
         },
         {
             "name": "league/tactician",
@@ -1805,12 +1805,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "304f3f4823cf10e315cce1196891a0f534cb39d2"
+                "reference": "f406b550b08609c24504da930c3ca0fcb4b0457c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/304f3f4823cf10e315cce1196891a0f534cb39d2",
-                "reference": "304f3f4823cf10e315cce1196891a0f534cb39d2",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/f406b550b08609c24504da930c3ca0fcb4b0457c",
+                "reference": "f406b550b08609c24504da930c3ca0fcb4b0457c",
                 "shasum": ""
             },
             "require": {
@@ -1865,7 +1865,13 @@
                 "react-parallel": {
                     "object-proxy": {
                         "interfaces-to-proxy": [
-                            "WyriHaximus\\Metrics\\Registry"
+                            "WyriHaximus\\Metrics\\Registry",
+                            "WyriHaximus\\Metrics\\Registry\\Counters",
+                            "WyriHaximus\\Metrics\\Registry\\Gauges",
+                            "WyriHaximus\\Metrics\\Registry\\Histograms",
+                            "WyriHaximus\\Metrics\\Counter",
+                            "WyriHaximus\\Metrics\\Gauge",
+                            "WyriHaximus\\Metrics\\Histogram"
                         ]
                     }
                 },
@@ -1894,7 +1900,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-18T05:42:40+00:00"
+            "time": "2020-09-21T15:43:36+00:00"
         },
         {
             "name": "mammatus/healthz-vhost",
@@ -4405,12 +4411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-inspector/http-middleware.git",
-                "reference": "1e6f875ae99647c18015db1f2a559048c8a5845a"
+                "reference": "a5f8caa7e55a2928da862700783d59725fb8def6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-inspector/http-middleware/zipball/1e6f875ae99647c18015db1f2a559048c8a5845a",
-                "reference": "1e6f875ae99647c18015db1f2a559048c8a5845a",
+                "url": "https://api.github.com/repos/reactphp-inspector/http-middleware/zipball/a5f8caa7e55a2928da862700783d59725fb8def6",
+                "reference": "a5f8caa7e55a2928da862700783d59725fb8def6",
                 "shasum": ""
             },
             "require": {
@@ -4448,7 +4454,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-20T17:54:06+00:00"
+            "time": "2020-09-21T17:09:52+00:00"
         },
         {
             "name": "react-inspector/memory-usage",
@@ -4964,12 +4970,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy.git",
-                "reference": "b8a0f06a96aff9c6931cc9c7611b77e7251b78ee"
+                "reference": "6912658f40046e37f065eaaea51967e28dd646a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/b8a0f06a96aff9c6931cc9c7611b77e7251b78ee",
-                "reference": "b8a0f06a96aff9c6931cc9c7611b77e7251b78ee",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/6912658f40046e37f065eaaea51967e28dd646a2",
+                "reference": "6912658f40046e37f065eaaea51967e28dd646a2",
                 "shasum": ""
             },
             "require": {
@@ -5027,7 +5033,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-19T06:53:39+00:00"
+            "time": "2020-09-21T09:09:22+00:00"
         },
         {
             "name": "react-parallel/psr-11-container-proxy",
@@ -8258,6 +8264,55 @@
                 }
             ],
             "time": "2020-09-04T12:01:30+00:00"
+        },
+        {
+            "name": "wyrihaximus/metrics-tactician",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-metrics-tactician.git",
+                "reference": "25b52002f030bb2194db64981ac1e75d1e05cd0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/25b52002f030bb2194db64981ac1e75d1e05cd0b",
+                "reference": "25b52002f030bb2194db64981ac1e75d1e05cd0b",
+                "shasum": ""
+            },
+            "require": {
+                "league/tactician": "^1.0",
+                "php": "^7.4",
+                "wyrihaximus/metrics": "dev-master"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.17.1",
+                "thecodingmachine/safe": "^1.2",
+                "wyrihaximus/test-utilities": "^2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Metrics\\Tactician\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Metric collection for Tactician",
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-09-21T17:04:29+00:00"
         },
         {
             "name": "wyrihaximus/monolog-formatted-psr-handler",
@@ -16222,6 +16277,7 @@
         "wyrihaximus/broadcast": 20,
         "wyrihaximus/composer-update-bin-autoload-path": 20,
         "wyrihaximus/metrics": 20,
+        "wyrihaximus/metrics-tactician": 20,
         "wyrihaximus/to-thread-or-not-to-thread": 20
     },
     "prefer-stable": false,

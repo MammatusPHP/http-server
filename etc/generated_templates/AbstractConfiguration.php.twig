@@ -62,7 +62,7 @@ abstract class AbstractConfiguration
                 [
                     new LimitConcurrentRequestsMiddleware(PHP_INT_MAX),
                     new StreamingRequestMiddleware(),
-                    new MiddlewareCollector('{{ server.vhost().name() }}', $metricsRegistry),
+                    new MiddlewareCollector($metricsRegistry, new Label('vhost', '{{ server.vhost().name() }}')),
                     {% if server.realms()|length > 0 %}
                         new Middleware(['/', '/ws/'], $loop, $container->get(RouterFactory_{{ server.vhost().name() }}::class)->router()),
                     {% endif %}
