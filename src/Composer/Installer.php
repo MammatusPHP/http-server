@@ -16,6 +16,7 @@ use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
 use Doctrine\Common\Annotations\AnnotationReader;
+use Illuminate\Support\Collection;
 use Mammatus\Http\Server\Annotations\Bus as BusAnnotation;
 use Mammatus\Http\Server\Annotations\Vhost as VhostAnnotation;
 use Mammatus\Http\Server\Annotations\WebSocket\Broadcast as BroadcastAnnotation;
@@ -94,6 +95,16 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         // does nothing, see getSubscribedEvents() instead.
     }
 
+    public function deactivate(Composer $composer, IOInterface $io): void
+    {
+        // does nothing, see getSubscribedEvents() instead.
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io): void
+    {
+        // does nothing, see getSubscribedEvents() instead.
+    }
+
     /**
      * Called before every dump autoload, generates a fresh PHP class.
      */
@@ -102,10 +113,6 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         $start    = microtime(true);
         $io       = $event->getIO();
         $composer = $event->getComposer();
-        /** @psalm-suppress UnresolvableInclude */
-        require_once $composer->getConfig()->get('vendor-dir') . '/react/promise/src/functions_include.php';
-        /** @psalm-suppress UnresolvableInclude */
-        require_once $composer->getConfig()->get('vendor-dir') . '/api-clients/rx/src/functions_include.php';
         /** @psalm-suppress UnresolvableInclude */
         require_once $composer->getConfig()->get('vendor-dir') . '/wyrihaximus/iterator-or-array-to-array/src/functions_include.php';
         /** @psalm-suppress UnresolvableInclude */
@@ -125,9 +132,6 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         /** @psalm-suppress UnresolvableInclude */
         require_once $composer->getConfig()->get('vendor-dir') . '/wyrihaximus/simple-twig/src/functions_include.php';
         /** @psalm-suppress UnresolvableInclude */
-        require_once $composer->getConfig()->get('vendor-dir') . '/react/promise-timer/src/functions_include.php';
-        /** @psalm-suppress UnresolvableInclude */
-        require_once $composer->getConfig()->get('vendor-dir') . '/clue/block-react/src/functions_include.php';
 
         $io->write('<info>mammatus/http-server:</info> Locating vhosts');
 
@@ -244,7 +248,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
     private static function findAllVhosts(Composer $composer, IOInterface $io): array
     {
         $annotationReader = new AnnotationReader();
-        $vendorDir        = $composer->getConfig()->get('vendor-dir');
+        $vendorDir = $composer->getConfig()->get('vendor-dir');
         retry:
         try {
             $classReflector = new ClassReflector(
@@ -255,18 +259,18 @@ final class Installer implements PluginInterface, EventSubscriberInterface
             goto retry;
         }
 
-        $result     = [];
-        $packages   = $composer->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
+        $result = [];
+        $packages = $composer->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
         $packages[] = $composer->getPackage();
-        $classes    = static fn () => self::classes($packages, $vendorDir, $classReflector, $io);
-        $classes()->filter(static function (ReflectionClass $class): bool {
+        $classes = static fn() => self::classes($packages, $vendorDir, $classReflector, $io);
+        $flatVhosts = $classes()->filter(static function (ReflectionClass $class): bool {
             return $class->implementsInterface(Vhost::class);
         })->
-            map(static fn (ReflectionClass $class): string => $class->getName())->
-            map(static fn (string $vhost): Vhost => new $vhost())->
-            toArray()->
-            toPromise()->
-        then(static function (array $flatVhosts) use (&$result, $io, $classes, $annotationReader): void {
+        map(static fn(ReflectionClass $class): string => $class->getName())->
+        map(static fn(string $vhost): Vhost => new $vhost())->
+        all();
+
+        try {
             $io->write(sprintf('<info>mammatus/http-server:</info> Found %s vhost(s)', count($flatVhosts)));
             $vhosts = [];
 
@@ -274,21 +278,56 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                 assert($vhost instanceof Vhost);
                 $vhosts[] = new Server(
                     $vhost,
-                    await(
-                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): Observable {
+                    (static function (array $handlers): array {
+                        $realms = $busses = $rpcs = $subscriptions = $broadcasts = [];
+                        foreach ($handlers as $handler) {
+                            if (isset($handler['annotations'][BroadcastAnnotation::class])) {
+                                $broadcasts[$handler['annotations'][BroadcastAnnotation::class]->realm()][] = new Broadcast($handler['class']);
+                            }
+                            if (isset($handler['annotations'][RpcAnnotation::class])) {
+                                $rpcs[$handler['annotations'][RpcAnnotation::class]->realm()][] = new Rpc(
+                                    $handler['annotations'][RpcAnnotation::class]->rpc(),
+                                    $handler['annotations'][RpcAnnotation::class]->command(),
+                                    $handler['annotations'][RpcAnnotation::class]->bus(),
+                                );
+                                $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
+                            }
+                            if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
+                                $subscriptions[$handler['annotations'][SubscriptionAnnotation::class]->realm()][] = new Subscription(
+                                    $handler['annotations'][SubscriptionAnnotation::class]->topic(),
+                                    $handler['annotations'][SubscriptionAnnotation::class]->command(),
+                                    $handler['annotations'][SubscriptionAnnotation::class]->bus(),
+                                );
+                                $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
+                            }
+                        }
+
+                        foreach (array_unique(array_merge(array_keys($broadcasts), array_keys($rpcs), array_keys($subscriptions))) as $realm) {
+                            $realms[] = new Realm(
+                                $realm,
+                                $rpcs[$realm] ?? [],
+                                $subscriptions[$realm] ?? [],
+                                $broadcasts[$realm] ?? [],
+                                array_unique(array_values($busses)),
+                            );
+                        }
+
+                        return $realms;
+                    })(
+                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
                                 $annotations[get_class($annotation)] = $annotation;
                             }
 
-                            return observableFromArray([
+                            return [
                                 [
                                     'class' => $class->getName(),
                                     'annotations' => $annotations,
                                 ],
-                            ]);
+                            ];
                         })->filter(static function (array $classNAnnotations): bool {
-                            if (! array_key_exists(VhostAnnotation::class, $classNAnnotations['annotations'])) {
+                            if (!array_key_exists(VhostAnnotation::class, $classNAnnotations['annotations'])) {
                                 return false;
                             }
 
@@ -313,60 +352,41 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                             return false;
                         })->filter(static function (array $classNAnnotations) use ($vhost): bool {
                             return $classNAnnotations['annotations'][VhostAnnotation::class]->vhost() === $vhost->name();
-                        })->toArray()->toPromise()->then(static function (array $handlers) {
-                            $realms = $busses = $rpcs = $subscriptions = $broadcasts = [];
-                            foreach ($handlers as $handler) {
-                                if (isset($handler['annotations'][BroadcastAnnotation::class])) {
-                                    $broadcasts[$handler['annotations'][BroadcastAnnotation::class]->realm()][] = new Broadcast($handler['class']);
-                                }
-                                if (isset($handler['annotations'][RpcAnnotation::class])) {
-                                    $rpcs[$handler['annotations'][RpcAnnotation::class]->realm()][] = new Rpc(
-                                        $handler['annotations'][RpcAnnotation::class]->rpc(),
-                                        $handler['annotations'][RpcAnnotation::class]->command(),
-                                        $handler['annotations'][RpcAnnotation::class]->bus(),
-                                    );
-                                    $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
-                                }
-                                if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
-                                    $subscriptions[$handler['annotations'][SubscriptionAnnotation::class]->realm()][] = new Subscription(
-                                        $handler['annotations'][SubscriptionAnnotation::class]->topic(),
-                                        $handler['annotations'][SubscriptionAnnotation::class]->command(),
-                                        $handler['annotations'][SubscriptionAnnotation::class]->bus(),
-                                    );
-                                    $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
-                                }
-                            }
-
-                            foreach (array_unique(array_merge(array_keys($broadcasts), array_keys($rpcs), array_keys($subscriptions))) as $realm) {
-                                $realms[] = new Realm(
-                                    $realm,
-                                    $rpcs[$realm] ?? [],
-                                    $subscriptions[$realm] ?? [],
-                                    $broadcasts[$realm] ?? [],
-                                    array_unique(array_values($busses)),
-                                );
-                            }
-
-                            return $realms;
-                        }),
-                        new StreamSelectLoop(),
-                        1
+                        })->all()
                     ),
-                    await(
-                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): Observable {
+                    (static function (array $handlers): array {
+                        $serverHandlers = [];
+                        foreach ($handlers as $handler) {
+                            foreach ($handler['annotations'] as $annotation) {
+                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                    $serverHandlers[] = new Handler(
+                                        $annotation->methods,
+                                        $annotation->app,
+                                        $annotation->query,
+                                        $handler['class'],
+                                        self::ROUTE_BEHAVIOR[get_class($annotation)],
+                                        $annotation->path,
+                                    );
+                                }
+                            }
+                        }
+
+                        return $serverHandlers;
+                    })(
+                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
                                 $annotations[get_class($annotation)] = $annotation;
                             }
 
-                            return observableFromArray([
+                            return [
                                 [
                                     'class' => $class->getName(),
                                     'annotations' => $annotations,
                                 ],
-                            ]);
+                            ];
                         })->filter(static function (array $classNAnnotations): bool {
-                            if (! array_key_exists(VhostAnnotation::class, $classNAnnotations['annotations'])) {
+                            if (!array_key_exists(VhostAnnotation::class, $classNAnnotations['annotations'])) {
                                 return false;
                             }
 
@@ -379,43 +399,85 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                             return false;
                         })->filter(static function (array $classNAnnotations) use ($vhost): bool {
                             return $classNAnnotations['annotations'][VhostAnnotation::class]->vhost() === $vhost->name();
-                        })->toArray()->toPromise()->then(static function (array $handlers) {
-                            $serverHandlers = [];
-                            foreach ($handlers as $handler) {
-                                foreach ($handler['annotations'] as $annotation) {
-                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                        $serverHandlers[] = new Handler(
-                                            $annotation->methods,
-                                            $annotation->app,
-                                            $annotation->query,
-                                            $handler['class'],
-                                            self::ROUTE_BEHAVIOR[get_class($annotation)],
-                                            $annotation->path,
-                                        );
-                                    }
+                        })->all()
+                    ),
+                    (static function (array $handlers): array {
+
+                        $busses = [];
+                        foreach ($handlers as $handler) {
+                            foreach ($handler['annotations'] as $annotation) {
+                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                    $busses[] = $annotation->app;
                                 }
                             }
+                            if (isset($handler['annotations'][RpcAnnotation::class])) {
+                                $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
+                            }
+                            if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
+                                $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
+                            }
+                        }
 
-                            return $serverHandlers;
-                        }),
-                        new StreamSelectLoop(),
-                        1
-                    ),
-                    await(
-                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): Observable {
+                        $busInstances = [];
+                        foreach (array_unique($busses) as $bus) {
+                            $busInstances[] = new Bus(
+                                $bus,
+                                ...array_filter(
+                                array_map(
+                                    static function (array $handler) use ($bus) {
+                                        foreach ($handler['annotations'] as $annotation) {
+                                            if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                                if ($annotation->app !== $bus) {
+                                                    continue;
+                                                }
+
+                                                return new Bus\Handler(
+                                                    $bus,
+                                                    $annotation->query,
+                                                    $handler['class'],
+                                                );
+                                            }
+                                        }
+
+                                        if (isset($handler['annotations'][RpcAnnotation::class])) {
+                                            return new Bus\Handler(
+                                                $bus,
+                                                $handler['annotations'][RpcAnnotation::class]->command(),
+                                                $handler['class'],
+                                            );
+                                        }
+
+                                        if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
+                                            return new Bus\Handler(
+                                                $bus,
+                                                $handler['annotations'][SubscriptionAnnotation::class]->command(),
+                                                $handler['class'],
+                                            );
+                                        }
+                                    },
+                                    array_values($handlers),
+                                ),
+                                static fn(?Bus\Handler $handler) => $handler !== null,
+                            ),
+                            );
+                        }
+
+                        return $busInstances;
+                    })(
+                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
                                 $annotations[get_class($annotation)] = $annotation;
                             }
 
-                            return observableFromArray([
+                            return [
                                 [
                                     'class' => $class->getName(),
                                     'annotations' => $annotations,
                                 ],
-                            ]);
+                            ];
                         })->filter(static function (array $classNAnnotations): bool {
-                            if (! array_key_exists(VhostAnnotation::class, $classNAnnotations['annotations'])) {
+                            if (!array_key_exists(VhostAnnotation::class, $classNAnnotations['annotations'])) {
                                 return false;
                             }
 
@@ -436,91 +498,26 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                             return false;
                         })->filter(static function (array $classNAnnotations) use ($vhost): bool {
                             return $classNAnnotations['annotations'][VhostAnnotation::class]->vhost() === $vhost->name();
-                        })->toArray()->toPromise()->then(static function (array $handlers) {
-                            $busses = [];
-                            foreach ($handlers as $handler) {
-                                foreach ($handler['annotations'] as $annotation) {
-                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                        $busses[] = $annotation->app;
-                                    }
-                                }
-                                if (isset($handler['annotations'][RpcAnnotation::class])) {
-                                    $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
-                                }
-                                if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
-                                    $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
-                                }
-                            }
-
-                            $busInstances = [];
-                            foreach (array_unique($busses) as $bus) {
-                                $busInstances[] = new Bus(
-                                    $bus,
-                                    ...array_filter(
-                                        array_map(
-                                            static function (array $handler) use ($bus) {
-                                                foreach ($handler['annotations'] as $annotation) {
-                                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                                        if ($annotation->app !== $bus) {
-                                                            continue;
-                                                        }
-
-                                                        return new Bus\Handler(
-                                                            $bus,
-                                                            $annotation->query,
-                                                            $handler['class'],
-                                                        );
-                                                    }
-                                                }
-
-                                                if (isset($handler['annotations'][RpcAnnotation::class])) {
-                                                    return new Bus\Handler(
-                                                        $bus,
-                                                        $handler['annotations'][RpcAnnotation::class]->command(),
-                                                        $handler['class'],
-                                                    );
-                                                }
-
-                                                if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
-                                                    return new Bus\Handler(
-                                                        $bus,
-                                                        $handler['annotations'][SubscriptionAnnotation::class]->command(),
-                                                        $handler['class'],
-                                                    );
-                                                }
-                                            },
-                                            array_values($handlers),
-                                        ),
-                                        static fn (?Bus\Handler $handler) => $handler !== null,
-                                    ),
-                                );
-                            }
-
-                            return $busInstances;
-                        }),
-                        new StreamSelectLoop(),
-                        1
+                        })->all()
                     )
                 );
             }
-
-            $result = $vhosts;
-        })->then(null, static function (Throwable $throwable) use ($io): void {
+        } catch (Throwable $throwable) {
             $io->write(sprintf('<info>mammatus/http-server:</info> Unexpected error: <fg=red>%s</>', (string) $throwable));
-        });
+        }
 
-        return $result;
+        return $vhosts;
     }
 
-    private static function classes(array $packages, string $vendorDir, ClassReflector $classReflector, IOInterface $io): Observable
+    private static function classes(array $packages, string $vendorDir, ClassReflector $classReflector, IOInterface $io): Collection
     {
-        return observableFromArray($packages)->filter(static function (PackageInterface $package): bool {
+        return (new Collection($packages))->filter(static function (PackageInterface $package): bool {
             return count($package->getAutoload()) > 0;
         })->filter(static function (PackageInterface $package): bool {
             return getIn($package->getExtra(), 'mammatus.http.server.has-vhosts', false);
         })->filter(static function (PackageInterface $package): bool {
             return array_key_exists('classmap', $package->getAutoload()) || array_key_exists('psr-4', $package->getAutoload());
-        })->flatMap(static function (PackageInterface $package) use ($vendorDir): Observable {
+        })->flatMap(static function (PackageInterface $package) use ($vendorDir): array {
             $packageName = $package->getName();
             $autoload    = $package->getAutoload();
             $paths       = [];
@@ -552,28 +549,27 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                 }
             }
 
-            return observableFromArray($paths);
+            return $paths;
         })->map(static function (string $path): string {
             return rtrim($path, '/');
         })->filter(static function (string $path): bool {
             return file_exists($path);
-        })->toArray()->flatMap(static function (array $paths): Observable {
-            return observableFromArray(
+        })->flatMap(static function (string $path): array {
+            return
                 iteratorOrArrayToArray(
-                    listClassesInDirectories(...$paths)
-                )
+                    listClassesInDirectories($path)
             );
-        })->flatMap(static function (string $class) use ($classReflector, $io): Observable {
+        })->flatMap(static function (string $class) use ($classReflector, $io): array {
             try {
                 /** @psalm-suppress PossiblyUndefinedVariable */
-                return observableFromArray([
+                return [
                     (static function (ReflectionClass $reflectionClass): ReflectionClass {
                         $reflectionClass->getInterfaces();
                         $reflectionClass->getMethods();
 
                         return $reflectionClass;
                     })($classReflector->reflect($class)),
-                ]);
+                ];
             } catch (IdentifierNotFound $identifierNotFound) {
                 $io->write(sprintf(
                     '<info>mammatus/http-server:</info> Error while reflecting "<fg=cyan>%s</>": <fg=yellow>%s</>',
@@ -582,7 +578,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                 ));
             }
 
-            return observableFromArray([]);
+            return [];
         })->filter(static function (ReflectionClass $class): bool {
             return $class->isInstantiable();
         });
