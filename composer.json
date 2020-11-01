@@ -44,7 +44,6 @@
         "react-parallel/infinite-pool": "^2.0",
         "react-parallel/logger": "dev-master",
         "react-parallel/object-proxy": "dev-master",
-        "react-parallel/object-proxy-attributes": "dev-main",
         "react-parallel/psr-11-container-proxy": "dev-master",
         "react-parallel/react-parallel": "dev-add-metrics as 1.1.1",
         "react-parallel/worker-pool": "^1",
