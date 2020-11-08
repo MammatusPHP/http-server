@@ -18,7 +18,6 @@
         "laminas/laminas-diactoros": "^2.2",
         "lcobucci/content-negotiation-middleware": "^2.2",
         "lcobucci/jwt": "^3.3",
-        "mammatus/app": "dev-master",
         "mammatus/healthz-vhost": "dev-master",
         "mammatus/http-server-annotations": "dev-master",
         "mammatus/http-server-contracts": "dev-master",
@@ -74,6 +73,7 @@
         "zendframework/zend-diactoros": "^2.1"
     },
     "require-dev": {
+        "mammatus/app": "dev-master",
         "monolog/monolog": "^2",
         "wyrihaximus/async-test-utilities": "^3"
     },
