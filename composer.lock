@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf529be6c696004dec24ed274da43849",
+    "content-hash": "7be797b719442895bb457cf1ab5c55a0",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -242,16 +242,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.1.5",
+            "version": "4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "c7e88f1cd6dfe17065e71f1af305d415f155e97e"
+                "reference": "6584be57b8c39b7e0c5cc0400cc796a55c8e5344"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/c7e88f1cd6dfe17065e71f1af305d415f155e97e",
-                "reference": "c7e88f1cd6dfe17065e71f1af305d415f155e97e",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/6584be57b8c39b7e0c5cc0400cc796a55c8e5344",
+                "reference": "6584be57b8c39b7e0c5cc0400cc796a55c8e5344",
                 "shasum": ""
             },
             "require": {
@@ -294,20 +294,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2020-08-13T23:43:58+00:00"
+            "time": "2020-10-21T22:39:20+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "4.1.5",
+            "version": "4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "c65a5a169077c561b6e850e6d0ee85d9a54b6f5a"
+                "reference": "302c697df8796198eae9429bb7f817cb79e6401c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/c65a5a169077c561b6e850e6d0ee85d9a54b6f5a",
-                "reference": "c65a5a169077c561b6e850e6d0ee85d9a54b6f5a",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/302c697df8796198eae9429bb7f817cb79e6401c",
+                "reference": "302c697df8796198eae9429bb7f817cb79e6401c",
                 "shasum": ""
             },
             "require": {
@@ -353,7 +353,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/utility"
             },
-            "time": "2020-08-12T08:25:29+00:00"
+            "time": "2020-10-19T19:03:43+00:00"
         },
         {
             "name": "cboden/ratchet",
@@ -1104,6 +1104,66 @@
             "time": "2020-02-05T20:36:27+00:00"
         },
         {
+            "name": "firehed/simplelogger",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Firehed/simpleLogger.git",
+                "reference": "7ef8645c75192da88f2eee30a58a1aadd7e4f62d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Firehed/simpleLogger/zipball/7ef8645c75192da88f2eee30a58a1aadd7e4f62d",
+                "reference": "7ef8645c75192da88f2eee30a58a1aadd7e4f62d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "psr/log": "^1.0"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpunit/phpunit": "^8.2 || ^9.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firehed\\SimpleLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Stern"
+                }
+            ],
+            "description": "Logger compatible with PSR-3. Supports writing to files, STDOUT, STDERR, and syslog. Also provides a chain logger which can write to multiple destinations.",
+            "homepage": "https://github.com/firehed/simpleLogger",
+            "keywords": [
+                "log",
+                "logger",
+                "logging",
+                "logs",
+                "psr-3",
+                "stderr",
+                "stdout",
+                "syslog"
+            ],
+            "support": {
+                "issues": "https://github.com/Firehed/simpleLogger/issues",
+                "source": "https://github.com/Firehed/simpleLogger/tree/2.3.0"
+            },
+            "time": "2020-09-28T23:18:28+00:00"
+        },
+        {
             "name": "guzzlehttp/psr7",
             "version": "1.7.0",
             "source": {
@@ -1283,7 +1343,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -1337,7 +1397,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1385,7 +1445,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1687,6 +1747,67 @@
                 }
             ],
             "time": "2020-09-14T14:23:00+00:00"
+        },
+        {
+            "name": "lcobucci/clock",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/clock.git",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.17",
+                "lcobucci/coding-standard": "^6.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/php-code-coverage": "9.1.4",
+                "phpunit/phpunit": "9.3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\Clock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com"
+                }
+            ],
+            "description": "Yet another clock abstraction",
+            "support": {
+                "issues": "https://github.com/lcobucci/clock/issues",
+                "source": "https://github.com/lcobucci/clock/tree/2.0.x"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-08-27T18:56:02+00:00"
         },
         {
             "name": "lcobucci/content-negotiation-middleware",
@@ -2095,12 +2216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "f406b550b08609c24504da930c3ca0fcb4b0457c"
+                "reference": "2260cfbe7f87cf1d5c85f5aa88f836683fa6f555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/f406b550b08609c24504da930c3ca0fcb4b0457c",
-                "reference": "f406b550b08609c24504da930c3ca0fcb4b0457c",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/2260cfbe7f87cf1d5c85f5aa88f836683fa6f555",
+                "reference": "2260cfbe7f87cf1d5c85f5aa88f836683fa6f555",
                 "shasum": ""
             },
             "require": {
@@ -2109,32 +2230,33 @@
                 "doctrine/annotations": "^1.4",
                 "ext-pcntl": "^7.4",
                 "mammatus/life-cycle-events": "dev-master",
+                "mammatus/metrics": "9999999-dev",
                 "monolog/monolog": "^2.0",
                 "php": "^7.4",
-                "php-di-definitions/definitions-gatherer": "^1.0",
+                "php-di-definitions/definitions-gatherer": "^1",
                 "php-di-definitions/react-event-loop-inspected": "dev-master",
-                "php-di-definitions/react-recoil": "^1.0",
-                "php-di/php-di": "^6.0",
-                "psr/container": "^1.0",
-                "psr/event-dispatcher": "^1.0",
+                "php-di-definitions/react-recoil": "^1",
+                "php-di/php-di": "^6",
+                "psr/container": "^1",
+                "psr/event-dispatcher": "^1",
                 "psr/log": "^1.1",
-                "react/event-loop": "^1.0 || ^0.5",
-                "thecodingmachine/safe": "^1.1",
+                "react-parallel/event-loop": "dev-add-metrics as 1.1.1",
+                "react-parallel/react-parallel": "dev-add-metrics as 1.1.1",
+                "react/event-loop": "^1",
+                "thecodingmachine/safe": "^1.3",
                 "wyrihaximus/broadcast": "dev-master",
-                "wyrihaximus/broadcast-contracts": "^1.0",
-                "wyrihaximus/composer-update-bin-autoload-path": "dev-master",
+                "wyrihaximus/broadcast-contracts": "^1",
+                "wyrihaximus/composer-update-bin-autoload-path": "^1 || ^1.0.1",
                 "wyrihaximus/constants": "^1.5",
                 "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
                 "wyrihaximus/get-in-packages-composer.jason": "^1.0",
                 "wyrihaximus/metrics": "dev-master",
-                "wyrihaximus/monolog-formatted-psr-handler": "^1.0",
-                "wyrihaximus/monolog-processors": "^1.1",
+                "wyrihaximus/monolog-factory": "^1.0",
                 "wyrihaximus/psr-3-context-logger": "^1.0",
                 "wyrihaximus/react-psr-3-stdio": "^2.0"
             },
             "require-dev": {
                 "mammatus/test-app": "dev-master",
-                "monolog/monolog": "^2.0",
                 "wyrihaximus/test-utilities": "^2.2"
             },
             "default-branch": true,
@@ -2195,7 +2317,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-21T15:43:36+00:00"
+            "time": "2020-11-08T11:50:48+00:00"
         },
         {
             "name": "mammatus/healthz-vhost",
@@ -2463,6 +2585,52 @@
                 }
             ],
             "time": "2020-04-04T18:56:44+00:00"
+        },
+        {
+            "name": "mammatus/metrics",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MammatusPHP/metrics.git",
+                "reference": "d63c75acde2f76517e3d650bcfbc057e152a2514"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MammatusPHP/metrics/zipball/d63c75acde2f76517e3d650bcfbc057e152a2514",
+                "reference": "d63c75acde2f76517e3d650bcfbc057e152a2514",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4",
+                "react-parallel/event-loop": "dev-add-metrics as 1.1.1",
+                "react-parallel/object-proxy": "dev-master",
+                "react-parallel/psr-11-container-proxy": "dev-master",
+                "react-parallel/react-parallel": "dev-add-metrics as 1.1.1",
+                "wyrihaximus/metrics": "dev-master",
+                "wyrihaximus/metrics-tactician": "dev-master"
+            },
+            "require-dev": {
+                "wyrihaximus/async-test-utilities": "^2.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "php-di-definitions": {
+                    "di": [
+                        "etc/di/*.php"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "🐙 Metrics Hook-ins",
+            "support": {
+                "issues": "https://github.com/MammatusPHP/metrics/issues",
+                "source": "https://github.com/MammatusPHP/metrics/tree/master"
+            },
+            "time": "2020-11-04T00:56:51+00:00"
         },
         {
             "name": "mammatus/metrics-prometheus-vhost",
@@ -3545,16 +3713,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "c547f8262a5fa9ff507bd06cc394067b83a75085"
+                "reference": "943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/c547f8262a5fa9ff507bd06cc394067b83a75085",
-                "reference": "c547f8262a5fa9ff507bd06cc394067b83a75085",
+                "url": "https://api.github.com/repos/opis/closure/zipball/943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5",
+                "reference": "943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5",
                 "shasum": ""
             },
             "require": {
@@ -3604,9 +3772,9 @@
             ],
             "support": {
                 "issues": "https://github.com/opis/closure/issues",
-                "source": "https://github.com/opis/closure/tree/3.6.0"
+                "source": "https://github.com/opis/closure/tree/3.6.1"
             },
-            "time": "2020-10-11T21:42:15+00:00"
+            "time": "2020-11-07T02:01:34+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4974,12 +5142,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-inspector/http-middleware.git",
-                "reference": "a5f8caa7e55a2928da862700783d59725fb8def6"
+                "reference": "d81fad7a756696af18f1ec9d5d0338d570fd290f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-inspector/http-middleware/zipball/a5f8caa7e55a2928da862700783d59725fb8def6",
-                "reference": "a5f8caa7e55a2928da862700783d59725fb8def6",
+                "url": "https://api.github.com/repos/reactphp-inspector/http-middleware/zipball/d81fad7a756696af18f1ec9d5d0338d570fd290f",
+                "reference": "d81fad7a756696af18f1ec9d5d0338d570fd290f",
                 "shasum": ""
             },
             "require": {
@@ -5021,7 +5189,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-21T17:09:52+00:00"
+            "time": "2020-11-03T11:53:48+00:00"
         },
         {
             "name": "react-inspector/memory-usage",
@@ -5575,12 +5743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy.git",
-                "reference": "28d20b689ecce1e8f172035d546e7d2c4042e0f1"
+                "reference": "8608c02a75fba95fcc73bdc2a7b990e8ba41f131"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/28d20b689ecce1e8f172035d546e7d2c4042e0f1",
-                "reference": "28d20b689ecce1e8f172035d546e7d2c4042e0f1",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/8608c02a75fba95fcc73bdc2a7b990e8ba41f131",
+                "reference": "8608c02a75fba95fcc73bdc2a7b990e8ba41f131",
                 "shasum": ""
             },
             "require": {
@@ -5621,9 +5789,11 @@
                             "WyriHaximus\\Metrics\\Registry\\Counters",
                             "WyriHaximus\\Metrics\\Registry\\Gauges",
                             "WyriHaximus\\Metrics\\Registry\\Histograms",
+                            "WyriHaximus\\Metrics\\Registry\\Summaries",
                             "WyriHaximus\\Metrics\\Counter",
                             "WyriHaximus\\Metrics\\Gauge",
-                            "WyriHaximus\\Metrics\\Histogram"
+                            "WyriHaximus\\Metrics\\Histogram",
+                            "WyriHaximus\\Metrics\\Summary"
                         ]
                     }
                 }
@@ -5655,7 +5825,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-31T23:05:52+00:00"
+            "time": "2020-11-07T22:21:22+00:00"
         },
         {
             "name": "react-parallel/object-proxy-attributes",
@@ -5719,12 +5889,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/psr-11-container-proxy.git",
-                "reference": "a42057115c1fd3f31cce3c87992b0cf1207b80c0"
+                "reference": "9cdb104bd5d8ede04a39d0a5116bd277ffb645ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/psr-11-container-proxy/zipball/a42057115c1fd3f31cce3c87992b0cf1207b80c0",
-                "reference": "a42057115c1fd3f31cce3c87992b0cf1207b80c0",
+                "url": "https://api.github.com/repos/reactphp-parallel/psr-11-container-proxy/zipball/9cdb104bd5d8ede04a39d0a5116bd277ffb645ab",
+                "reference": "9cdb104bd5d8ede04a39d0a5116bd277ffb645ab",
                 "shasum": ""
             },
             "require": {
@@ -5776,7 +5946,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-19T21:53:47+00:00"
+            "time": "2020-11-03T00:15:03+00:00"
         },
         {
             "name": "react-parallel/react-parallel",
@@ -8747,16 +8917,16 @@
         },
         {
             "name": "wyrihaximus/composer-update-bin-autoload-path",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path.git",
-                "reference": "2da717e57bfea1a308df1b6b919f03160157b195"
+                "reference": "c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-composer-update-bin-autoload-path/zipball/2da717e57bfea1a308df1b6b919f03160157b195",
-                "reference": "2da717e57bfea1a308df1b6b919f03160157b195",
+                "url": "https://api.github.com/repos/WyriHaximus/php-composer-update-bin-autoload-path/zipball/c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7",
+                "reference": "c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7",
                 "shasum": ""
             },
             "require": {
@@ -8764,12 +8934,14 @@
                 "php": "^7.4"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^2.9"
+                "wyrihaximus/test-utilities": "^3"
             },
-            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
-                "class": "WyriHaximus\\Composer\\BinAutoloadPathUpdater"
+                "class": "WyriHaximus\\Composer\\BinAutoloadPathUpdater",
+                "unused": [
+                    "php"
+                ]
             },
             "autoload": {
                 "psr-4": {
@@ -8783,9 +8955,15 @@
             "description": "🏰 Composer plugin that fills a bin file with the absolute composer autoload path",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/issues",
-                "source": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/tree/master"
+                "source": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/tree/1.0.1"
             },
-            "time": "2020-10-25T17:58:37+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-07T16:35:14+00:00"
         },
         {
             "name": "wyrihaximus/constants",
@@ -9183,18 +9361,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics.git",
-                "reference": "eb6b1acceed72e5a939cb0e19479def594f9aba6"
+                "reference": "58ca901b2e05b1806a3d0fec01df4ae331a48891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/eb6b1acceed72e5a939cb0e19479def594f9aba6",
-                "reference": "eb6b1acceed72e5a939cb0e19479def594f9aba6",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/58ca901b2e05b1806a3d0fec01df4ae331a48891",
+                "reference": "58ca901b2e05b1806a3d0fec01df4ae331a48891",
                 "shasum": ""
             },
             "require": {
+                "lcobucci/clock": "^2.0",
                 "php": "^7.4",
                 "react-parallel/object-proxy-attributes": "^1",
-                "thecodingmachine/safe": "^1.1"
+                "thecodingmachine/safe": "^1.1",
+                "wyrihaximus/constants": "^1.5"
             },
             "require-dev": {
                 "phpbench/phpbench": "^0.17.1",
@@ -9228,7 +9408,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-31T15:06:52+00:00"
+            "time": "2020-11-03T20:34:36+00:00"
         },
         {
             "name": "wyrihaximus/metrics-tactician",
@@ -9236,12 +9416,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics-tactician.git",
-                "reference": "c7e70f847951ef29d589bc007bc485c0196dd6dd"
+                "reference": "e5ac650561f7a4b054745c8f14a709fc791f20c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/c7e70f847951ef29d589bc007bc485c0196dd6dd",
-                "reference": "c7e70f847951ef29d589bc007bc485c0196dd6dd",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/e5ac650561f7a4b054745c8f14a709fc791f20c4",
+                "reference": "e5ac650561f7a4b054745c8f14a709fc791f20c4",
                 "shasum": ""
             },
             "require": {
@@ -9282,7 +9462,67 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-21T22:01:34+00:00"
+            "time": "2020-11-03T12:25:19+00:00"
+        },
+        {
+            "name": "wyrihaximus/monolog-factory",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-monolog-factory.git",
+                "reference": "d51b43e7c34518943e82ad5da1cfceba18285d47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-factory/zipball/d51b43e7c34518943e82ad5da1cfceba18285d47",
+                "reference": "d51b43e7c34518943e82ad5da1cfceba18285d47",
+                "shasum": ""
+            },
+            "require": {
+                "bramus/monolog-colored-line-formatter": "^3.0",
+                "monolog/monolog": "^2.1",
+                "php": "^7.4",
+                "psr/log": "^1.1",
+                "wyrihaximus/constants": "^1.5",
+                "wyrihaximus/monolog-formatted-psr-handler": "^1.2",
+                "wyrihaximus/monolog-processors": "^1.3"
+            },
+            "require-dev": {
+                "wyrihaximus/test-utilities": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "unused": [
+                    "php"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Monolog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "🧐🏭 Opinionated Monolog factory",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-monolog-factory/issues",
+                "source": "https://github.com/WyriHaximus/php-monolog-factory/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-07T16:37:24+00:00"
         },
         {
             "name": "wyrihaximus/monolog-formatted-psr-handler",
@@ -10867,16 +11107,16 @@
     "packages-dev": [
         {
             "name": "amphp/amp",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/amp.git",
-                "reference": "f220a51458bf4dd0dedebb171ac3457813c72bbc"
+                "reference": "ecdc3c476b3ccff02f8e5d5bcc04f7ccfd18751c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/amp/zipball/f220a51458bf4dd0dedebb171ac3457813c72bbc",
-                "reference": "f220a51458bf4dd0dedebb171ac3457813c72bbc",
+                "url": "https://api.github.com/repos/amphp/amp/zipball/ecdc3c476b3ccff02f8e5d5bcc04f7ccfd18751c",
+                "reference": "ecdc3c476b3ccff02f8e5d5bcc04f7ccfd18751c",
                 "shasum": ""
             },
             "require": {
@@ -10944,7 +11184,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/amphp",
                 "issues": "https://github.com/amphp/amp/issues",
-                "source": "https://github.com/amphp/amp/tree/master"
+                "source": "https://github.com/amphp/amp/tree/v2.5.1"
             },
             "funding": [
                 {
@@ -10952,7 +11192,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-14T21:47:18+00:00"
+            "time": "2020-11-03T16:23:45+00:00"
         },
         {
             "name": "amphp/byte-stream",
@@ -11724,21 +11964,21 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.9.1",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "7bb31c61eaee0ec0473f22fa90c9514200dd9483"
+                "reference": "fbe3173c54af8227a0915094f7c63d3c09f7b28b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/7bb31c61eaee0ec0473f22fa90c9514200dd9483",
-                "reference": "7bb31c61eaee0ec0473f22fa90c9514200dd9483",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/fbe3173c54af8227a0915094f7c63d3c09f7b28b",
+                "reference": "fbe3173c54af8227a0915094f7c63d3c09f7b28b",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.0.0",
-                "ergebnis/json-normalizer": "~0.13.1",
+                "ergebnis/json-normalizer": "~0.14.0",
                 "ergebnis/json-printer": "^3.1.1",
                 "justinrainbow/json-schema": "^5.2.10",
                 "localheinz/diff": "^1.1.1",
@@ -11764,7 +12004,11 @@
             },
             "type": "composer-plugin",
             "extra": {
-                "class": "Ergebnis\\Composer\\Normalize\\NormalizePlugin"
+                "class": "Ergebnis\\Composer\\Normalize\\NormalizePlugin",
+                "composer-normalize": {
+                    "indent-size": 2,
+                    "indent-style": "space"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -11799,43 +12043,43 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-31T14:41:25+00:00"
+            "time": "2020-11-05T09:22:39+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
-            "version": "0.13.1",
+            "version": "0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/json-normalizer.git",
-                "reference": "82897f7a0b6a896462a08ac02bee33ccf4ece0bb"
+                "reference": "4aad3594810d7477b5ea67a16544ad94ae374fc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/82897f7a0b6a896462a08ac02bee33ccf4ece0bb",
-                "reference": "82897f7a0b6a896462a08ac02bee33ccf4ece0bb",
+                "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/4aad3594810d7477b5ea67a16544ad94ae374fc7",
+                "reference": "4aad3594810d7477b5ea67a16544ad94ae374fc7",
                 "shasum": ""
             },
             "require": {
-                "ergebnis/json-printer": "^3.1.0",
+                "ergebnis/json-printer": "^3.1.1",
                 "ext-json": "*",
                 "justinrainbow/json-schema": "^5.2.10",
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "ergebnis/license": "^1.0.0",
-                "ergebnis/php-cs-fixer-config": "^2.2.1",
+                "ergebnis/license": "^1.1.0",
+                "ergebnis/php-cs-fixer-config": "^2.5.1",
                 "ergebnis/phpstan-rules": "~0.15.2",
-                "ergebnis/test-util": "^1.1.0",
+                "ergebnis/test-util": "^1.3.0",
                 "infection/infection": "~0.15.3",
-                "jangregor/phpstan-prophecy": "~0.8.0",
-                "phpstan/extension-installer": "^1.0.4",
-                "phpstan/phpstan": "~0.12.40",
+                "jangregor/phpstan-prophecy": "~0.8.1",
+                "phpstan/extension-installer": "^1.0.5",
+                "phpstan/phpstan": "~0.12.52",
                 "phpstan/phpstan-deprecation-rules": "~0.12.5",
                 "phpstan/phpstan-phpunit": "~0.12.16",
-                "phpstan/phpstan-strict-rules": "~0.12.4",
+                "phpstan/phpstan-strict-rules": "~0.12.5",
                 "phpunit/phpunit": "^8.5.8",
-                "psalm/plugin-phpunit": "~0.11.0",
-                "vimeo/psalm": "^3.14.2"
+                "psalm/plugin-phpunit": "~0.12.2",
+                "vimeo/psalm": "^3.18"
             },
             "type": "library",
             "autoload": {
@@ -11869,7 +12113,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-30T12:00:06+00:00"
+            "time": "2020-10-31T15:46:10+00:00"
         },
         {
             "name": "ergebnis/json-printer",
@@ -13970,16 +14214,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.52",
+            "version": "0.12.54",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e96dd5e7ae9aefed663bc7e285ad96792b67eadc"
+                "reference": "45c7b999a4b7dd9ac5558bdaaf23dcebbef88223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e96dd5e7ae9aefed663bc7e285ad96792b67eadc",
-                "reference": "e96dd5e7ae9aefed663bc7e285ad96792b67eadc",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/45c7b999a4b7dd9ac5558bdaaf23dcebbef88223",
+                "reference": "45c7b999a4b7dd9ac5558bdaaf23dcebbef88223",
                 "shasum": ""
             },
             "require": {
@@ -14010,7 +14254,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.52"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.54"
             },
             "funding": [
                 {
@@ -14026,7 +14270,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-25T07:23:44+00:00"
+            "time": "2020-11-05T13:36:26+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -17676,6 +17920,7 @@
         "mammatus/http-server-webroot": 20,
         "mammatus/http-server-websockets": 20,
         "mammatus/life-cycle-events": 20,
+        "mammatus/metrics": 20,
         "mammatus/metrics-prometheus-vhost": 20,
         "php-di-definitions/react-event-loop-inspected": 20,
         "react-inspector/http-middleware": 20,
@@ -17685,7 +17930,6 @@
         "react-parallel/psr-11-container-proxy": 20,
         "react-parallel/react-parallel": 20,
         "wyrihaximus/broadcast": 20,
-        "wyrihaximus/composer-update-bin-autoload-path": 20,
         "wyrihaximus/metrics": 20,
         "wyrihaximus/metrics-tactician": 20,
         "wyrihaximus/to-thread-or-not-to-thread": 20

@@ -12,6 +12,7 @@
         "chimera/routing-expressive": "^0.3.0",
         "composer-plugin-api": "^2",
         "doctrine/annotations": "^1.6",
+        "firehed/simplelogger": "^2.3",
         "illuminate/collections": "^8.11",
         "joshdifabio/composed": "^1",
         "laminas/laminas-diactoros": "^2.2",
@@ -24,6 +25,7 @@
         "mammatus/http-server-webroot": "dev-master",
         "mammatus/http-server-websockets": "dev-master",
         "mammatus/life-cycle-events": "dev-master",
+        "mammatus/metrics": "dev-master",
         "mammatus/metrics-prometheus-vhost": "dev-master",
         "mezzio/mezzio-helpers": "^5.3",
         "mezzio/mezzio-router": "^3.1",
@@ -53,7 +55,6 @@
         "thruway/middleware": "^0.1.0",
         "wyrihaximus/broadcast": "dev-master",
         "wyrihaximus/broadcast-contracts": "^1",
-        "wyrihaximus/composer-update-bin-autoload-path": "dev-master",
         "wyrihaximus/doctrine-annotation-autoloader": "^1",
         "wyrihaximus/get-in-packages-composer.jason": "^1",
         "wyrihaximus/iterator-or-array-to-array": "^1.1",
@@ -70,9 +71,6 @@
         "wyrihaximus/recoil-queue-caller-pool": "^1.2",
         "wyrihaximus/simple-twig": "^2",
         "wyrihaximus/string-get-in": "^1",
-        "wyrihaximus/to-child-process-or-not-to-child-process": "^1",
-        "wyrihaximus/to-coroutine-or-not-to-coroutine": "^1",
-        "wyrihaximus/to-thread-or-not-to-thread": "dev-master",
         "zendframework/zend-diactoros": "^2.1"
     },
     "require-dev": {
