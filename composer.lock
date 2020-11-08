@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7be797b719442895bb457cf1ab5c55a0",
+    "content-hash": "fbfeecf6f6fa7fc0dca8e3e47c32d7d0",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -3595,16 +3595,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.6.0",
+            "version": "v4.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "c346bbfafe2ff60680258b631afb730d186ed864"
+                "reference": "658f1be311a230e0907f5dfe0213742aff0596de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c346bbfafe2ff60680258b631afb730d186ed864",
-                "reference": "c346bbfafe2ff60680258b631afb730d186ed864",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/658f1be311a230e0907f5dfe0213742aff0596de",
+                "reference": "658f1be311a230e0907f5dfe0213742aff0596de",
                 "shasum": ""
             },
             "require": {
@@ -3612,8 +3612,8 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+                "ircmaxell/php-yacc": "^0.0.7",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -3621,7 +3621,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.9-dev"
                 }
             },
             "autoload": {
@@ -3645,9 +3645,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.6.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.2"
             },
-            "time": "2020-07-02T17:12:47+00:00"
+            "time": "2020-09-26T10:30:38+00:00"
         },
         {
             "name": "northwoods/broker",
@@ -10372,253 +10372,6 @@
             "time": "2018-04-05T12:36:50+00:00"
         },
         {
-            "name": "wyrihaximus/to-child-process-or-not-to-child-process",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-to-child-process-or-not-to-child-process.git",
-                "reference": "0a6b8f55630de41b0acd878c4d59fac13e0cf7e3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-child-process-or-not-to-child-process/zipball/0a6b8f55630de41b0acd878c4d59fac13e0cf7e3",
-                "reference": "0a6b8f55630de41b0acd878c4d59fac13e0cf7e3",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-                "wyrihaximus/to-x-or-not-to-x": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.4"
-            },
-            "type": "library",
-            "extra": {
-                "react-inspector": {
-                    "metrics": [
-                        "inspector.metrics"
-                    ],
-                    "reset": {
-                        "ticks": [
-                            "inspector.metrics"
-                        ]
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "To child process or not to child process",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-to-child-process-or-not-to-child-process/issues",
-                "source": "https://github.com/WyriHaximus/php-to-child-process-or-not-to-child-process/tree/master"
-            },
-            "time": "2019-01-02T16:52:49+00:00"
-        },
-        {
-            "name": "wyrihaximus/to-coroutine-or-not-to-coroutine",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine.git",
-                "reference": "8b9e7de28c81ce88359189f5c032da734eba60c4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-coroutine-or-not-to-coroutine/zipball/8b9e7de28c81ce88359189f5c032da734eba60c4",
-                "reference": "8b9e7de28c81ce88359189f5c032da734eba60c4",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-                "wyrihaximus/to-x-or-not-to-x": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.4"
-            },
-            "type": "library",
-            "extra": {
-                "react-inspector": {
-                    "metrics": [
-                        "inspector.metrics"
-                    ],
-                    "reset": {
-                        "ticks": [
-                            "inspector.metrics"
-                        ]
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "To coroutine or not to coroutine",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine/issues",
-                "source": "https://github.com/WyriHaximus/php-to-coroutine-or-not-to-coroutine/tree/master"
-            },
-            "time": "2019-01-02T16:52:38+00:00"
-        },
-        {
-            "name": "wyrihaximus/to-thread-or-not-to-thread",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-to-thread-or-not-to-thread.git",
-                "reference": "5e63bee3effcedc61abc2d59ab0a7538d9909c97"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-thread-or-not-to-thread/zipball/5e63bee3effcedc61abc2d59ab0a7538d9909c97",
-                "reference": "5e63bee3effcedc61abc2d59ab0a7538d9909c97",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-                "wyrihaximus/to-x-or-not-to-x": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "react-inspector": {
-                    "metrics": [
-                        "inspector.metrics"
-                    ],
-                    "reset": {
-                        "ticks": [
-                            "inspector.metrics"
-                        ]
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "To thread or not to thread",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-to-thread-or-not-to-thread/issues",
-                "source": "https://github.com/WyriHaximus/php-to-thread-or-not-to-thread/tree/1.0.0"
-            },
-            "time": "2019-04-06T12:13:06+00:00"
-        },
-        {
-            "name": "wyrihaximus/to-x-or-not-to-x",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-to-X-or-not-to-X.git",
-                "reference": "e46de217a51c7191d8bc68b1471824d41abad595"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-to-X-or-not-to-X/zipball/e46de217a51c7191d8bc68b1471824d41abad595",
-                "reference": "e46de217a51c7191d8bc68b1471824d41abad595",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/collection": "^3.6",
-                "doctrine/annotations": "^1.6",
-                "php": "^7.2",
-                "wyrihaximus/doctrine-annotation-autoloader": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/cs-fixer-config": "^1.1",
-                "api-clients/test-utilities": "^5.4"
-            },
-            "type": "library",
-            "extra": {
-                "react-inspector": {
-                    "metrics": [
-                        "inspector.metrics"
-                    ],
-                    "reset": {
-                        "ticks": [
-                            "inspector.metrics"
-                        ]
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "To X or not to X",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-to-X-or-not-to-X/issues",
-                "source": "https://github.com/WyriHaximus/php-to-X-or-not-to-X/tree/master"
-            },
-            "time": "2019-01-01T20:57:03+00:00"
-        },
-        {
             "name": "zendframework/zend-escaper",
             "version": "2.6.1",
             "source": {
@@ -12868,20 +12621,19 @@
         },
         {
             "name": "infection/infection",
-            "version": "0.18",
+            "version": "0.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infection/infection.git",
-                "reference": "ddea14cf710fe3ce041f26ea0e7365e49263bdff"
+                "reference": "59a7a374e8020e362550b5223d7174ee7ccc184c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infection/infection/zipball/ddea14cf710fe3ce041f26ea0e7365e49263bdff",
-                "reference": "ddea14cf710fe3ce041f26ea0e7365e49263bdff",
+                "url": "https://api.github.com/repos/infection/infection/zipball/59a7a374e8020e362550b5223d7174ee7ccc184c",
+                "reference": "59a7a374e8020e362550b5223d7174ee7ccc184c",
                 "shasum": ""
             },
             "require": {
-                "composer/package-versions-deprecated": "^1.2 || ^2.0",
                 "composer/xdebug-handler": "^1.3.3",
                 "ext-dom": "*",
                 "ext-json": "*",
@@ -12890,9 +12642,10 @@
                 "infection/extension-installer": "^0.1.0",
                 "infection/include-interceptor": "^0.2.4",
                 "justinrainbow/json-schema": "^5.2",
-                "nikic/php-parser": "^4.9 <4.10",
+                "nikic/php-parser": "^4.10.2",
+                "ocramius/package-versions": "^1.2 || ^2.0",
                 "ondram/ci-detector": "^3.3.0",
-                "php": "^7.3",
+                "php": "^7.4 || ^8.0",
                 "sanmai/pipeline": "^3.1 || ^5.0",
                 "sebastian/diff": "^3.0.2 || ^4.0",
                 "seld/jsonlint": "^1.7",
@@ -12915,11 +12668,13 @@
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^0.12.8",
                 "phpstan/phpstan-phpunit": "^0.12.6",
+                "phpstan/phpstan-strict-rules": "^0.12.5",
                 "phpstan/phpstan-webmozart-assert": "^0.12.2",
                 "phpunit/phpunit": "^9.3.11",
                 "symfony/phpunit-bridge": "^4.4.14 || ^5.1.6",
                 "symfony/yaml": "^5.0",
-                "thecodingmachine/phpstan-safe-rule": "^1.0"
+                "thecodingmachine/phpstan-safe-rule": "^1.0",
+                "vimeo/psalm": "^4.0"
             },
             "bin": [
                 "bin/infection"
@@ -12975,9 +12730,9 @@
             ],
             "support": {
                 "issues": "https://github.com/infection/infection/issues",
-                "source": "https://github.com/infection/infection/tree/0.18"
+                "source": "https://github.com/infection/infection/tree/0.20.1"
             },
-            "time": "2020-10-17T10:55:12+00:00"
+            "time": "2020-11-03T12:14:40+00:00"
         },
         {
             "name": "jangregor/phpstan-prophecy",
@@ -14500,23 +14255,23 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.2",
+            "version": "9.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "229099d7d69fe5044f6e464f669b1fd34f252e8d"
+                "reference": "6b20e2055f7c29b56cb3870b3de7cc463d7add41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/229099d7d69fe5044f6e464f669b1fd34f252e8d",
-                "reference": "229099d7d69fe5044f6e464f669b1fd34f252e8d",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6b20e2055f7c29b56cb3870b3de7cc463d7add41",
+                "reference": "6b20e2055f7c29b56cb3870b3de7cc463d7add41",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "nikic/php-parser": "^4.8",
+                "nikic/php-parser": "^4.10.2",
                 "php": ">=7.3",
                 "phpunit/php-file-iterator": "^3.0.3",
                 "phpunit/php-text-template": "^2.0.2",
@@ -14565,7 +14320,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.2"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.3"
             },
             "funding": [
                 {
@@ -14573,7 +14328,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-28T06:24:13+00:00"
+            "time": "2020-10-30T10:46:41+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -14921,25 +14676,25 @@
         },
         {
             "name": "psalm/plugin-phpunit",
-            "version": "0.12.2",
+            "version": "0.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-phpunit.git",
-                "reference": "85ee5a080a5281e63085d933b30a06b1b1680758"
+                "reference": "e006914489f3e445f5cb786ea6f3df89ea30129b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-phpunit/zipball/85ee5a080a5281e63085d933b30a06b1b1680758",
-                "reference": "85ee5a080a5281e63085d933b30a06b1b1680758",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-phpunit/zipball/e006914489f3e445f5cb786ea6f3df89ea30129b",
+                "reference": "e006914489f3e445f5cb786ea6f3df89ea30129b",
                 "shasum": ""
             },
             "require": {
                 "composer/package-versions-deprecated": "^1.10",
                 "composer/semver": "^1.4 || ^2.0 || ^3.0",
                 "ext-simplexml": "*",
-                "php": "^7.1.3 || ^8.0",
+                "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": "^7.5 || ^8.0 || ^9.0",
-                "vimeo/psalm": "^3.6.2 || dev-master || dev-4.x"
+                "vimeo/psalm": "dev-master || dev-4.x || ^4.0"
             },
             "require-dev": {
                 "codeception/codeception": "^4.0.3",
@@ -14971,9 +14726,9 @@
             "description": "Psalm plugin for PHPUnit",
             "support": {
                 "issues": "https://github.com/psalm/psalm-plugin-phpunit/issues",
-                "source": "https://github.com/psalm/psalm-plugin-phpunit/tree/0.12.2"
+                "source": "https://github.com/psalm/psalm-plugin-phpunit/tree/0.13.0"
             },
-            "time": "2020-09-28T17:25:39+00:00"
+            "time": "2020-10-19T12:43:17+00:00"
         },
         {
             "name": "psr/http-client",
@@ -15093,26 +14848,26 @@
         },
         {
             "name": "roave/infection-static-analysis-plugin",
-            "version": "1.1.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/infection-static-analysis-plugin.git",
-                "reference": "74415f4c890daef9bc23a0af37e3a4ab8e0809a5"
+                "reference": "371ad8c946b770c5e2c5a184add91e105fece693"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/infection-static-analysis-plugin/zipball/74415f4c890daef9bc23a0af37e3a4ab8e0809a5",
-                "reference": "74415f4c890daef9bc23a0af37e3a4ab8e0809a5",
+                "url": "https://api.github.com/repos/Roave/infection-static-analysis-plugin/zipball/371ad8c946b770c5e2c5a184add91e105fece693",
+                "reference": "371ad8c946b770c5e2c5a184add91e105fece693",
                 "shasum": ""
             },
             "require": {
-                "infection/infection": "0.18",
+                "infection/infection": "0.20.1",
                 "ocramius/package-versions": "^1.9.0 || ^2.0.0",
                 "php": "^7.4.7",
-                "vimeo/psalm": "^3.16"
+                "vimeo/psalm": "^4.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^8.1.0",
+                "doctrine/coding-standard": "^8.2.0",
                 "phpunit/phpunit": "^9.2.6"
             },
             "bin": [
@@ -15137,9 +14892,9 @@
             "description": "Static analysis on top of mutation testing - prevents escaped mutants from being invalid according to static analysis",
             "support": {
                 "issues": "https://github.com/Roave/infection-static-analysis-plugin/issues",
-                "source": "https://github.com/Roave/infection-static-analysis-plugin/tree/1.1.0"
+                "source": "https://github.com/Roave/infection-static-analysis-plugin/tree/1.3.0"
             },
-            "time": "2020-10-18T18:37:29+00:00"
+            "time": "2020-11-03T14:13:14+00:00"
         },
         {
             "name": "sanmai/pipeline",
@@ -17459,16 +17214,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "3.18.2",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "19aa905f7c3c7350569999a93c40ae91ae4e1626"
+                "reference": "16bfbd9224698bd738c665f33039fade2a1a3977"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/19aa905f7c3c7350569999a93c40ae91ae4e1626",
-                "reference": "19aa905f7c3c7350569999a93c40ae91ae4e1626",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/16bfbd9224698bd738c665f33039fade2a1a3977",
+                "reference": "16bfbd9224698bd738c665f33039fade2a1a3977",
                 "shasum": ""
             },
             "require": {
@@ -17487,12 +17242,11 @@
                 "felixfbecker/advanced-json-rpc": "^3.0.3",
                 "felixfbecker/language-server-protocol": "^1.4",
                 "netresearch/jsonmapper": "^1.0 || ^2.0 || ^3.0",
-                "nikic/php-parser": "4.3.* || 4.4.* || 4.5.* || 4.6.* || ^4.8",
+                "nikic/php-parser": "^4.10.1",
                 "openlss/lib-array2xml": "^1.0",
-                "php": "^7.1.3|^8",
+                "php": "^7.1|^8",
                 "sebastian/diff": "^3.0 || ^4.0",
                 "symfony/console": "^3.4.17 || ^4.1.6 || ^5.0",
-                "webmozart/glob": "^4.1",
                 "webmozart/path-util": "^2.3"
             },
             "provide": {
@@ -17503,11 +17257,12 @@
                 "bamarni/composer-bin-plugin": "^1.2",
                 "brianium/paratest": "^4.0.0",
                 "ext-curl": "*",
-                "phpdocumentor/reflection-docblock": "^4.3.4 || ^5",
+                "php": "^7.3|^8",
+                "phpdocumentor/reflection-docblock": "^5",
                 "phpmyadmin/sql-parser": "5.1.0",
                 "phpspec/prophecy": ">=1.9.0",
-                "phpunit/phpunit": "^7.5.16 || ^8.5 || ^9.0",
-                "psalm/plugin-phpunit": "^0.11",
+                "phpunit/phpunit": "^9.0",
+                "psalm/plugin-phpunit": "^0.13",
                 "slevomat/coding-standard": "^5.0",
                 "squizlabs/php_codesniffer": "^3.5",
                 "symfony/process": "^4.3",
@@ -17526,7 +17281,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev",
+                    "dev-master": "4.x-dev",
+                    "dev-3.x": "3.x-dev",
                     "dev-2.x": "2.x-dev",
                     "dev-1.x": "1.x-dev"
                 }
@@ -17557,9 +17313,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/3.18.2"
+                "source": "https://github.com/vimeo/psalm/tree/4.1.1"
             },
-            "time": "2020-10-20T13:48:22+00:00"
+            "time": "2020-11-02T05:54:12+00:00"
         },
         {
             "name": "webmozart/glob",
@@ -17664,16 +17420,16 @@
         },
         {
             "name": "wyrihaximus/async-test-utilities",
-            "version": "2.4.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-async-test-utilities.git",
-                "reference": "eeab6421f10d3139e3a22fe4970207e2320a2739"
+                "reference": "b5f61475e93d58d5c8c514d7def6a07ba07eb185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/eeab6421f10d3139e3a22fe4970207e2320a2739",
-                "reference": "eeab6421f10d3139e3a22fe4970207e2320a2739",
+                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/b5f61475e93d58d5c8c514d7def6a07ba07eb185",
+                "reference": "b5f61475e93d58d5c8c514d7def6a07ba07eb185",
                 "shasum": ""
             },
             "require": {
@@ -17682,7 +17438,7 @@
                 "phpunit/phpunit": "^9.4",
                 "react/event-loop": "^1.1",
                 "react/promise": "^2.8",
-                "wyrihaximus/test-utilities": "^2.9"
+                "wyrihaximus/test-utilities": "^2.9 || ^3.0"
             },
             "require-dev": {
                 "wyrihaximus/iterator-or-array-to-array": "^1.1"
@@ -17706,7 +17462,7 @@
             "description": "Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-async-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/2.4.0"
+                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/3.0.0"
             },
             "funding": [
                 {
@@ -17714,7 +17470,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-30T10:37:52+00:00"
+            "time": "2020-11-04T00:01:27+00:00"
         },
         {
             "name": "wyrihaximus/coding-standard",
@@ -17800,23 +17556,23 @@
         },
         {
             "name": "wyrihaximus/test-utilities",
-            "version": "2.9.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-test-utilities.git",
-                "reference": "456bf8c4651b9219add9de3238f3edd02f09593a"
+                "reference": "e136db9377f5d306112aee0f516b128d22cbaeb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/456bf8c4651b9219add9de3238f3edd02f09593a",
-                "reference": "456bf8c4651b9219add9de3238f3edd02f09593a",
+                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/e136db9377f5d306112aee0f516b128d22cbaeb0",
+                "reference": "e136db9377f5d306112aee0f516b128d22cbaeb0",
                 "shasum": ""
             },
             "require": {
                 "composer/composer": "^1.8",
                 "ergebnis/composer-normalize": "^2.0",
                 "icanhazstring/composer-unused": "^0.7",
-                "infection/infection": "^0.18",
+                "infection/infection": "^0.20",
                 "maglnet/composer-require-checker": "^2.0",
                 "nunomaduro/collision": "^4.0 || ^3.0 || ^5.0",
                 "php": "^7.4",
@@ -17826,18 +17582,15 @@
                 "phpspec/prophecy": "^1.10",
                 "phpspec/prophecy-phpunit": "^2.0",
                 "phpstan/phpstan": "^0.12.42",
-                "phpunit/phpunit": "^9.1",
-                "psalm/plugin-phpunit": "^0.9 || ^0.10 || ^0.12",
+                "phpunit/phpunit": "^9.4",
+                "psalm/plugin-phpunit": "^0.13.0",
                 "roave/backward-compatibility-check": "^5.0",
-                "roave/infection-static-analysis-plugin": "^1.1",
+                "roave/infection-static-analysis-plugin": "^1.2",
                 "squizlabs/php_codesniffer": "^3.4.2",
                 "thecodingmachine/safe": "^1.0",
-                "vimeo/psalm": "^3.14.1",
+                "vimeo/psalm": "^4.1",
                 "wyrihaximus/coding-standard": "^2.0.1",
                 "wyrihaximus/phpstan-rules-wrapper": "^1.2"
-            },
-            "conflict": {
-                "nikic/php-parser": ">=4.10"
             },
             "type": "library",
             "extra": {
@@ -17880,7 +17633,7 @@
             "description": "🛠️ Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/2.9.0"
+                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/3.0.0"
             },
             "funding": [
                 {
@@ -17888,7 +17641,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-20T00:01:40+00:00"
+            "time": "2020-11-02T00:00:38+00:00"
         }
     ],
     "aliases": [
@@ -17897,12 +17650,6 @@
             "version": "dev-add-metrics",
             "alias": "1.1.1",
             "alias_normalized": "1.1.1.0"
-        },
-        {
-            "package": "nikic/php-parser",
-            "version": "4.6.0.0",
-            "alias": "4.9.0",
-            "alias_normalized": "4.9.0.0"
         },
         {
             "package": "react-parallel/event-loop",
@@ -17931,8 +17678,7 @@
         "react-parallel/react-parallel": 20,
         "wyrihaximus/broadcast": 20,
         "wyrihaximus/metrics": 20,
-        "wyrihaximus/metrics-tactician": 20,
-        "wyrihaximus/to-thread-or-not-to-thread": 20
+        "wyrihaximus/metrics-tactician": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -37,7 +37,7 @@
         "middlewares/response-time": "^1",
         "middlewares/uuid": "^1",
         "nikic/fast-route": "^1.2",
-        "nikic/php-parser": "4.6.0 as 4.9.0",
+        "nikic/php-parser": "^4.10",
         "northwoods/broker": "^3.0",
         "opis/closure": "^3.5",
         "php-di-definitions/react-event-loop-inspected": "dev-master",
@@ -75,7 +75,7 @@
     },
     "require-dev": {
         "monolog/monolog": "^2",
-        "wyrihaximus/async-test-utilities": "^2.2"
+        "wyrihaximus/async-test-utilities": "^3"
     },
     "config": {
         "platform": {
