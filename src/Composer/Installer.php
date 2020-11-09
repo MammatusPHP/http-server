@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Composer;
 
+use Chimera\ExecuteCommand;
+use Chimera\ExecuteQuery;
 use Chimera\Mapping\Routing;
 use Chimera\Routing\Handler as RoutingHandler;
 use Composer\Composer;
@@ -265,6 +267,12 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         $classes = static fn() => self::classes($packages, $vendorDir, $classReflector, $io);
         $flatVhosts = $classes()->filter(static function (ReflectionClass $class): bool {
             return $class->implementsInterface(Vhost::class);
+        })->map(static function (ReflectionClass $class): ReflectionClass {
+            if (!class_exists($class->getName(), false)) {
+                require $class->getFileName();
+            }
+
+            return $class;
         })->
         map(static fn(ReflectionClass $class): string => $class->getName())->
         map(static fn(string $vhost): Vhost => new $vhost())->
@@ -314,7 +322,13 @@ final class Installer implements PluginInterface, EventSubscriberInterface
 
                         return $realms;
                     })(
-                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
+                        $classes()->map(static function (ReflectionClass $class): ReflectionClass {
+                            if (!class_exists($class->getName(), false)) {
+                                require $class->getFileName();
+                            }
+
+                            return $class;
+                        })->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
                                 $annotations[get_class($annotation)] = $annotation;
@@ -362,7 +376,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                     $serverHandlers[] = new Handler(
                                         $annotation->methods,
                                         $annotation->app,
-                                        $annotation->query,
+                                        property_exists($annotation, 'query') ? $annotation->query : $annotation->command,
                                         $handler['class'],
                                         self::ROUTE_BEHAVIOR[get_class($annotation)],
                                         $annotation->path,
@@ -373,7 +387,13 @@ final class Installer implements PluginInterface, EventSubscriberInterface
 
                         return $serverHandlers;
                     })(
-                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
+                        $classes()->map(static function (ReflectionClass $class): ReflectionClass {
+                            if (!class_exists($class->getName(), false)) {
+                                require $class->getFileName();
+                            }
+
+                            return $class;
+                        })->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
                                 $annotations[get_class($annotation)] = $annotation;
@@ -433,7 +453,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
 
                                                 return new Bus\Handler(
                                                     $bus,
-                                                    $annotation->query,
+                                                    property_exists($annotation, 'query') ? $annotation->query : $annotation->command,
                                                     $handler['class'],
                                                 );
                                             }
@@ -464,7 +484,13 @@ final class Installer implements PluginInterface, EventSubscriberInterface
 
                         return $busInstances;
                     })(
-                        $classes()->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
+                        $classes()->map(static function (ReflectionClass $class): ReflectionClass {
+                            if (!class_exists($class->getName(), false)) {
+                                require $class->getFileName();
+                            }
+
+                            return $class;
+                        })->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
                                 $annotations[get_class($annotation)] = $annotation;
@@ -558,7 +584,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
             return
                 iteratorOrArrayToArray(
                     listClassesInDirectories($path)
-            );
+                );
         })->flatMap(static function (string $class) use ($classReflector, $io): array {
             try {
                 /** @psalm-suppress PossiblyUndefinedVariable */
