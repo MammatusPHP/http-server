@@ -63,6 +63,8 @@
         "wyrihaximus/metrics-tactician": "dev-master",
         "wyrihaximus/psr-3-callable-throwable-logger": "^2.0",
         "wyrihaximus/psr-3-context-logger": "^1",
+        "wyrihaximus/react-http-middleware-compress-assets": "^2.0",
+        "wyrihaximus/react-http-middleware-html-compress": "^2.0",
         "wyrihaximus/react-http-middleware-resume-response-body": "^2.0",
         "wyrihaximus/react-http-middleware-webroot-preload": "^2.0",
         "wyrihaximus/react-stream-json": "^1.2",

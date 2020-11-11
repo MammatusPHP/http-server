@@ -25,11 +25,15 @@ use ReactParallel\Pool\Worker\Worker as WorkerPool;
 use ReactParallel\Streams\RecvObservable;
 use ReactParallel\Streams\SingleRecv;
 use Thruway\Middleware;
+use WyriHaximus\HtmlCompress\Factory;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
 use WyriHaximus\Metrics\Registry;
 use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
+use WyriHaximus\React\Http\Middleware\CssCompressMiddleware;
+use WyriHaximus\React\Http\Middleware\HtmlCompressMiddleware;
+use WyriHaximus\React\Http\Middleware\JsCompressMiddleware;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
 use function React\Promise\resolve;
 use function WyriHaximus\iteratorOrArrayToArray;
@@ -75,6 +79,9 @@ abstract class AbstractConfiguration
                         new ArrayCache(), // TODO: Add support for other cache storages
                     ),
                     {% endif %}
+                    new HtmlCompressMiddleware(Factory::constructSmallest()),
+                    new CssCompressMiddleware(Factory::constructSmallest()),
+                    new JsCompressMiddleware(Factory::constructSmallest()),
                     static fn(ServerRequestInterface $request): PromiseInterface => $workerPool_{{ server.vhost().name() }}->perform(new \Mammatus\Http\Server\Middleware\Work(new \Mammatus\Http\Server\Middleware\Request($request))),
                 ]
             )
