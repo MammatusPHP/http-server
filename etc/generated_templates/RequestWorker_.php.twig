@@ -53,6 +53,7 @@ use ReactParallel\Pool\Worker\Work\Worker;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Registry;
 use WyriHaximus\Metrics\Tactician\CollectorMiddleware;
+use WyriHaximus\Metrics\Tactician\Metrics as CollectorMiddlewareMetrics;
 use Zend\Expressive\Router\FastRouteRouter;
 use Zend\Stratigility\Middleware\RequestHandlerMiddleware;
 
@@ -79,7 +80,7 @@ final class RequestWorker_{{ server.vhost().name() }} implements Worker
         $routeCollector = new RouteCollector($router);
 
         {% for bus in server.busses() %}
-        $serviceBus_{{ bus.name() }} = new ServiceBus(new CommandBus([new CollectorMiddleware($container->get(Registry::class), new Label('vhost', '{{ server.vhost().name() }}'), new Label('bus', '{{ bus.name() }}')), new ResponseTransformerMiddleware(), CommandHandlerMiddlewareFactory_{{ server.vhost().name() }}_{{ bus.name() }}::create($container)]));
+        $serviceBus_{{ bus.name() }} = new ServiceBus(new CommandBus([new CollectorMiddleware(CollectorMiddlewareMetrics::create($container->get(Registry::class), new Label('vhost', '{{ server.vhost().name() }}'), new Label('bus', '{{ bus.name() }}'))), new ResponseTransformerMiddleware(), CommandHandlerMiddlewareFactory_{{ server.vhost().name() }}_{{ bus.name() }}::create($container)]));
         {% endfor %}
         {% for handler in server.handlers() %}
         $routeCollector->route('{{ handler.path() }}', new RequestHandlerMiddleware(new \{{ handler.handler() }}(new ExecuteQuery($serviceBus_{{ handler.bus() }}, $namedConstructor, \{{ handler.command() }}::class), $responseFactory)), ['{{ handler.methods()|join("', '") }}']);

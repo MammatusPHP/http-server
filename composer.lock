@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5878346268ad773467457cac2fa2d1e9",
+    "content-hash": "fbc16f3d36a08647eb07b998caedbe13",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -97,6 +97,96 @@
                 "source": "https://github.com/php-api-clients/rx/tree/master"
             },
             "time": "2017-10-04T20:00:12+00:00"
+        },
+        {
+            "name": "bramus/ansi-php",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bramus/ansi-php.git",
+                "reference": "fb0be33f36053af7454d462e3ddc0a2ac0b2f311"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bramus/ansi-php/zipball/fb0be33f36053af7454d462e3ddc0a2ac0b2f311",
+                "reference": "fb0be33f36053af7454d462e3ddc0a2ac0b2f311",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bramus\\Ansi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bramus Van Damme",
+                    "email": "bramus@bram.us",
+                    "homepage": "https://www.bram.us/"
+                }
+            ],
+            "description": "ANSI Control Functions and ANSI Control Sequences (Colors, Erasing, etc.) for PHP CLI Apps",
+            "support": {
+                "issues": "https://github.com/bramus/ansi-php/issues",
+                "source": "https://github.com/bramus/ansi-php/tree/master"
+            },
+            "time": "2019-12-03T09:04:38+00:00"
+        },
+        {
+            "name": "bramus/monolog-colored-line-formatter",
+            "version": "3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bramus/monolog-colored-line-formatter.git",
+                "reference": "d2c3197b7ea0fffa83e2030ea834aec24662071c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bramus/monolog-colored-line-formatter/zipball/d2c3197b7ea0fffa83e2030ea834aec24662071c",
+                "reference": "d2c3197b7ea0fffa83e2030ea834aec24662071c",
+                "shasum": ""
+            },
+            "require": {
+                "bramus/ansi-php": "^3.0.3",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "monolog/monolog": "~2.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bramus\\Monolog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bramus Van Damme",
+                    "email": "bramus@bram.us",
+                    "homepage": "https://www.bram.us/"
+                }
+            ],
+            "description": "Colored Line Formatter for Monolog",
+            "support": {
+                "issues": "https://github.com/bramus/monolog-colored-line-formatter/issues",
+                "source": "https://github.com/bramus/monolog-colored-line-formatter/tree/master"
+            },
+            "time": "2019-12-09T10:51:42+00:00"
         },
         {
             "name": "cakephp/collection",
@@ -614,6 +704,74 @@
             "time": "2019-06-20T14:30:08+00:00"
         },
         {
+            "name": "clue/block-react",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/reactphp-block.git",
+                "reference": "c8e7583ae55127b89d6915480ce295bac81c4f88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/reactphp-block/zipball/c8e7583ae55127b89d6915480ce295bac81c4f88",
+                "reference": "c8e7583ae55127b89d6915480ce295bac81c4f88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
+                "react/promise": "^2.7 || ^1.2.1",
+                "react/promise-timer": "^1.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35",
+                "react/http": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@clue.engineering"
+                }
+            ],
+            "description": "Lightweight library that eases integrating async components built for ReactPHP in a traditional, blocking environment.",
+            "homepage": "https://github.com/clue/reactphp-block",
+            "keywords": [
+                "async",
+                "await",
+                "blocking",
+                "event loop",
+                "promise",
+                "reactphp",
+                "sleep",
+                "synchronous"
+            ],
+            "support": {
+                "issues": "https://github.com/clue/reactphp-block/issues",
+                "source": "https://github.com/clue/reactphp-block/tree/v1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://clue.engineering/support",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/clue",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-08-21T14:09:44+00:00"
+        },
+        {
             "name": "doctrine/annotations",
             "version": "1.11.1",
             "source": {
@@ -690,36 +848,31 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "f350df0268e904597e3bd9c4685c53e0e333feea"
+                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f350df0268e904597e3bd9c4685c53e0e333feea",
-                "reference": "f350df0268e904597e3bd9c4685c53e0e333feea",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b",
+                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
+                "doctrine/coding-standard": "^8.0",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^0.13",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpunit/phpunit": "^7.0"
+                "phpbench/phpbench": "^0.13 || 1.0.0-alpha2",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
@@ -733,7 +886,7 @@
                 {
                     "name": "Marco Pivetta",
                     "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
+                    "homepage": "https://ocramius.github.io/"
                 }
             ],
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
@@ -744,7 +897,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/1.3.x"
+                "source": "https://github.com/doctrine/instantiator/tree/1.4.0"
             },
             "funding": [
                 {
@@ -760,7 +913,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T17:27:14+00:00"
+            "time": "2020-11-10T18:47:58+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1185,7 +1338,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.13.0",
+            "version": "v8.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -1239,16 +1392,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.13.0",
+            "version": "v8.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "c23428149639d5257916ad10d390cdbeffe4d504"
+                "reference": "d9e6a156efb8332dcce427b7d1ccd2706609bfa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/c23428149639d5257916ad10d390cdbeffe4d504",
-                "reference": "c23428149639d5257916ad10d390cdbeffe4d504",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/d9e6a156efb8332dcce427b7d1ccd2706609bfa5",
+                "reference": "d9e6a156efb8332dcce427b7d1ccd2706609bfa5",
                 "shasum": ""
             },
             "require": {
@@ -1283,11 +1436,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-10-28T13:17:42+00:00"
+            "time": "2020-11-10T15:48:45+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.13.0",
+            "version": "v8.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2156,6 +2309,112 @@
             "time": "2013-03-15T13:16:35+00:00"
         },
         {
+            "name": "mammatus/app",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MammatusPHP/app.git",
+                "reference": "8c4e87c60a10a9c3f107c11117ed1853406dd27a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/8c4e87c60a10a9c3f107c11117ed1853406dd27a",
+                "reference": "8c4e87c60a10a9c3f107c11117ed1853406dd27a",
+                "shasum": ""
+            },
+            "require": {
+                "bramus/monolog-colored-line-formatter": "^3.0",
+                "clue/block-react": "^1.3",
+                "doctrine/annotations": "^1.4",
+                "ext-pcntl": "^7.4",
+                "mammatus/life-cycle-events": "dev-master",
+                "mammatus/metrics": "9999999-dev",
+                "monolog/monolog": "^2.0",
+                "php": "^7.4",
+                "php-di-definitions/definitions-gatherer": "^1",
+                "php-di-definitions/react-event-loop-inspected": "dev-master",
+                "php-di-definitions/react-recoil": "^1",
+                "php-di/php-di": "^6",
+                "psr/container": "^1",
+                "psr/event-dispatcher": "^1",
+                "psr/log": "^1.1",
+                "react/event-loop": "^1",
+                "thecodingmachine/safe": "^1.3",
+                "wyrihaximus/broadcast": "dev-master",
+                "wyrihaximus/broadcast-contracts": "^1",
+                "wyrihaximus/composer-update-bin-autoload-path": "^1 || ^1.0.1",
+                "wyrihaximus/constants": "^1.5",
+                "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
+                "wyrihaximus/get-in-packages-composer.jason": "^1.0",
+                "wyrihaximus/monolog-factory": "^1.0",
+                "wyrihaximus/psr-3-context-logger": "^1.0",
+                "wyrihaximus/react-psr-3-stdio": "^2.0"
+            },
+            "require-dev": {
+                "mammatus/test-app": "dev-master",
+                "wyrihaximus/test-utilities": "^2.2"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/mammatus"
+            ],
+            "type": "library",
+            "extra": {
+                "mammatus": {
+                    "config": [
+                        "etc/config/*.php"
+                    ]
+                },
+                "php-di-definitions": {
+                    "di": [
+                        "etc/di/*.php"
+                    ]
+                },
+                "react-parallel": {
+                    "object-proxy": {
+                        "interfaces-to-proxy": [
+                            "WyriHaximus\\Metrics\\Registry",
+                            "WyriHaximus\\Metrics\\Registry\\Counters",
+                            "WyriHaximus\\Metrics\\Registry\\Gauges",
+                            "WyriHaximus\\Metrics\\Registry\\Histograms",
+                            "WyriHaximus\\Metrics\\Counter",
+                            "WyriHaximus\\Metrics\\Gauge",
+                            "WyriHaximus\\Metrics\\Histogram"
+                        ]
+                    }
+                },
+                "wyrihaximus": {
+                    "bin-autoload-path-update": [
+                        "bin/mammatus"
+                    ],
+                    "broadcast": {
+                        "has-listeners": true
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mammatus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "🚂 Main entry point for all MammatusPHP applications",
+            "support": {
+                "issues": "https://github.com/MammatusPHP/app/issues",
+                "source": "https://github.com/MammatusPHP/app/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-21T13:34:38+00:00"
+        },
+        {
             "name": "mammatus/healthz-vhost",
             "version": "dev-master",
             "source": {
@@ -2428,22 +2687,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/metrics.git",
-                "reference": "d63c75acde2f76517e3d650bcfbc057e152a2514"
+                "reference": "4ef5ad942be0459370dbeac46fcfd5bbcfc1abc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/metrics/zipball/d63c75acde2f76517e3d650bcfbc057e152a2514",
-                "reference": "d63c75acde2f76517e3d650bcfbc057e152a2514",
+                "url": "https://api.github.com/repos/MammatusPHP/metrics/zipball/4ef5ad942be0459370dbeac46fcfd5bbcfc1abc2",
+                "reference": "4ef5ad942be0459370dbeac46fcfd5bbcfc1abc2",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4",
-                "react-parallel/event-loop": "dev-add-metrics as 1.1.1",
+                "react-parallel/event-loop": "^1.1",
                 "react-parallel/object-proxy": "dev-master",
                 "react-parallel/psr-11-container-proxy": "dev-master",
-                "react-parallel/react-parallel": "dev-add-metrics as 1.1.1",
-                "wyrihaximus/metrics": "dev-master",
-                "wyrihaximus/metrics-tactician": "dev-master"
+                "react-parallel/react-parallel": "^1.1",
+                "wyrihaximus/metrics": "^1.0",
+                "wyrihaximus/metrics-tactician": "^1.0"
             },
             "require-dev": {
                 "wyrihaximus/async-test-utilities": "^2.3"
@@ -2466,7 +2725,7 @@
                 "issues": "https://github.com/MammatusPHP/metrics/issues",
                 "source": "https://github.com/MammatusPHP/metrics/tree/master"
             },
-            "time": "2020-11-04T00:56:51+00:00"
+            "time": "2020-11-21T13:07:00+00:00"
         },
         {
             "name": "mammatus/metrics-prometheus-vhost",
@@ -2474,12 +2733,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/metrics-prometheus-vhost.git",
-                "reference": "1f23b26c167a76a983cb75a029b382a67b88bec6"
+                "reference": "438accb96bbb37f303a153546a48164e0f5677a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/metrics-prometheus-vhost/zipball/1f23b26c167a76a983cb75a029b382a67b88bec6",
-                "reference": "1f23b26c167a76a983cb75a029b382a67b88bec6",
+                "url": "https://api.github.com/repos/MammatusPHP/metrics-prometheus-vhost/zipball/438accb96bbb37f303a153546a48164e0f5677a3",
+                "reference": "438accb96bbb37f303a153546a48164e0f5677a3",
                 "shasum": ""
             },
             "require": {
@@ -2490,9 +2749,10 @@
                 "mammatus/http-server-webroot": "dev-master",
                 "php": "^7.4",
                 "psr/http-message": "^1.0",
+                "react/http": "^1.1",
                 "ringcentral/psr7": "^1.3",
                 "wyrihaximus/constants": "^1.5",
-                "wyrihaximus/metrics": "dev-master"
+                "wyrihaximus/metrics": "^1"
             },
             "require-dev": {
                 "wyrihaximus/test-utilities": "^2.7"
@@ -2545,7 +2805,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-16T14:50:44+00:00"
+            "time": "2020-11-21T16:06:14+00:00"
         },
         {
             "name": "matthiasmullie/minify",
@@ -3385,6 +3645,101 @@
             "time": "2018-08-04T10:41:55+00:00"
         },
         {
+            "name": "monolog/monolog",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "f9eee5cec93dfb313a38b6b288741e84e53f02d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f9eee5cec93dfb313a38b6b288741e84e53f02d5",
+                "reference": "f9eee5cec93dfb313a38b6b288741e84e53f02d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "psr/log": "^1.0.1"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "elasticsearch/elasticsearch": "^6.0",
+                "graylog2/gelf-php": "^1.4.2",
+                "php-amqplib/php-amqplib": "~2.4",
+                "php-console/php-console": "^3.1.3",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
+                "phpspec/prophecy": "^1.6.1",
+                "phpunit/phpunit": "^8.5",
+                "predis/predis": "^1.1",
+                "rollbar/rollbar": "^1.3",
+                "ruflin/elastica": ">=0.90 <3.0",
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mbstring": "Allow to work properly with unicode symbols",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "php-console/php-console": "Allow sending log messages to Google Chrome",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/2.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-23T08:41:23+00:00"
+        },
+        {
             "name": "narrowspark/mimetypes",
             "version": "1.6.0",
             "source": {
@@ -3860,6 +4215,101 @@
             "time": "2016-04-19T09:28:22+00:00"
         },
         {
+            "name": "php-di-definitions/definitions-gatherer",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI-Definitions/definitions-gatherer.git",
+                "reference": "5561e88fdd2df85ad7ca771e1e02c378fb8066d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI-Definitions/definitions-gatherer/zipball/5561e88fdd2df85ad7ca771e1e02c378fb8066d5",
+                "reference": "5561e88fdd2df85ad7ca771e1e02c378fb8066d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "php-di-definitions/dummy": "^1.0",
+                "wyrihaximus/get-in-packages-composer.jason": "^1.0"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPDIDefinitions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Collect definition files from composer.json's",
+            "support": {
+                "issues": "https://github.com/PHP-DI-Definitions/definitions-gatherer/issues",
+                "source": "https://github.com/PHP-DI-Definitions/definitions-gatherer/tree/master"
+            },
+            "time": "2019-01-12T17:25:19+00:00"
+        },
+        {
+            "name": "php-di-definitions/dummy",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI-Definitions/dummy.git",
+                "reference": "c42f65bef7872580805d8a2a5905376ebb78d651"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI-Definitions/dummy/zipball/c42f65bef7872580805d8a2a5905376ebb78d651",
+                "reference": "c42f65bef7872580805d8a2a5905376ebb78d651",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "php-di-definitions": {
+                    "di": [
+                        "etc/di/*.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPDIDefinitions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Dummy definition for testing",
+            "support": {
+                "issues": "https://github.com/PHP-DI-Definitions/dummy/issues",
+                "source": "https://github.com/PHP-DI-Definitions/dummy/tree/master"
+            },
+            "time": "2019-01-12T17:12:23+00:00"
+        },
+        {
             "name": "php-di-definitions/react-event-loop-inspected",
             "version": "dev-master",
             "source": {
@@ -3919,6 +4369,224 @@
                 }
             ],
             "time": "2020-04-19T20:02:13+00:00"
+        },
+        {
+            "name": "php-di-definitions/react-recoil",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI-Definitions/reactphp-recoilphp.git",
+                "reference": "f7d1f3994a434efa7bea9bb6e13355795e3bbe07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI-Definitions/reactphp-recoilphp/zipball/f7d1f3994a434efa7bea9bb6e13355795e3bbe07",
+                "reference": "f7d1f3994a434efa7bea9bb6e13355795e3bbe07",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "psr/log": "^1.0",
+                "react/event-loop": "^1.0",
+                "recoil/react": "^1.0",
+                "recoil/recoil": "^1.0",
+                "wyrihaximus/psr-3-callable-throwable-logger": "^2.0 || ^1.0",
+                "wyrihaximus/psr-3-context-logger": "^1.0"
+            },
+            "require-dev": {
+                "api-clients/test-utilities": "^5.1"
+            },
+            "type": "library",
+            "extra": {
+                "php-di-definitions": {
+                    "di": [
+                        "etc/di/kernel.php"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP-DI definition for using RecoilPHP with ReactPHP",
+            "support": {
+                "issues": "https://github.com/PHP-DI-Definitions/reactphp-recoilphp/issues",
+                "source": "https://github.com/PHP-DI-Definitions/reactphp-recoilphp/tree/master"
+            },
+            "time": "2020-01-26T16:49:40+00:00"
+        },
+        {
+            "name": "php-di/invoker",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/Invoker.git",
+                "reference": "e08a7c87068daeaeef464b95d81643ea530bc535"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/Invoker/zipball/e08a7c87068daeaeef464b95d81643ea530bc535",
+                "reference": "e08a7c87068daeaeef464b95d81643ea530bc535",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "psr/container": "~1.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "mnapoli/hard-mode": "~0.3.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Invoker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Generic and extensible callable invoker",
+            "homepage": "https://github.com/PHP-DI/Invoker",
+            "keywords": [
+                "callable",
+                "dependency",
+                "dependency-injection",
+                "injection",
+                "invoke",
+                "invoker"
+            ],
+            "support": {
+                "issues": "https://github.com/PHP-DI/Invoker/issues",
+                "source": "https://github.com/PHP-DI/Invoker/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-12T12:15:50+00:00"
+        },
+        {
+            "name": "php-di/php-di",
+            "version": "6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/PHP-DI.git",
+                "reference": "955cacea6b0beaba07e8c11b8367f5b3d5abe89f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/955cacea6b0beaba07e8c11b8367f5b3d5abe89f",
+                "reference": "955cacea6b0beaba07e8c11b8367f5b3d5abe89f",
+                "shasum": ""
+            },
+            "require": {
+                "opis/closure": "^3.5.5",
+                "php": ">=7.2.0",
+                "php-di/invoker": "^2.0",
+                "php-di/phpdoc-reader": "^2.0.1",
+                "psr/container": "^1.0"
+            },
+            "provide": {
+                "psr/container-implementation": "^1.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "~1.2",
+                "friendsofphp/php-cs-fixer": "^2.4",
+                "mnapoli/phpunit-easymock": "^1.2",
+                "ocramius/proxy-manager": "~2.0.2",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5|^9.0"
+            },
+            "suggest": {
+                "doctrine/annotations": "Install it if you want to use annotations (version ~1.2)",
+                "ocramius/proxy-manager": "Install it if you want to use lazy injection (version ~2.0)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DI\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The dependency injection container for humans",
+            "homepage": "https://php-di.org/",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interop",
+                "dependency injection",
+                "di",
+                "ioc",
+                "psr11"
+            ],
+            "support": {
+                "issues": "https://github.com/PHP-DI/PHP-DI/issues",
+                "source": "https://github.com/PHP-DI/PHP-DI/tree/6.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/php-di/php-di",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-12T14:39:15+00:00"
+        },
+        {
+            "name": "php-di/phpdoc-reader",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/PhpDocReader.git",
+                "reference": "66daff34cbd2627740ffec9469ffbac9f8c8185c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/PhpDocReader/zipball/66daff34cbd2627740ffec9469ffbac9f8c8185c",
+                "reference": "66daff34cbd2627740ffec9469ffbac9f8c8185c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "mnapoli/hard-mode": "~0.3.0",
+                "phpunit/phpunit": "^8.5|^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpDocReader\\": "src/PhpDocReader"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PhpDocReader parses @var and @param values in PHP docblocks (supports namespaced class names with the same resolution rules as PHP)",
+            "keywords": [
+                "phpdoc",
+                "reflection"
+            ],
+            "support": {
+                "issues": "https://github.com/PHP-DI/PhpDocReader/issues",
+                "source": "https://github.com/PHP-DI/PhpDocReader/tree/2.2.1"
+            },
+            "time": "2020-10-12T12:39:22+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -4858,28 +5526,28 @@
         },
         {
             "name": "react-inspector/http-middleware",
-            "version": "dev-use-wyrihaximus-metrics",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-inspector/http-middleware.git",
-                "reference": "d81fad7a756696af18f1ec9d5d0338d570fd290f"
+                "reference": "522f0d125722f9e0c20d6b238e12cbe7b7d29d6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-inspector/http-middleware/zipball/d81fad7a756696af18f1ec9d5d0338d570fd290f",
-                "reference": "d81fad7a756696af18f1ec9d5d0338d570fd290f",
+                "url": "https://api.github.com/repos/reactphp-inspector/http-middleware/zipball/522f0d125722f9e0c20d6b238e12cbe7b7d29d6d",
+                "reference": "522f0d125722f9e0c20d6b238e12cbe7b7d29d6d",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4",
                 "psr/http-message": "^1.0",
                 "react/promise": "^2.7",
-                "wyrihaximus/metrics": "dev-master"
+                "wyrihaximus/metrics": "^1.0.1"
             },
             "require-dev": {
                 "ringcentral/psr7": "^1.3.0",
                 "thecodingmachine/safe": "^1.2",
-                "wyrihaximus/async-test-utilities": "^2.3"
+                "wyrihaximus/async-test-utilities": "^3.2"
             },
             "type": "library",
             "autoload": {
@@ -4901,7 +5569,7 @@
             "description": "🔭 Measure HTTP requests going through an react/http",
             "support": {
                 "issues": "https://github.com/reactphp-inspector/http-middleware/issues",
-                "source": "https://github.com/reactphp-inspector/http-middleware/tree/use-wyrihaximus-metrics"
+                "source": "https://github.com/reactphp-inspector/http-middleware/tree/2.0.0"
             },
             "funding": [
                 {
@@ -4909,7 +5577,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-03T11:53:48+00:00"
+            "time": "2020-11-16T21:50:03+00:00"
         },
         {
             "name": "react-inspector/memory-usage",
@@ -5216,16 +5884,16 @@
         },
         {
             "name": "react-parallel/event-loop",
-            "version": "dev-add-metrics",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/event-loop.git",
-                "reference": "c8ce63bacef5df7303502ccf160d35f204af00ac"
+                "reference": "e859517ed6ef556ca6006ebff13899ed4e78bb93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/event-loop/zipball/c8ce63bacef5df7303502ccf160d35f204af00ac",
-                "reference": "c8ce63bacef5df7303502ccf160d35f204af00ac",
+                "url": "https://api.github.com/repos/reactphp-parallel/event-loop/zipball/e859517ed6ef556ca6006ebff13899ed4e78bb93",
+                "reference": "e859517ed6ef556ca6006ebff13899ed4e78bb93",
                 "shasum": ""
             },
             "require": {
@@ -5235,10 +5903,10 @@
                 "react/promise": "^2.7",
                 "reactivex/rxphp": "^2.0",
                 "wyrihaximus/constants": "^1.4.3",
-                "wyrihaximus/metrics": "dev-master"
+                "wyrihaximus/metrics": "^1.0"
             },
             "require-dev": {
-                "wyrihaximus/async-test-utilities": "^2.2"
+                "wyrihaximus/async-test-utilities": "^3.2"
             },
             "type": "library",
             "extra": {
@@ -5265,7 +5933,7 @@
             "description": "🌀🌉🌀 Event Loop bridge to ext-parallel Events",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/event-loop/issues",
-                "source": "https://github.com/reactphp-parallel/event-loop/tree/add-metrics"
+                "source": "https://github.com/reactphp-parallel/event-loop/tree/1.1.0"
             },
             "funding": [
                 {
@@ -5273,20 +5941,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-23T13:39:16+00:00"
+            "time": "2020-11-17T20:50:24+00:00"
         },
         {
             "name": "react-parallel/infinite-pool",
-            "version": "2.0.0",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/infinite-pool.git",
-                "reference": "a7efc85bafb88977eea4f316c4cbc5c6ef612ae7"
+                "reference": "fb2b923793527f76a77915476b58186ec1d21109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/infinite-pool/zipball/a7efc85bafb88977eea4f316c4cbc5c6ef612ae7",
-                "reference": "a7efc85bafb88977eea4f316c4cbc5c6ef612ae7",
+                "url": "https://api.github.com/repos/reactphp-parallel/infinite-pool/zipball/fb2b923793527f76a77915476b58186ec1d21109",
+                "reference": "fb2b923793527f76a77915476b58186ec1d21109",
                 "shasum": ""
             },
             "require": {
@@ -5297,16 +5965,15 @@
                 "react-parallel/runtime": "^2.0",
                 "react/event-loop": "^1.1",
                 "react/promise": "^2.7",
-                "wyrihaximus/constants": "^1.4",
-                "wyrihaximus/pool-info": "^1.0",
-                "wyrihaximus/ticking-promise": "^1.6"
+                "wyrihaximus/constants": "^1.5",
+                "wyrihaximus/metrics": "^1.0",
+                "wyrihaximus/pool-info": "^1.0"
             },
             "require-dev": {
                 "bruli/php-value-objects": "^2.0",
                 "moneyphp/money": "^3.2 || ^3.2.1",
-                "ocramius/package-versions": "^1.4",
-                "react-parallel/pool-tests": "^2.0",
-                "wyrihaximus/async-test-utilities": "^2.2",
+                "react-parallel/pool-tests": "^3.0",
+                "wyrihaximus/async-test-utilities": "^3.2",
                 "wyrihaximus/iterator-or-array-to-array": "^1.1"
             },
             "type": "library",
@@ -5329,7 +5996,7 @@
             "description": "♾️ Infinite pool for bridging ext-parallel and ReactPHP",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/infinite-pool/issues",
-                "source": "https://github.com/reactphp-parallel/infinite-pool/tree/2.0.0"
+                "source": "https://github.com/reactphp-parallel/infinite-pool/tree/2.1.2"
             },
             "funding": [
                 {
@@ -5337,7 +6004,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-06T19:18:05+00:00"
+            "time": "2020-11-21T12:37:59+00:00"
         },
         {
             "name": "react-parallel/limited-pool",
@@ -5463,12 +6130,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy.git",
-                "reference": "8608c02a75fba95fcc73bdc2a7b990e8ba41f131"
+                "reference": "41fdba4ea302d38cb93501476cd7925163de9078"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/8608c02a75fba95fcc73bdc2a7b990e8ba41f131",
-                "reference": "8608c02a75fba95fcc73bdc2a7b990e8ba41f131",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/41fdba4ea302d38cb93501476cd7925163de9078",
+                "reference": "41fdba4ea302d38cb93501476cd7925163de9078",
                 "shasum": ""
             },
             "require": {
@@ -5483,17 +6150,17 @@
                 "psr/container": "^1.0",
                 "psr/log": "^1.1",
                 "react-parallel/object-proxy-attributes": "^1",
-                "react-parallel/react-parallel": "^1.0",
+                "react-parallel/react-parallel": "^1",
                 "rx/operator-extras": "^2.1",
                 "wyrihaximus/constants": "^1.5",
                 "wyrihaximus/iterator-or-array-to-array": "^1.1",
-                "wyrihaximus/metrics": "dev-master",
+                "wyrihaximus/metrics": "^1.0.2",
                 "wyrihaximus/string-get-in": "^1.0"
             },
             "require-dev": {
                 "monolog/monolog": "^2.1",
                 "thecodingmachine/safe": "^1.3",
-                "wyrihaximus/async-test-utilities": "^2.4",
+                "wyrihaximus/async-test-utilities": "^3.2",
                 "yuloh/container": "^1.0"
             },
             "default-branch": true,
@@ -5545,7 +6212,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-07T22:21:22+00:00"
+            "time": "2020-11-20T22:19:31+00:00"
         },
         {
             "name": "react-parallel/object-proxy-attributes",
@@ -5670,36 +6337,38 @@
         },
         {
             "name": "react-parallel/react-parallel",
-            "version": "dev-add-metrics",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/reactphp-parallel.git",
-                "reference": "252fa1624d7bc647bb0de723547507e79de9a3e9"
+                "reference": "9fa0f4788e92e2f1feb6c0e87e3dce3fcab411a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/reactphp-parallel/zipball/252fa1624d7bc647bb0de723547507e79de9a3e9",
-                "reference": "252fa1624d7bc647bb0de723547507e79de9a3e9",
+                "url": "https://api.github.com/repos/reactphp-parallel/reactphp-parallel/zipball/9fa0f4788e92e2f1feb6c0e87e3dce3fcab411a9",
+                "reference": "9fa0f4788e92e2f1feb6c0e87e3dce3fcab411a9",
                 "shasum": ""
             },
             "require": {
                 "ext-parallel": "*",
                 "php": "^7.4",
                 "react-parallel/contracts": "^1.0",
-                "react-parallel/event-loop": "dev-add-metrics as 1.1.1",
-                "react-parallel/infinite-pool": "^2.0",
+                "react-parallel/event-loop": "^1.1",
+                "react-parallel/infinite-pool": "^2.1",
                 "react-parallel/limited-pool": "^1.0",
                 "react-parallel/runtime": "^2.0",
                 "react-parallel/streams": "^1.0",
                 "react/event-loop": "^1.1",
                 "react/promise": "^2.8",
                 "wyrihaximus/constants": "^1.5",
-                "wyrihaximus/metrics": "dev-master"
+                "wyrihaximus/metrics": "^1"
             },
             "require-dev": {
+                "ancarda/psr7-string-stream": "^1.3",
                 "moneyphp/money": "^3.3",
                 "ocramius/package-versions": "^1.9",
-                "wyrihaximus/async-test-utilities": "^2.2",
+                "react/http": "^1.1",
+                "wyrihaximus/async-test-utilities": "^3.2",
                 "wyrihaximus/iterator-or-array-to-array": "^1.1"
             },
             "type": "library",
@@ -5722,7 +6391,7 @@
             "description": "🌉 Bridging ext-parallel and ReactPHP",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/reactphp-parallel/issues",
-                "source": "https://github.com/reactphp-parallel/reactphp-parallel/tree/add-metrics"
+                "source": "https://github.com/reactphp-parallel/reactphp-parallel/tree/1.1.0"
             },
             "funding": [
                 {
@@ -5730,7 +6399,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-23T10:01:06+00:00"
+            "time": "2020-11-20T00:07:02+00:00"
         },
         {
             "name": "react-parallel/runtime",
@@ -8744,6 +9413,56 @@
             "time": "2020-05-11T16:20:52+00:00"
         },
         {
+            "name": "wyrihaximus/composer-update-bin-autoload-path",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path.git",
+                "reference": "c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-composer-update-bin-autoload-path/zipball/c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7",
+                "reference": "c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "wyrihaximus/test-utilities": "^3"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "WyriHaximus\\Composer\\BinAutoloadPathUpdater",
+                "unused": [
+                    "php"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "🏰 Composer plugin that fills a bin file with the absolute composer autoload path",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/issues",
+                "source": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/tree/1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-07T16:35:14+00:00"
+        },
+        {
             "name": "wyrihaximus/constants",
             "version": "1.5.0",
             "source": {
@@ -9194,16 +9913,16 @@
         },
         {
             "name": "wyrihaximus/metrics",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics.git",
-                "reference": "58ca901b2e05b1806a3d0fec01df4ae331a48891"
+                "reference": "cdf8ee62b5fa6b253ec8823070ea112671757f9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/58ca901b2e05b1806a3d0fec01df4ae331a48891",
-                "reference": "58ca901b2e05b1806a3d0fec01df4ae331a48891",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/cdf8ee62b5fa6b253ec8823070ea112671757f9a",
+                "reference": "cdf8ee62b5fa6b253ec8823070ea112671757f9a",
                 "shasum": ""
             },
             "require": {
@@ -9215,9 +9934,8 @@
             },
             "require-dev": {
                 "phpbench/phpbench": "^0.17.1",
-                "wyrihaximus/test-utilities": "^2.5"
+                "wyrihaximus/test-utilities": "^2.5 || ^3.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -9234,10 +9952,10 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "description": "🕵️‍♀️ Pure metric VO's and registry",
+            "description": "🕵️‍♀️ Prometheus modelled metric VO's and registry",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-metrics/issues",
-                "source": "https://github.com/WyriHaximus/php-metrics/tree/master"
+                "source": "https://github.com/WyriHaximus/php-metrics/tree/1.0.2"
             },
             "funding": [
                 {
@@ -9245,33 +9963,32 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-03T20:34:36+00:00"
+            "time": "2020-11-17T22:53:16+00:00"
         },
         {
             "name": "wyrihaximus/metrics-tactician",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics-tactician.git",
-                "reference": "e5ac650561f7a4b054745c8f14a709fc791f20c4"
+                "reference": "6cc69236e9d3f8f5f40ffa38c6e7a699f4901286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/e5ac650561f7a4b054745c8f14a709fc791f20c4",
-                "reference": "e5ac650561f7a4b054745c8f14a709fc791f20c4",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/6cc69236e9d3f8f5f40ffa38c6e7a699f4901286",
+                "reference": "6cc69236e9d3f8f5f40ffa38c6e7a699f4901286",
                 "shasum": ""
             },
             "require": {
                 "league/tactician": "^1.0",
                 "php": "^7.4",
-                "wyrihaximus/metrics": "dev-master"
+                "wyrihaximus/metrics": "^1.0"
             },
             "require-dev": {
                 "phpbench/phpbench": "^0.17.1",
                 "thecodingmachine/safe": "^1.2",
-                "wyrihaximus/test-utilities": "^2.5"
+                "wyrihaximus/test-utilities": "^2.5 || ^3.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -9291,7 +10008,7 @@
             "description": "Metric collection for Tactician",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-metrics-tactician/issues",
-                "source": "https://github.com/WyriHaximus/php-metrics-tactician/tree/master"
+                "source": "https://github.com/WyriHaximus/php-metrics-tactician/tree/1.0.0"
             },
             "funding": [
                 {
@@ -9299,7 +10016,159 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-03T12:25:19+00:00"
+            "time": "2020-11-15T21:51:54+00:00"
+        },
+        {
+            "name": "wyrihaximus/monolog-factory",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-monolog-factory.git",
+                "reference": "d51b43e7c34518943e82ad5da1cfceba18285d47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-factory/zipball/d51b43e7c34518943e82ad5da1cfceba18285d47",
+                "reference": "d51b43e7c34518943e82ad5da1cfceba18285d47",
+                "shasum": ""
+            },
+            "require": {
+                "bramus/monolog-colored-line-formatter": "^3.0",
+                "monolog/monolog": "^2.1",
+                "php": "^7.4",
+                "psr/log": "^1.1",
+                "wyrihaximus/constants": "^1.5",
+                "wyrihaximus/monolog-formatted-psr-handler": "^1.2",
+                "wyrihaximus/monolog-processors": "^1.3"
+            },
+            "require-dev": {
+                "wyrihaximus/test-utilities": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "unused": [
+                    "php"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Monolog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "🧐🏭 Opinionated Monolog factory",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-monolog-factory/issues",
+                "source": "https://github.com/WyriHaximus/php-monolog-factory/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-07T16:37:24+00:00"
+        },
+        {
+            "name": "wyrihaximus/monolog-formatted-psr-handler",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler.git",
+                "reference": "70eb4e8d83c1c6b8a2f71a29f43026778b12b25a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-formatted-psr-handler/zipball/70eb4e8d83c1c6b8a2f71a29f43026778b12b25a",
+                "reference": "70eb4e8d83c1c6b8a2f71a29f43026778b12b25a",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^1.23 || ^2.0",
+                "php": "^7.2",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "wyrihaximus/cs-fixer-config": "^1.0",
+                "wyrihaximus/test-utilities": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Monolog\\FormattedPsrHandler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Passes `formatted` instead of `message` to the PSR-3 logger",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/issues",
+                "source": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/tree/master"
+            },
+            "time": "2019-09-16T22:04:19+00:00"
+        },
+        {
+            "name": "wyrihaximus/monolog-processors",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-monolog-processors.git",
+                "reference": "a371e7d050ae0b45e45a4e42ee45bb52c4b04885"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-processors/zipball/a371e7d050ae0b45e45a4e42ee45bb52c4b04885",
+                "reference": "a371e7d050ae0b45e45a4e42ee45bb52c4b04885",
+                "shasum": ""
+            },
+            "require": {
+                "igorw/get-in": "^1.0",
+                "monolog/monolog": "^1.25 || ^2.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "wyrihaximus/cs-fixer-config": "^1.0",
+                "wyrihaximus/test-utilities": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Monolog\\Processors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Collection of additional processors for monolog",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-monolog-processors/issues",
+                "source": "https://github.com/WyriHaximus/php-monolog-processors/tree/master"
+            },
+            "time": "2019-09-16T22:00:55+00:00"
         },
         {
             "name": "wyrihaximus/pool-info",
@@ -9446,6 +10315,55 @@
                 "source": "https://github.com/WyriHaximus/php-psr-3-context-logger/tree/master"
             },
             "time": "2018-05-06T20:31:49+00:00"
+        },
+        {
+            "name": "wyrihaximus/psr-3-utilities",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-psr-3-utilities.git",
+                "reference": "27126a013401e48ffe3a32b632303884e195ec8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-utilities/zipball/27126a013401e48ffe3a32b632303884e195ec8d",
+                "reference": "27126a013401e48ffe3a32b632303884e195ec8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "api-clients/cs-fixer-config": "^1.1",
+                "api-clients/test-utilities": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\PSR3\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "PSR-3 logger utilities",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-psr-3-utilities/issues",
+                "source": "https://github.com/WyriHaximus/php-psr-3-utilities/tree/master"
+            },
+            "time": "2018-12-16T16:39:37+00:00"
         },
         {
             "name": "wyrihaximus/react-http-middleware-compress-assets",
@@ -9669,6 +10587,57 @@
                 }
             ],
             "time": "2020-07-11T20:44:54+00:00"
+        },
+        {
+            "name": "wyrihaximus/react-psr-3-stdio",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/reactphp-psr-3-stdio.git",
+                "reference": "311ae61e00d40d22092d43a07b702081b5216697"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-psr-3-stdio/zipball/311ae61e00d40d22092d43a07b702081b5216697",
+                "reference": "311ae61e00d40d22092d43a07b702081b5216697",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "psr/log": "^1.0",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4",
+                "react/stream": "^1.0 || ^0.7 || ^0.6",
+                "wyrihaximus/psr-3-utilities": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.3",
+                "jakub-onderka/php-console-highlighter": "^0.3.2",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "phake/phake": "^2.3",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\PSR3\\Stdio\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "Async PSR-3 stdio logger",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/issues",
+                "source": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/tree/master"
+            },
+            "time": "2018-01-11T08:53:19+00:00"
         },
         {
             "name": "wyrihaximus/react-stream-json",
@@ -10779,164 +11748,6 @@
             "time": "2019-12-19T17:51:41+00:00"
         },
         {
-            "name": "bramus/ansi-php",
-            "version": "3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bramus/ansi-php.git",
-                "reference": "fb0be33f36053af7454d462e3ddc0a2ac0b2f311"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bramus/ansi-php/zipball/fb0be33f36053af7454d462e3ddc0a2ac0b2f311",
-                "reference": "fb0be33f36053af7454d462e3ddc0a2ac0b2f311",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bramus\\Ansi\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bramus Van Damme",
-                    "email": "bramus@bram.us",
-                    "homepage": "https://www.bram.us/"
-                }
-            ],
-            "description": "ANSI Control Functions and ANSI Control Sequences (Colors, Erasing, etc.) for PHP CLI Apps",
-            "support": {
-                "issues": "https://github.com/bramus/ansi-php/issues",
-                "source": "https://github.com/bramus/ansi-php/tree/master"
-            },
-            "time": "2019-12-03T09:04:38+00:00"
-        },
-        {
-            "name": "bramus/monolog-colored-line-formatter",
-            "version": "3.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bramus/monolog-colored-line-formatter.git",
-                "reference": "d2c3197b7ea0fffa83e2030ea834aec24662071c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bramus/monolog-colored-line-formatter/zipball/d2c3197b7ea0fffa83e2030ea834aec24662071c",
-                "reference": "d2c3197b7ea0fffa83e2030ea834aec24662071c",
-                "shasum": ""
-            },
-            "require": {
-                "bramus/ansi-php": "^3.0.3",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "monolog/monolog": "~2.0",
-                "phpunit/phpunit": "~7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bramus\\Monolog\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bramus Van Damme",
-                    "email": "bramus@bram.us",
-                    "homepage": "https://www.bram.us/"
-                }
-            ],
-            "description": "Colored Line Formatter for Monolog",
-            "support": {
-                "issues": "https://github.com/bramus/monolog-colored-line-formatter/issues",
-                "source": "https://github.com/bramus/monolog-colored-line-formatter/tree/master"
-            },
-            "time": "2019-12-09T10:51:42+00:00"
-        },
-        {
-            "name": "clue/block-react",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/clue/reactphp-block.git",
-                "reference": "c8e7583ae55127b89d6915480ce295bac81c4f88"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/clue/reactphp-block/zipball/c8e7583ae55127b89d6915480ce295bac81c4f88",
-                "reference": "c8e7583ae55127b89d6915480ce295bac81c4f88",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "^2.7 || ^1.2.1",
-                "react/promise-timer": "^1.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35",
-                "react/http": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Lück",
-                    "email": "christian@clue.engineering"
-                }
-            ],
-            "description": "Lightweight library that eases integrating async components built for ReactPHP in a traditional, blocking environment.",
-            "homepage": "https://github.com/clue/reactphp-block",
-            "keywords": [
-                "async",
-                "await",
-                "blocking",
-                "event loop",
-                "promise",
-                "reactphp",
-                "sleep",
-                "synchronous"
-            ],
-            "support": {
-                "issues": "https://github.com/clue/reactphp-block/issues",
-                "source": "https://github.com/clue/reactphp-block/tree/v1.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://clue.engineering/support",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/clue",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-08-21T14:09:44+00:00"
-        },
-        {
             "name": "composer/ca-bundle",
             "version": "1.2.8",
             "source": {
@@ -11112,16 +11923,16 @@
         },
         {
             "name": "composer/package-versions-deprecated",
-            "version": "1.11.99",
+            "version": "1.11.99.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/package-versions-deprecated.git",
-                "reference": "c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855"
+                "reference": "7413f0b55a051e89485c5cb9f765fe24bb02a7b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855",
-                "reference": "c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/7413f0b55a051e89485c5cb9f765fe24bb02a7b6",
+                "reference": "7413f0b55a051e89485c5cb9f765fe24bb02a7b6",
                 "shasum": ""
             },
             "require": {
@@ -11165,7 +11976,7 @@
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "support": {
                 "issues": "https://github.com/composer/package-versions-deprecated/issues",
-                "source": "https://github.com/composer/package-versions-deprecated/tree/master"
+                "source": "https://github.com/composer/package-versions-deprecated/tree/1.11.99.1"
             },
             "funding": [
                 {
@@ -11181,7 +11992,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-25T05:50:16+00:00"
+            "time": "2020-11-11T10:22:58+00:00"
         },
         {
             "name": "composer/semver",
@@ -11344,16 +12155,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "6e076a124f7ee146f2487554a94b6a19a74887ba"
+                "reference": "f28d44c286812c714741478d968104c5e604a1d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/6e076a124f7ee146f2487554a94b6a19a74887ba",
-                "reference": "6e076a124f7ee146f2487554a94b6a19a74887ba",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/f28d44c286812c714741478d968104c5e604a1d4",
+                "reference": "f28d44c286812c714741478d968104c5e604a1d4",
                 "shasum": ""
             },
             "require": {
@@ -11387,7 +12198,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/xdebug-handler/issues",
-                "source": "https://github.com/composer/xdebug-handler/tree/1.4.4"
+                "source": "https://github.com/composer/xdebug-handler/tree/1.4.5"
             },
             "funding": [
                 {
@@ -11403,7 +12214,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-24T12:39:10+00:00"
+            "time": "2020-11-13T08:04:11+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -12473,16 +13284,16 @@
         },
         {
             "name": "infection/infection",
-            "version": "0.20.1",
+            "version": "0.20.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infection/infection.git",
-                "reference": "59a7a374e8020e362550b5223d7174ee7ccc184c"
+                "reference": "6035c1566af6a5a8d833a276351e5e18ed412305"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infection/infection/zipball/59a7a374e8020e362550b5223d7174ee7ccc184c",
-                "reference": "59a7a374e8020e362550b5223d7174ee7ccc184c",
+                "url": "https://api.github.com/repos/infection/infection/zipball/6035c1566af6a5a8d833a276351e5e18ed412305",
+                "reference": "6035c1566af6a5a8d833a276351e5e18ed412305",
                 "shasum": ""
             },
             "require": {
@@ -12582,9 +13393,9 @@
             ],
             "support": {
                 "issues": "https://github.com/infection/infection/issues",
-                "source": "https://github.com/infection/infection/tree/0.20.1"
+                "source": "https://github.com/infection/infection/tree/0.20.2"
             },
-            "time": "2020-11-03T12:14:40+00:00"
+            "time": "2020-11-20T17:15:57+00:00"
         },
         {
             "name": "jangregor/phpstan-prophecy",
@@ -12857,221 +13668,17 @@
             "time": "2019-12-28T13:49:20+00:00"
         },
         {
-            "name": "mammatus/app",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "2260cfbe7f87cf1d5c85f5aa88f836683fa6f555"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/2260cfbe7f87cf1d5c85f5aa88f836683fa6f555",
-                "reference": "2260cfbe7f87cf1d5c85f5aa88f836683fa6f555",
-                "shasum": ""
-            },
-            "require": {
-                "bramus/monolog-colored-line-formatter": "^3.0",
-                "clue/block-react": "^1.3",
-                "doctrine/annotations": "^1.4",
-                "ext-pcntl": "^7.4",
-                "mammatus/life-cycle-events": "dev-master",
-                "mammatus/metrics": "9999999-dev",
-                "monolog/monolog": "^2.0",
-                "php": "^7.4",
-                "php-di-definitions/definitions-gatherer": "^1",
-                "php-di-definitions/react-event-loop-inspected": "dev-master",
-                "php-di-definitions/react-recoil": "^1",
-                "php-di/php-di": "^6",
-                "psr/container": "^1",
-                "psr/event-dispatcher": "^1",
-                "psr/log": "^1.1",
-                "react-parallel/event-loop": "dev-add-metrics as 1.1.1",
-                "react-parallel/react-parallel": "dev-add-metrics as 1.1.1",
-                "react/event-loop": "^1",
-                "thecodingmachine/safe": "^1.3",
-                "wyrihaximus/broadcast": "dev-master",
-                "wyrihaximus/broadcast-contracts": "^1",
-                "wyrihaximus/composer-update-bin-autoload-path": "^1 || ^1.0.1",
-                "wyrihaximus/constants": "^1.5",
-                "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-                "wyrihaximus/get-in-packages-composer.jason": "^1.0",
-                "wyrihaximus/metrics": "dev-master",
-                "wyrihaximus/monolog-factory": "^1.0",
-                "wyrihaximus/psr-3-context-logger": "^1.0",
-                "wyrihaximus/react-psr-3-stdio": "^2.0"
-            },
-            "require-dev": {
-                "mammatus/test-app": "dev-master",
-                "wyrihaximus/test-utilities": "^2.2"
-            },
-            "default-branch": true,
-            "bin": [
-                "bin/mammatus"
-            ],
-            "type": "library",
-            "extra": {
-                "mammatus": {
-                    "config": [
-                        "etc/config/*.php"
-                    ]
-                },
-                "php-di-definitions": {
-                    "di": [
-                        "etc/di/*.php"
-                    ]
-                },
-                "react-parallel": {
-                    "object-proxy": {
-                        "interfaces-to-proxy": [
-                            "WyriHaximus\\Metrics\\Registry",
-                            "WyriHaximus\\Metrics\\Registry\\Counters",
-                            "WyriHaximus\\Metrics\\Registry\\Gauges",
-                            "WyriHaximus\\Metrics\\Registry\\Histograms",
-                            "WyriHaximus\\Metrics\\Counter",
-                            "WyriHaximus\\Metrics\\Gauge",
-                            "WyriHaximus\\Metrics\\Histogram"
-                        ]
-                    }
-                },
-                "wyrihaximus": {
-                    "bin-autoload-path-update": [
-                        "bin/mammatus"
-                    ],
-                    "broadcast": {
-                        "has-listeners": true
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Mammatus\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "🚂 Main entry point for all MammatusPHP applications",
-            "support": {
-                "issues": "https://github.com/MammatusPHP/app/issues",
-                "source": "https://github.com/MammatusPHP/app/tree/master"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-11-08T11:50:48+00:00"
-        },
-        {
-            "name": "monolog/monolog",
-            "version": "2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "f9eee5cec93dfb313a38b6b288741e84e53f02d5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f9eee5cec93dfb313a38b6b288741e84e53f02d5",
-                "reference": "f9eee5cec93dfb313a38b6b288741e84e53f02d5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "psr/log": "^1.0.1"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0.0"
-            },
-            "require-dev": {
-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
-                "doctrine/couchdb": "~1.0@dev",
-                "elasticsearch/elasticsearch": "^6.0",
-                "graylog2/gelf-php": "^1.4.2",
-                "php-amqplib/php-amqplib": "~2.4",
-                "php-console/php-console": "^3.1.3",
-                "php-parallel-lint/php-parallel-lint": "^1.0",
-                "phpspec/prophecy": "^1.6.1",
-                "phpunit/phpunit": "^8.5",
-                "predis/predis": "^1.1",
-                "rollbar/rollbar": "^1.3",
-                "ruflin/elastica": ">=0.90 <3.0",
-                "swiftmailer/swiftmailer": "^5.3|^6.0"
-            },
-            "suggest": {
-                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
-                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
-                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-mbstring": "Allow to work properly with unicode symbols",
-                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
-                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
-                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
-                "php-console/php-console": "Allow sending log messages to Google Chrome",
-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Monolog\\": "src/Monolog"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                }
-            ],
-            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-            "homepage": "http://github.com/Seldaek/monolog",
-            "keywords": [
-                "log",
-                "logging",
-                "psr-3"
-            ],
-            "support": {
-                "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.1.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/Seldaek",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-07-23T08:41:23+00:00"
-        },
-        {
             "name": "myclabs/deep-copy",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220",
                 "shasum": ""
             },
             "require": {
@@ -13108,7 +13715,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.x"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
             },
             "funding": [
                 {
@@ -13116,7 +13723,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-29T13:22:24+00:00"
+            "time": "2020-11-13T09:40:50+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
@@ -13693,319 +14300,6 @@
             "time": "2020-10-23T16:34:35+00:00"
         },
         {
-            "name": "php-di-definitions/definitions-gatherer",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI-Definitions/definitions-gatherer.git",
-                "reference": "5561e88fdd2df85ad7ca771e1e02c378fb8066d5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI-Definitions/definitions-gatherer/zipball/5561e88fdd2df85ad7ca771e1e02c378fb8066d5",
-                "reference": "5561e88fdd2df85ad7ca771e1e02c378fb8066d5",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "php-di-definitions/dummy": "^1.0",
-                "wyrihaximus/get-in-packages-composer.jason": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PHPDIDefinitions\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "Collect definition files from composer.json's",
-            "support": {
-                "issues": "https://github.com/PHP-DI-Definitions/definitions-gatherer/issues",
-                "source": "https://github.com/PHP-DI-Definitions/definitions-gatherer/tree/master"
-            },
-            "time": "2019-01-12T17:25:19+00:00"
-        },
-        {
-            "name": "php-di-definitions/dummy",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI-Definitions/dummy.git",
-                "reference": "c42f65bef7872580805d8a2a5905376ebb78d651"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI-Definitions/dummy/zipball/c42f65bef7872580805d8a2a5905376ebb78d651",
-                "reference": "c42f65bef7872580805d8a2a5905376ebb78d651",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "php-di-definitions": {
-                    "di": [
-                        "etc/di/*.php"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PHPDIDefinitions\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "Dummy definition for testing",
-            "support": {
-                "issues": "https://github.com/PHP-DI-Definitions/dummy/issues",
-                "source": "https://github.com/PHP-DI-Definitions/dummy/tree/master"
-            },
-            "time": "2019-01-12T17:12:23+00:00"
-        },
-        {
-            "name": "php-di-definitions/react-recoil",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI-Definitions/reactphp-recoilphp.git",
-                "reference": "f7d1f3994a434efa7bea9bb6e13355795e3bbe07"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI-Definitions/reactphp-recoilphp/zipball/f7d1f3994a434efa7bea9bb6e13355795e3bbe07",
-                "reference": "f7d1f3994a434efa7bea9bb6e13355795e3bbe07",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "psr/log": "^1.0",
-                "react/event-loop": "^1.0",
-                "recoil/react": "^1.0",
-                "recoil/recoil": "^1.0",
-                "wyrihaximus/psr-3-callable-throwable-logger": "^2.0 || ^1.0",
-                "wyrihaximus/psr-3-context-logger": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/test-utilities": "^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "php-di-definitions": {
-                    "di": [
-                        "etc/di/kernel.php"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHP-DI definition for using RecoilPHP with ReactPHP",
-            "support": {
-                "issues": "https://github.com/PHP-DI-Definitions/reactphp-recoilphp/issues",
-                "source": "https://github.com/PHP-DI-Definitions/reactphp-recoilphp/tree/master"
-            },
-            "time": "2020-01-26T16:49:40+00:00"
-        },
-        {
-            "name": "php-di/invoker",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/Invoker.git",
-                "reference": "e08a7c87068daeaeef464b95d81643ea530bc535"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/Invoker/zipball/e08a7c87068daeaeef464b95d81643ea530bc535",
-                "reference": "e08a7c87068daeaeef464b95d81643ea530bc535",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.3",
-                "psr/container": "~1.0"
-            },
-            "require-dev": {
-                "athletic/athletic": "~0.1.8",
-                "mnapoli/hard-mode": "~0.3.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Invoker\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Generic and extensible callable invoker",
-            "homepage": "https://github.com/PHP-DI/Invoker",
-            "keywords": [
-                "callable",
-                "dependency",
-                "dependency-injection",
-                "injection",
-                "invoke",
-                "invoker"
-            ],
-            "support": {
-                "issues": "https://github.com/PHP-DI/Invoker/issues",
-                "source": "https://github.com/PHP-DI/Invoker/tree/2.2.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/mnapoli",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-10-12T12:15:50+00:00"
-        },
-        {
-            "name": "php-di/php-di",
-            "version": "6.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "955cacea6b0beaba07e8c11b8367f5b3d5abe89f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/955cacea6b0beaba07e8c11b8367f5b3d5abe89f",
-                "reference": "955cacea6b0beaba07e8c11b8367f5b3d5abe89f",
-                "shasum": ""
-            },
-            "require": {
-                "opis/closure": "^3.5.5",
-                "php": ">=7.2.0",
-                "php-di/invoker": "^2.0",
-                "php-di/phpdoc-reader": "^2.0.1",
-                "psr/container": "^1.0"
-            },
-            "provide": {
-                "psr/container-implementation": "^1.0"
-            },
-            "require-dev": {
-                "doctrine/annotations": "~1.2",
-                "friendsofphp/php-cs-fixer": "^2.4",
-                "mnapoli/phpunit-easymock": "^1.2",
-                "ocramius/proxy-manager": "~2.0.2",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5|^9.0"
-            },
-            "suggest": {
-                "doctrine/annotations": "Install it if you want to use annotations (version ~1.2)",
-                "ocramius/proxy-manager": "Install it if you want to use lazy injection (version ~2.0)"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DI\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "The dependency injection container for humans",
-            "homepage": "https://php-di.org/",
-            "keywords": [
-                "PSR-11",
-                "container",
-                "container-interop",
-                "dependency injection",
-                "di",
-                "ioc",
-                "psr11"
-            ],
-            "support": {
-                "issues": "https://github.com/PHP-DI/PHP-DI/issues",
-                "source": "https://github.com/PHP-DI/PHP-DI/tree/6.3.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/mnapoli",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/php-di/php-di",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-10-12T14:39:15+00:00"
-        },
-        {
-            "name": "php-di/phpdoc-reader",
-            "version": "2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/PhpDocReader.git",
-                "reference": "66daff34cbd2627740ffec9469ffbac9f8c8185c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PhpDocReader/zipball/66daff34cbd2627740ffec9469ffbac9f8c8185c",
-                "reference": "66daff34cbd2627740ffec9469ffbac9f8c8185c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.0"
-            },
-            "require-dev": {
-                "mnapoli/hard-mode": "~0.3.0",
-                "phpunit/phpunit": "^8.5|^9.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PhpDocReader\\": "src/PhpDocReader"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PhpDocReader parses @var and @param values in PHP docblocks (supports namespaced class names with the same resolution rules as PHP)",
-            "keywords": [
-                "phpdoc",
-                "reflection"
-            ],
-            "support": {
-                "issues": "https://github.com/PHP-DI/PhpDocReader/issues",
-                "source": "https://github.com/PHP-DI/PhpDocReader/tree/2.2.1"
-            },
-            "time": "2020-10-12T12:39:22+00:00"
-        },
-        {
             "name": "php-parallel-lint/php-console-color",
             "version": "v0.3",
             "source": {
@@ -14338,16 +14632,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.54",
+            "version": "0.12.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "45c7b999a4b7dd9ac5558bdaaf23dcebbef88223"
+                "reference": "f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/45c7b999a4b7dd9ac5558bdaaf23dcebbef88223",
-                "reference": "45c7b999a4b7dd9ac5558bdaaf23dcebbef88223",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b",
+                "reference": "f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b",
                 "shasum": ""
             },
             "require": {
@@ -14378,7 +14672,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.54"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.57"
             },
             "funding": [
                 {
@@ -14394,7 +14688,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-05T13:36:26+00:00"
+            "time": "2020-11-21T12:53:28+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -14942,16 +15236,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.4.2",
+            "version": "9.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3866b2eeeed21b1b099c4bc0b7a1690ac6fd5baa"
+                "reference": "9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3866b2eeeed21b1b099c4bc0b7a1690ac6fd5baa",
-                "reference": "3866b2eeeed21b1b099c4bc0b7a1690ac6fd5baa",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab",
+                "reference": "9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab",
                 "shasum": ""
             },
             "require": {
@@ -15029,7 +15323,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.4.2"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.4.3"
             },
             "funding": [
                 {
@@ -15041,7 +15335,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-19T09:23:29+00:00"
+            "time": "2020-11-10T12:53:30+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
@@ -15217,27 +15511,27 @@
         },
         {
             "name": "roave/infection-static-analysis-plugin",
-            "version": "1.3.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/infection-static-analysis-plugin.git",
-                "reference": "371ad8c946b770c5e2c5a184add91e105fece693"
+                "reference": "03eb5a4c6a6ec38977e6e36aafecb00517f4fc1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/infection-static-analysis-plugin/zipball/371ad8c946b770c5e2c5a184add91e105fece693",
-                "reference": "371ad8c946b770c5e2c5a184add91e105fece693",
+                "url": "https://api.github.com/repos/Roave/infection-static-analysis-plugin/zipball/03eb5a4c6a6ec38977e6e36aafecb00517f4fc1f",
+                "reference": "03eb5a4c6a6ec38977e6e36aafecb00517f4fc1f",
                 "shasum": ""
             },
             "require": {
-                "infection/infection": "0.20.1",
+                "infection/infection": "0.20.2",
                 "ocramius/package-versions": "^1.9.0 || ^2.0.0",
                 "php": "^7.4.7",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2.1"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^8.2.0",
-                "phpunit/phpunit": "^9.2.6"
+                "phpunit/phpunit": "^9.4.3"
             },
             "bin": [
                 "bin/roave-infection-static-analysis-plugin"
@@ -15261,9 +15555,9 @@
             "description": "Static analysis on top of mutation testing - prevents escaped mutants from being invalid according to static analysis",
             "support": {
                 "issues": "https://github.com/Roave/infection-static-analysis-plugin/issues",
-                "source": "https://github.com/Roave/infection-static-analysis-plugin/tree/1.3.0"
+                "source": "https://github.com/Roave/infection-static-analysis-plugin/tree/1.5.0"
             },
-            "time": "2020-11-03T14:13:14+00:00"
+            "time": "2020-11-20T17:31:18+00:00"
         },
         {
             "name": "sanmai/pipeline",
@@ -16296,16 +16590,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.8.2",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337"
+                "reference": "9ad6ce79c342fbd44df10ea95511a1b24dee5b57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/590cfec960b77fd55e39b7d9246659e95dd6d337",
-                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/9ad6ce79c342fbd44df10ea95511a1b24dee5b57",
+                "reference": "9ad6ce79c342fbd44df10ea95511a1b24dee5b57",
                 "shasum": ""
             },
             "require": {
@@ -16343,7 +16637,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/jsonlint/issues",
-                "source": "https://github.com/Seldaek/jsonlint/tree/master"
+                "source": "https://github.com/Seldaek/jsonlint/tree/1.8.3"
             },
             "funding": [
                 {
@@ -16355,7 +16649,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-25T06:56:57+00:00"
+            "time": "2020-11-11T09:19:24+00:00"
         },
         {
             "name": "seld/phar-utils",
@@ -17583,16 +17877,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.1.1",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "16bfbd9224698bd738c665f33039fade2a1a3977"
+                "reference": "ea9cb72143b77e7520c52fa37290bd8d8bc88fd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/16bfbd9224698bd738c665f33039fade2a1a3977",
-                "reference": "16bfbd9224698bd738c665f33039fade2a1a3977",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/ea9cb72143b77e7520c52fa37290bd8d8bc88fd9",
+                "reference": "ea9cb72143b77e7520c52fa37290bd8d8bc88fd9",
                 "shasum": ""
             },
             "require": {
@@ -17682,9 +17976,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/4.1.1"
+                "source": "https://github.com/vimeo/psalm/tree/4.2.1"
             },
-            "time": "2020-11-02T05:54:12+00:00"
+            "time": "2020-11-20T14:56:53+00:00"
         },
         {
             "name": "webmozart/glob",
@@ -17789,16 +18083,16 @@
         },
         {
             "name": "wyrihaximus/async-test-utilities",
-            "version": "3.0.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-async-test-utilities.git",
-                "reference": "b5f61475e93d58d5c8c514d7def6a07ba07eb185"
+                "reference": "a519b6dd2fc5a741c6f56c248f0d4a33b2489ce0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/b5f61475e93d58d5c8c514d7def6a07ba07eb185",
-                "reference": "b5f61475e93d58d5c8c514d7def6a07ba07eb185",
+                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/a519b6dd2fc5a741c6f56c248f0d4a33b2489ce0",
+                "reference": "a519b6dd2fc5a741c6f56c248f0d4a33b2489ce0",
                 "shasum": ""
             },
             "require": {
@@ -17807,7 +18101,7 @@
                 "phpunit/phpunit": "^9.4",
                 "react/event-loop": "^1.1",
                 "react/promise": "^2.8",
-                "wyrihaximus/test-utilities": "^2.9 || ^3.0"
+                "wyrihaximus/test-utilities": "^3.1"
             },
             "require-dev": {
                 "wyrihaximus/iterator-or-array-to-array": "^1.1"
@@ -17831,7 +18125,7 @@
             "description": "Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-async-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/3.0.0"
+                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/3.2.0"
             },
             "funding": [
                 {
@@ -17839,7 +18133,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-04T00:01:27+00:00"
+            "time": "2020-11-09T17:49:40+00:00"
         },
         {
             "name": "wyrihaximus/coding-standard",
@@ -17879,208 +18173,6 @@
                 }
             ],
             "time": "2020-10-13T19:22:48+00:00"
-        },
-        {
-            "name": "wyrihaximus/composer-update-bin-autoload-path",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path.git",
-                "reference": "c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-composer-update-bin-autoload-path/zipball/c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7",
-                "reference": "c9b70e4d7e3f6bcfc16890bdffd0f1f2f22c28a7",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2",
-                "php": "^7.4"
-            },
-            "require-dev": {
-                "wyrihaximus/test-utilities": "^3"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "WyriHaximus\\Composer\\BinAutoloadPathUpdater",
-                "unused": [
-                    "php"
-                ]
-            },
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\Composer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "🏰 Composer plugin that fills a bin file with the absolute composer autoload path",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/issues",
-                "source": "https://github.com/WyriHaximus/php-composer-update-bin-autoload-path/tree/1.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-11-07T16:35:14+00:00"
-        },
-        {
-            "name": "wyrihaximus/monolog-factory",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-monolog-factory.git",
-                "reference": "d51b43e7c34518943e82ad5da1cfceba18285d47"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-factory/zipball/d51b43e7c34518943e82ad5da1cfceba18285d47",
-                "reference": "d51b43e7c34518943e82ad5da1cfceba18285d47",
-                "shasum": ""
-            },
-            "require": {
-                "bramus/monolog-colored-line-formatter": "^3.0",
-                "monolog/monolog": "^2.1",
-                "php": "^7.4",
-                "psr/log": "^1.1",
-                "wyrihaximus/constants": "^1.5",
-                "wyrihaximus/monolog-formatted-psr-handler": "^1.2",
-                "wyrihaximus/monolog-processors": "^1.3"
-            },
-            "require-dev": {
-                "wyrihaximus/test-utilities": "^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "unused": [
-                    "php"
-                ]
-            },
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\Monolog\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "🧐🏭 Opinionated Monolog factory",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-monolog-factory/issues",
-                "source": "https://github.com/WyriHaximus/php-monolog-factory/tree/1.0.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-11-07T16:37:24+00:00"
-        },
-        {
-            "name": "wyrihaximus/monolog-formatted-psr-handler",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler.git",
-                "reference": "70eb4e8d83c1c6b8a2f71a29f43026778b12b25a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-formatted-psr-handler/zipball/70eb4e8d83c1c6b8a2f71a29f43026778b12b25a",
-                "reference": "70eb4e8d83c1c6b8a2f71a29f43026778b12b25a",
-                "shasum": ""
-            },
-            "require": {
-                "monolog/monolog": "^1.23 || ^2.0",
-                "php": "^7.2",
-                "psr/log": "^1.0"
-            },
-            "require-dev": {
-                "wyrihaximus/cs-fixer-config": "^1.0",
-                "wyrihaximus/test-utilities": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\Monolog\\FormattedPsrHandler\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "Passes `formatted` instead of `message` to the PSR-3 logger",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/issues",
-                "source": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/tree/master"
-            },
-            "time": "2019-09-16T22:04:19+00:00"
-        },
-        {
-            "name": "wyrihaximus/monolog-processors",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-monolog-processors.git",
-                "reference": "a371e7d050ae0b45e45a4e42ee45bb52c4b04885"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-processors/zipball/a371e7d050ae0b45e45a4e42ee45bb52c4b04885",
-                "reference": "a371e7d050ae0b45e45a4e42ee45bb52c4b04885",
-                "shasum": ""
-            },
-            "require": {
-                "igorw/get-in": "^1.0",
-                "monolog/monolog": "^1.25 || ^2.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "wyrihaximus/cs-fixer-config": "^1.0",
-                "wyrihaximus/test-utilities": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\Monolog\\Processors\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "Collection of additional processors for monolog",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-monolog-processors/issues",
-                "source": "https://github.com/WyriHaximus/php-monolog-processors/tree/master"
-            },
-            "time": "2019-09-16T22:00:55+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-rules-wrapper",
@@ -18126,141 +18218,41 @@
             "time": "2020-01-22T16:22:33+00:00"
         },
         {
-            "name": "wyrihaximus/psr-3-utilities",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/php-psr-3-utilities.git",
-                "reference": "27126a013401e48ffe3a32b632303884e195ec8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-utilities/zipball/27126a013401e48ffe3a32b632303884e195ec8d",
-                "reference": "27126a013401e48ffe3a32b632303884e195ec8d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "psr/log": "^1.0"
-            },
-            "require-dev": {
-                "api-clients/cs-fixer-config": "^1.1",
-                "api-clients/test-utilities": "^5.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\PSR3\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "PSR-3 logger utilities",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-psr-3-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-psr-3-utilities/tree/master"
-            },
-            "time": "2018-12-16T16:39:37+00:00"
-        },
-        {
-            "name": "wyrihaximus/react-psr-3-stdio",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WyriHaximus/reactphp-psr-3-stdio.git",
-                "reference": "311ae61e00d40d22092d43a07b702081b5216697"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-psr-3-stdio/zipball/311ae61e00d40d22092d43a07b702081b5216697",
-                "reference": "311ae61e00d40d22092d43a07b702081b5216697",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0",
-                "psr/log": "^1.0",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4",
-                "react/stream": "^1.0 || ^0.7 || ^0.6",
-                "wyrihaximus/psr-3-utilities": "^1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.3",
-                "jakub-onderka/php-console-highlighter": "^0.3.2",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "phake/phake": "^2.3",
-                "phpunit/phpunit": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WyriHaximus\\React\\PSR3\\Stdio\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com"
-                }
-            ],
-            "description": "Async PSR-3 stdio logger",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/tree/master"
-            },
-            "time": "2018-01-11T08:53:19+00:00"
-        },
-        {
             "name": "wyrihaximus/test-utilities",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-test-utilities.git",
-                "reference": "e136db9377f5d306112aee0f516b128d22cbaeb0"
+                "reference": "ee56cdb9135913dd47bc1bddd0449666a3a7d0d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/e136db9377f5d306112aee0f516b128d22cbaeb0",
-                "reference": "e136db9377f5d306112aee0f516b128d22cbaeb0",
+                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/ee56cdb9135913dd47bc1bddd0449666a3a7d0d9",
+                "reference": "ee56cdb9135913dd47bc1bddd0449666a3a7d0d9",
                 "shasum": ""
             },
             "require": {
-                "composer/composer": "^1.8",
-                "ergebnis/composer-normalize": "^2.0",
+                "composer/composer": "^1.10",
+                "ergebnis/composer-normalize": "^2.11",
                 "icanhazstring/composer-unused": "^0.7",
                 "infection/infection": "^0.20",
-                "maglnet/composer-require-checker": "^2.0",
-                "nunomaduro/collision": "^4.0 || ^3.0 || ^5.0",
+                "maglnet/composer-require-checker": "^2.1",
+                "nunomaduro/collision": "^5.1",
                 "php": "^7.4",
-                "php-coveralls/php-coveralls": "^2.2",
-                "php-parallel-lint/php-console-highlighter": "^0.4.0 || ^0.5",
-                "php-parallel-lint/php-parallel-lint": "^1.1",
-                "phpspec/prophecy": "^1.10",
+                "php-coveralls/php-coveralls": "^2.4",
+                "php-parallel-lint/php-console-highlighter": "^0.5",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpspec/prophecy": "^1.12",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpstan/phpstan": "^0.12.42",
+                "phpstan/phpstan": "^0.12.54",
                 "phpunit/phpunit": "^9.4",
-                "psalm/plugin-phpunit": "^0.13.0",
+                "psalm/plugin-phpunit": "^0.13",
                 "roave/backward-compatibility-check": "^5.0",
-                "roave/infection-static-analysis-plugin": "^1.2",
-                "squizlabs/php_codesniffer": "^3.4.2",
-                "thecodingmachine/safe": "^1.0",
+                "roave/infection-static-analysis-plugin": "^1.3",
+                "squizlabs/php_codesniffer": "^3.5",
+                "thecodingmachine/safe": "^1.3",
                 "vimeo/psalm": "^4.1",
-                "wyrihaximus/coding-standard": "^2.0.1",
+                "wyrihaximus/coding-standard": "^2.1",
                 "wyrihaximus/phpstan-rules-wrapper": "^1.2"
             },
             "type": "library",
@@ -18304,7 +18296,7 @@
             "description": "🛠️ Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/3.0.0"
+                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/3.1.0"
             },
             "funding": [
                 {
@@ -18312,25 +18304,13 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-02T00:00:38+00:00"
+            "time": "2020-11-08T23:10:13+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "react-parallel/react-parallel",
-            "version": "dev-add-metrics",
-            "alias": "1.1.1",
-            "alias_normalized": "1.1.1.0"
-        },
-        {
-            "package": "react-parallel/event-loop",
-            "version": "dev-add-metrics",
-            "alias": "1.1.1",
-            "alias_normalized": "1.1.1.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mammatus/app": 20,
         "mammatus/healthz-vhost": 20,
         "mammatus/http-server-annotations": 20,
         "mammatus/http-server-contracts": 20,
@@ -18340,16 +18320,10 @@
         "mammatus/metrics": 20,
         "mammatus/metrics-prometheus-vhost": 20,
         "php-di-definitions/react-event-loop-inspected": 20,
-        "react-inspector/http-middleware": 20,
-        "react-parallel/event-loop": 20,
         "react-parallel/logger": 20,
         "react-parallel/object-proxy": 20,
         "react-parallel/psr-11-container-proxy": 20,
-        "react-parallel/react-parallel": 20,
-        "wyrihaximus/broadcast": 20,
-        "wyrihaximus/metrics": 20,
-        "wyrihaximus/metrics-tactician": 20,
-        "mammatus/app": 20
+        "wyrihaximus/broadcast": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

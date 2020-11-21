@@ -15,6 +15,7 @@ use React\Http\Middleware\RequestBodyBufferMiddleware;
 use React\Http\Middleware\StreamingRequestMiddleware;
 use React\Http\Server as HttpServer;
 use React\Promise\PromiseInterface;
+use ReactInspector\HttpMiddleware\Metrics as MiddlewareCollectorMetrics;
 use ReactInspector\HttpMiddleware\MiddlewareCollector;
 use ReactParallel\EventLoop\EventLoopBridge;
 use ReactParallel\Factory;
@@ -67,7 +68,7 @@ abstract class AbstractConfiguration
                 [
                     new LimitConcurrentRequestsMiddleware(PHP_INT_MAX),
                     new StreamingRequestMiddleware(),
-                    new MiddlewareCollector($metricsRegistry, new Label('vhost', '{{ server.vhost().name() }}')),
+                    new MiddlewareCollector(MiddlewareCollectorMetrics::create($metricsRegistry, new Label('vhost', '{{ server.vhost().name() }}'))),
                     {% if server.realms()|length > 0 %}
                         new Middleware(['/', '/ws/'], $loop, $container->get(RouterFactory_{{ server.vhost().name() }}::class)->router()),
                     {% endif %}
