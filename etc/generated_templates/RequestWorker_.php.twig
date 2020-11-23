@@ -155,6 +155,7 @@ final class RequestWorker_{{ server.vhost().name() }} implements Worker
         $work = $workWrapper->work();
         assert($work instanceof Request);
         $request = $work->request();
+        $request = $request->withBody(new StringStream((string)$request->getBody()));
         $response = $this->broker->process($request, $this->handler);
         return new \Mammatus\Http\Server\Middleware\Response($response->withBody(new StringStream((string)$response->getBody())));
     }
