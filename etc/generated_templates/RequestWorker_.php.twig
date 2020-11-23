@@ -135,6 +135,10 @@ final class RequestWorker_{{ server.vhost().name() }} implements Worker
             ],
             $streamFactory,
         ));
+        foreach ($container->get('\{{ server.vhostClass() }}')->middleware() as $middleware) {
+            $this->broker->append($middleware);
+        }
+        $this->broker->append(new RouteMiddleware($router));
         $this->broker->append(new RouteMiddleware($router));
         $this->broker->append(new RouteParamsExtraction($container->get(RouteParamsExtractor::class)));
         $this->broker->append(new ImplicitHeadMiddleware($router, $streamFactoryCallable));

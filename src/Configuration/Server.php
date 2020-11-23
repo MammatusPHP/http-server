@@ -59,6 +59,11 @@ final class Server
         return $this->vhost;
     }
 
+    public function vhostClass(): string
+    {
+        return get_class($this->vhost);
+    }
+
     public function hasWebroot(): bool
     {
         return $this->vhost->webroot() instanceof WebrootPath;
