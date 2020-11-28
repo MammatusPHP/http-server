@@ -115,6 +115,22 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         $start    = microtime(true);
         $io       = $event->getIO();
         $composer = $event->getComposer();
+
+        // Composer is bugged and doesn't handle root package autoloading properly yet
+        if (array_key_exists('psr-4', $composer->getPackage()->getAutoload())) {
+            foreach ($composer->getPackage()->getAutoload()['psr-4'] as $ns => $p) {
+                $p = dirname($composer->getConfig()->get('vendor-dir')) . '/' . $p;
+                spl_autoload_register(static function ($class) use ($ns, $p) {
+                    if (strpos($class, $ns) === 0) {
+                        $fileName = $p . str_replace('\\', DIRECTORY_SEPARATOR, substr($class, strlen($ns))) . '.php';
+                        if (file_exists($fileName)) {
+                            include $fileName;
+                        }
+                    }
+                });
+            }
+        }
+
         /** @psalm-suppress UnresolvableInclude */
         require_once $composer->getConfig()->get('vendor-dir') . '/wyrihaximus/iterator-or-array-to-array/src/functions_include.php';
         /** @psalm-suppress UnresolvableInclude */
