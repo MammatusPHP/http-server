@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77f15cbf79c598052c961ac1945927e1",
+    "content-hash": "019df0367989e21a8f030a7a23b2632b",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -2313,12 +2313,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "ee44f8d7ebc11bcf0641e74c168ad64bf69f293a"
+                "reference": "c7f0f90c5d835882058b3e5861415a93cd573525"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/ee44f8d7ebc11bcf0641e74c168ad64bf69f293a",
-                "reference": "ee44f8d7ebc11bcf0641e74c168ad64bf69f293a",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/c7f0f90c5d835882058b3e5861415a93cd573525",
+                "reference": "c7f0f90c5d835882058b3e5861415a93cd573525",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2326,7 @@
                 "clue/block-react": "^1.3",
                 "doctrine/annotations": "^1.4",
                 "ext-pcntl": "^7.4",
-                "mammatus/life-cycle-events": "dev-master",
+                "mammatus/life-cycle-events": "^1.0",
                 "mammatus/metrics": "9999999-dev",
                 "monolog/monolog": "^2.0",
                 "php": "^7.4",
@@ -2411,7 +2411,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-18T00:19:45+00:00"
+            "time": "2020-12-19T15:01:29+00:00"
         },
         {
             "name": "mammatus/healthz-vhost",
@@ -2636,16 +2636,16 @@
         },
         {
             "name": "mammatus/life-cycle-events",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/life-cycle-events.git",
-                "reference": "ecc99e367ac5fa1470a818ad34ccdf25756ee654"
+                "reference": "eea9596de479e0501b33ac7d76d0c563d0a3e018"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/life-cycle-events/zipball/ecc99e367ac5fa1470a818ad34ccdf25756ee654",
-                "reference": "ecc99e367ac5fa1470a818ad34ccdf25756ee654",
+                "url": "https://api.github.com/repos/MammatusPHP/life-cycle-events/zipball/eea9596de479e0501b33ac7d76d0c563d0a3e018",
+                "reference": "eea9596de479e0501b33ac7d76d0c563d0a3e018",
                 "shasum": ""
             },
             "require": {
@@ -2657,7 +2657,6 @@
                 "wyrihaximus/broadcast": "^1.0",
                 "wyrihaximus/test-utilities": "^3.3"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2671,7 +2670,7 @@
             "description": "♻️ Life Cycle Events for MammatusPHP Applications",
             "support": {
                 "issues": "https://github.com/MammatusPHP/life-cycle-events/issues",
-                "source": "https://github.com/MammatusPHP/life-cycle-events/tree/master"
+                "source": "https://github.com/MammatusPHP/life-cycle-events/tree/1.0.0"
             },
             "funding": [
                 {
@@ -2679,7 +2678,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-18T16:00:56+00:00"
+            "time": "2020-12-18T17:14:06+00:00"
         },
         {
             "name": "mammatus/metrics",
@@ -6133,12 +6132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy.git",
-                "reference": "5f608c693cea830e11b4c261afeecbb35cd46442"
+                "reference": "c4e0f4cd425d611f15d2bda5768e4577fba603f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/5f608c693cea830e11b4c261afeecbb35cd46442",
-                "reference": "5f608c693cea830e11b4c261afeecbb35cd46442",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/c4e0f4cd425d611f15d2bda5768e4577fba603f8",
+                "reference": "c4e0f4cd425d611f15d2bda5768e4577fba603f8",
                 "shasum": ""
             },
             "require": {
@@ -6152,6 +6151,7 @@
                 "php": "^7.4",
                 "psr/container": "^1.0",
                 "psr/log": "^1.1",
+                "react-parallel/event-loop": "^1.1",
                 "react-parallel/object-proxy-attributes": "^1",
                 "react-parallel/react-parallel": "^1.1",
                 "react-parallel/streams": "^1.0",
@@ -6217,7 +6217,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-17T21:00:19+00:00"
+            "time": "2020-12-18T22:22:56+00:00"
         },
         {
             "name": "react-parallel/object-proxy-attributes",
@@ -14473,16 +14473,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.1",
+            "version": "1.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d"
+                "reference": "245710e971a030f42e08f4912863805570f23d39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ce87516be71aae9b956f81906aaf0338e0d8a2d",
-                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/245710e971a030f42e08f4912863805570f23d39",
+                "reference": "245710e971a030f42e08f4912863805570f23d39",
                 "shasum": ""
             },
             "require": {
@@ -14494,7 +14494,7 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^6.0",
-                "phpunit/phpunit": "^8.0 || ^9.0 <9.3"
+                "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
@@ -14534,9 +14534,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.12.1"
+                "source": "https://github.com/phpspec/prophecy/tree/1.12.2"
             },
-            "time": "2020-09-29T09:10:42+00:00"
+            "time": "2020-12-19T10:15:11+00:00"
         },
         {
             "name": "phpspec/prophecy-phpunit",
@@ -18325,7 +18325,6 @@
         "mammatus/http-server-contracts": 20,
         "mammatus/http-server-webroot": 20,
         "mammatus/http-server-websockets": 20,
-        "mammatus/life-cycle-events": 20,
         "mammatus/metrics": 20,
         "mammatus/metrics-prometheus-vhost": 20,
         "php-di-definitions/react-event-loop-inspected": 20,
