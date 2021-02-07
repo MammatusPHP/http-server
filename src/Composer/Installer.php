@@ -134,7 +134,6 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                         if (substr($p, -1) !== '/') {
                             $p .= '/';
                         }
-                        echo $p, PHP_EOL;
                         spl_autoload_register(static function ($class) use ($ns, $p) {
                             if (strpos($class, $ns) === 0) {
                                 $fileName = $p . str_replace('\\', DIRECTORY_SEPARATOR, substr($class, strlen($ns))) . '.php';
