@@ -117,17 +117,34 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         $composer = $event->getComposer();
 
         // Composer is bugged and doesn't handle root package autoloading properly yet
-        if (array_key_exists('psr-4', $composer->getPackage()->getAutoload())) {
-            foreach ($composer->getPackage()->getAutoload()['psr-4'] as $ns => $p) {
-                $p = dirname($composer->getConfig()->get('vendor-dir')) . '/' . $p;
-                spl_autoload_register(static function ($class) use ($ns, $p) {
-                    if (strpos($class, $ns) === 0) {
-                        $fileName = $p . str_replace('\\', DIRECTORY_SEPARATOR, substr($class, strlen($ns))) . '.php';
-                        if (file_exists($fileName)) {
-                            include $fileName;
-                        }
+        $packages = $composer->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
+        $packages[] = $composer->getPackage();
+        foreach ($packages as $package) {
+            if (array_key_exists('psr-4', $package->getAutoload())) {
+                foreach ($package->getAutoload()['psr-4'] as $ns => $pa) {
+                    if (is_string($pa)) {
+                        $pa = [$pa];
                     }
-                });
+                    foreach ($pa as $p) {
+                        if ($package instanceof RootPackageInterface) {
+                            $p = dirname($composer->getConfig()->get('vendor-dir')) . '/' . $p;
+                        } else {
+                            $p = dirname($composer->getConfig()->get('vendor-dir')) . '/vendor/' . $package->getName() . '/' . $p;
+                        }
+                        if (substr($p, -1) !== '/') {
+                            $p .= '/';
+                        }
+                        echo $p, PHP_EOL;
+                        spl_autoload_register(static function ($class) use ($ns, $p) {
+                            if (strpos($class, $ns) === 0) {
+                                $fileName = $p . str_replace('\\', DIRECTORY_SEPARATOR, substr($class, strlen($ns))) . '.php';
+                                if (file_exists($fileName)) {
+                                    include $fileName;
+                                }
+                            }
+                        });
+                    }
+                }
             }
         }
 
