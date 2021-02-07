@@ -86,7 +86,7 @@ final class RouterFactory_{{ server.vhost().name() }} implements Listener
         $internalClient_{{ realm.name() }} = new Client('{{ realm.name() }}', $this->loop);
         $internalClient_{{ realm.name() }}->on('open', function (ClientSession $session) use ($workerPools): void {
             {% for rpc in realm.rpcs() %}
-            $session->register('{{ rpc.name() }}', fn (array $args): PromiseInterface => $this->handleRpc_{{ server.vhost().name() }}_{{ rpc.bus() }}_{{ rpc.name() }}($args));
+            $session->register('{{ rpc.name() }}', fn (array $args): PromiseInterface => $this->handleRpc_{{ server.vhost().name() }}_{{ rpc.bus() }}_{{ rpc.name()|replace({".": "_____"}) }}($args));
             $this->logger->debug('Registered RPC "{{ rpc.name() }}" on realm "{{ realm.name() }}" for bus "{{ rpc.bus() }}" on the "{{ server.vhost().name() }}" vhost');
             {% endfor %}
             {% if realm.broadcasts()|length > 0 %}
@@ -133,7 +133,7 @@ final class RouterFactory_{{ server.vhost().name() }} implements Listener
     }
     {% for realm in server.realms() %}
     {% for rpc in realm.rpcs() %}
-    private function handleRpc_{{ server.vhost().name() }}_{{ rpc.bus() }}_{{ rpc.name() }}(array $args): PromiseInterface
+    private function handleRpc_{{ server.vhost().name() }}_{{ rpc.bus() }}_{{ rpc.name()|replace({".": "_____"}) }}(array $args): PromiseInterface
     {
         $this->registry->counter(
             'vhost_realm_rpc_call',
