@@ -29,6 +29,9 @@ final class WebSocketWorkerFactory_{{ server.vhost().name() }}_{{ bus.name()}} e
         foreach (self::KNOWN_INTERFACE as $interface => $proxy) {
             $overrides[$interface] = fn (): object => $this->proxy->proxy()->get($interface);
         }
+        foreach (self::NO_PROMISE_KNOWN_INTERFACE_MAP as $noPromiseInterface => $interface) {
+            $overrides[$noPromiseInterface] = fn (): object => $this->proxy->proxy()->get($interface);
+        }
         $overrides[LoggerInterface::class] = fn (): LoggerInterface => Factory::create('{{ server.vhost().name() }}-websocket', new Stdout(), []);
 
         return new WebSocketWorker_{{ server.vhost().name() }}_{{ bus.name()}}($this->proxy->create(ContainerFactory::create($overrides)));

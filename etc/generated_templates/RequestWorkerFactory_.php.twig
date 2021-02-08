@@ -31,6 +31,9 @@ final class RequestWorkerFactory_{{ server.vhost().name() }} extends ProxyList i
         foreach (self::KNOWN_INTERFACE as $interface => $proxy) {
             $overrides[$interface] = fn (): object => $this->proxy->proxy()->get($interface);
         }
+        foreach (self::NO_PROMISE_KNOWN_INTERFACE_MAP as $noPromiseInterface => $interface) {
+            $overrides[$noPromiseInterface] = fn (): object => $this->proxy->proxy()->get($interface);
+        }
         $overrides[LoggerInterface::class] = fn (): LoggerInterface => Factory::create('{{ server.vhost().name() }}-http', new Stdout(), []);
 
         return new RequestWorker_{{ server.vhost().name() }}($this->proxy->create(ContainerFactory::create($overrides)));
