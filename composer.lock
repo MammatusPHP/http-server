@@ -2515,12 +2515,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/http-server-contracts.git",
-                "reference": "05278fe008e2186d2343aea8d58efb3a91db35ca"
+                "reference": "a836032ae70bc62b63b4585d23b8128fa89072bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/http-server-contracts/zipball/05278fe008e2186d2343aea8d58efb3a91db35ca",
-                "reference": "05278fe008e2186d2343aea8d58efb3a91db35ca",
+                "url": "https://api.github.com/repos/MammatusPHP/http-server-contracts/zipball/a836032ae70bc62b63b4585d23b8128fa89072bc",
+                "reference": "a836032ae70bc62b63b4585d23b8128fa89072bc",
                 "shasum": ""
             },
             "require": {
@@ -2545,7 +2545,7 @@
                 "issues": "https://github.com/MammatusPHP/http-server-contracts/issues",
                 "source": "https://github.com/MammatusPHP/http-server-contracts/tree/master"
             },
-            "time": "2020-11-23T01:25:51+00:00"
+            "time": "2021-02-10T20:40:30+00:00"
         },
         {
             "name": "mammatus/http-server-webroot",
@@ -2589,12 +2589,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/http-server-websockets.git",
-                "reference": "f1957bc797a63cfdc58d02c60648a17c74eb2212"
+                "reference": "bb7359f7ca2d1709ba3a55c766f337f5489e377e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/http-server-websockets/zipball/f1957bc797a63cfdc58d02c60648a17c74eb2212",
-                "reference": "f1957bc797a63cfdc58d02c60648a17c74eb2212",
+                "url": "https://api.github.com/repos/MammatusPHP/http-server-websockets/zipball/bb7359f7ca2d1709ba3a55c766f337f5489e377e",
+                "reference": "bb7359f7ca2d1709ba3a55c766f337f5489e377e",
                 "shasum": ""
             },
             "require": {
@@ -2634,7 +2634,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-09T07:49:51+00:00"
+            "time": "2021-02-10T20:45:17+00:00"
         },
         {
             "name": "mammatus/life-cycle-events",
