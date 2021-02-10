@@ -147,7 +147,15 @@ final class RouterFactory_{{ server.vhost().name() }} implements Listener
             new Label('topic', '{{ rpc.name() }}'),
         )->incr();
 
-        return $this->workerPool_{{ server.vhost().name() }}_{{ rpc.bus() }}->perform(new Income(\{{ rpc.command() }}::fromInput(new RpcInput($args[0] ?? null))));
+        return $this->workerPool_{{ server.vhost().name() }}_{{ rpc.bus() }}->perform(new Income(\{{ rpc.command() }}::fromInput(new RpcInput(
+            {% if rpc.transformer() is not null %}
+            \{{ rpc.transformer() }}::transform(
+            {% endif %}
+                $args[0] ?? null
+            {% if rpc.transformer() is not null %}
+            )
+            {% endif %}
+        ))));
     }
     {% endfor %}
     {% for subscription in realm.subscriptions() %}
@@ -165,7 +173,15 @@ final class RouterFactory_{{ server.vhost().name() }} implements Listener
             new Label('topic', '{{ subscription.name() }}'),
         )->incr();
 
-        return $this->workerPool_{{ server.vhost().name() }}_{{ subscription.bus() }}->perform(new Income(\{{ subscription.command() }}::fromInput(new RpcInput($args[0] ?? null))));
+        return $this->workerPool_{{ server.vhost().name() }}_{{ subscription.bus() }}->perform(new Income(\{{ subscription.command() }}::fromInput(new RpcInput(
+            {% if subscription.transformer() is not null %}
+            \{{ subscription.transformer() }}::transform(
+            {% endif %}
+                $args[0] ?? null
+            {% if subscription.transformer() is not null %}
+            )
+            {% endif %}
+        ))));
     }
     {% endfor %}
     {% endfor %}

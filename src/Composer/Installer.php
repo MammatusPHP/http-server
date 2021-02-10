@@ -329,6 +329,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                     $handler['annotations'][RpcAnnotation::class]->rpc(),
                                     $handler['annotations'][RpcAnnotation::class]->command(),
                                     $handler['annotations'][RpcAnnotation::class]->bus(),
+                                    $handler['annotations'][RpcAnnotation::class]->transformer(),
                                 );
                                 $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
                             }
@@ -337,6 +338,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                     $handler['annotations'][SubscriptionAnnotation::class]->topic(),
                                     $handler['annotations'][SubscriptionAnnotation::class]->command(),
                                     $handler['annotations'][SubscriptionAnnotation::class]->bus(),
+                                    $handler['annotations'][SubscriptionAnnotation::class]->transformer(),
                                 );
                                 $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
                             }

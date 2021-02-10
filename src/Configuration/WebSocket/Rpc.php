@@ -11,12 +11,14 @@ final class Rpc
     private string $name;
     private string $command;
     private string $bus;
+    private ?string $transformer;
 
-    public function __construct(string $name, string $command, string $bus)
+    public function __construct(string $name, string $command, string $bus, ?string $transformer)
     {
         $this->name = $name;
         $this->command = $command;
         $this->bus = $bus;
+        $this->transformer = $transformer;
     }
 
     public function name(): string
@@ -32,5 +34,10 @@ final class Rpc
     public function bus(): string
     {
         return $this->bus;
+    }
+
+    public function transformer(): ?string
+    {
+        return $this->transformer;
     }
 }
