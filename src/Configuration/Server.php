@@ -9,7 +9,7 @@ use function assert;
 
 final class Server
 {
-    private Vhost $vhost;
+    private VhostStub $vhost;
     /** @var array<\Mammatus\Http\Server\Configuration\WebSocket\Realm>  */
     private array $realms;
     /** @var array<Handler>  */
@@ -22,7 +22,7 @@ final class Server
      * @param array<Handler> $handlers
      * @param array<Bus> $busses
      */
-    public function __construct(Vhost $vhost, array $realms, array $handlers, array $busses)
+    public function __construct(VhostStub $vhost, array $realms, array $handlers, array $busses)
     {
         $this->vhost  = $vhost;
         $this->realms = $realms;
@@ -54,14 +54,9 @@ final class Server
         yield from $this->realms;
     }
 
-    public function vhost(): Vhost
+    public function vhost(): VhostStub
     {
         return $this->vhost;
-    }
-
-    public function vhostClass(): string
-    {
-        return get_class($this->vhost);
     }
 
     public function hasWebroot(): bool

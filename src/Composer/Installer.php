@@ -29,6 +29,7 @@ use Mammatus\Http\Server\Configuration\Bus;
 use Mammatus\Http\Server\Configuration\Handler;
 use Mammatus\Http\Server\Configuration\Server;
 use Mammatus\Http\Server\Configuration\Vhost;
+use Mammatus\Http\Server\Configuration\VhostStub;
 use Mammatus\Http\Server\Configuration\WebSocket\Broadcast;
 use Mammatus\Http\Server\Configuration\WebSocket\Handler as WebSocketHandler;
 use Mammatus\Http\Server\Configuration\WebSocket\Realm;
@@ -307,7 +308,13 @@ final class Installer implements PluginInterface, EventSubscriberInterface
             return $class;
         })->
         map(static fn(ReflectionClass $class): string => $class->getName())->
-        map(static fn(string $vhost): Vhost => new $vhost())->
+        map(static fn(string $vhost): VhostStub => new VhostStub(
+            $vhost,
+            ($vhost . '::port')(),
+            ($vhost . '::name')(),
+            ($vhost . '::webroot')(),
+            ($vhost . '::maxConcurrentRequests')(),
+        ))->
         all();
 
         try {
@@ -315,7 +322,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
             $vhosts = [];
 
             foreach ($flatVhosts as $vhost) {
-                assert($vhost instanceof Vhost);
+                assert($vhost instanceof VhostStub);
                 $vhosts[] = new Server(
                     $vhost,
                     (static function (array $handlers): array {

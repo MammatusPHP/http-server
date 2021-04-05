@@ -66,7 +66,7 @@ abstract class AbstractConfiguration
         $http_server_{{ server.vhost().name() }} = new HttpServer($loop, ...array_merge(
                 iteratorOrArrayToArray($this->middleware()),
                 [
-                    new LimitConcurrentRequestsMiddleware(PHP_INT_MAX),
+                    new LimitConcurrentRequestsMiddleware({% if server.vhost().maxConcurrentRequests() is null %}PHP_INT_MAX{% else %}{{ server.vhost().maxConcurrentRequests() }}{% endif %}),
                     new StreamingRequestMiddleware(),
                     new MiddlewareCollector(MiddlewareCollectorMetrics::create($metricsRegistry, new Label('vhost', '{{ server.vhost().name() }}'))),
                     {% if server.realms()|length > 0 %}
