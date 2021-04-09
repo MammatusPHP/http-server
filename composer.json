@@ -25,7 +25,6 @@
         "mammatus/http-server-webroot": "dev-master",
         "mammatus/http-server-websockets": "dev-master",
         "mammatus/life-cycle-events": "^1",
-        "mammatus/metrics": "dev-master",
         "mammatus/metrics-prometheus-vhost": "dev-master",
         "mezzio/mezzio-helpers": "^5.3",
         "mezzio/mezzio-router": "^3.1",

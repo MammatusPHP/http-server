@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf61c4729ddfac4f20bf64053f7b0a8e",
+    "content-hash": "6099eaa8fd0f4050d02504a0b455cef1",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1333,16 +1333,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.35.1",
+            "version": "v8.36.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "0a7a96520928b61df1750b4e1909588f10ae2abe"
+                "reference": "591e31015a8b0731708c54411cb52d50a00b2bc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/0a7a96520928b61df1750b4e1909588f10ae2abe",
-                "reference": "0a7a96520928b61df1750b4e1909588f10ae2abe",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/591e31015a8b0731708c54411cb52d50a00b2bc3",
+                "reference": "591e31015a8b0731708c54411cb52d50a00b2bc3",
                 "shasum": ""
             },
             "require": {
@@ -1383,20 +1383,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-03-25T14:54:04+00:00"
+            "time": "2021-04-01T13:26:52+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.35.1",
+            "version": "v8.36.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "121cea1d8b8772bc7fee99c71ecf0f57c1d77b3b"
+                "reference": "5764f703ea8f74ced163125d810951cd5ef2b7e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/121cea1d8b8772bc7fee99c71ecf0f57c1d77b3b",
-                "reference": "121cea1d8b8772bc7fee99c71ecf0f57c1d77b3b",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/5764f703ea8f74ced163125d810951cd5ef2b7e1",
+                "reference": "5764f703ea8f74ced163125d810951cd5ef2b7e1",
                 "shasum": ""
             },
             "require": {
@@ -1431,11 +1431,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-03-12T14:45:30+00:00"
+            "time": "2021-04-01T13:09:31+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.35.1",
+            "version": "v8.36.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2321,12 +2321,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "048f89ea8f25e5496524660bf2089e94adfce7f1"
+                "reference": "370b836cf9aeea5e04a857b5945b158790bad7cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/048f89ea8f25e5496524660bf2089e94adfce7f1",
-                "reference": "048f89ea8f25e5496524660bf2089e94adfce7f1",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/370b836cf9aeea5e04a857b5945b158790bad7cd",
+                "reference": "370b836cf9aeea5e04a857b5945b158790bad7cd",
                 "shasum": ""
             },
             "require": {
@@ -2335,7 +2335,6 @@
                 "doctrine/annotations": "^1.4",
                 "ext-pcntl": "^7.4",
                 "mammatus/life-cycle-events": "^1.0",
-                "mammatus/metrics": "dev-master",
                 "monolog/monolog": "^2.0",
                 "php": "^7.4",
                 "php-di-definitions/definitions-gatherer": "^1",
@@ -2345,6 +2344,10 @@
                 "psr/container": "^1",
                 "psr/event-dispatcher": "^1",
                 "psr/log": "^1.1",
+                "react-parallel/event-loop": "^1.1",
+                "react-parallel/object-proxy": "dev-master",
+                "react-parallel/psr-11-container-proxy": "dev-master",
+                "react-parallel/react-parallel": "^1.1",
                 "react/event-loop": "^1",
                 "thecodingmachine/safe": "^1.3",
                 "wyrihaximus/broadcast": "^1.0",
@@ -2353,6 +2356,8 @@
                 "wyrihaximus/constants": "^1.5",
                 "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
                 "wyrihaximus/get-in-packages-composer.jason": "^1.0",
+                "wyrihaximus/metrics": "^1.0",
+                "wyrihaximus/metrics-tactician": "^1.0",
                 "wyrihaximus/monolog-factory": "^1.0",
                 "wyrihaximus/psr-3-context-logger": "^1.0",
                 "wyrihaximus/react-psr-3-stdio": "^2.0"
@@ -2419,7 +2424,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-29T13:21:54+00:00"
+            "time": "2021-04-09T13:48:00+00:00"
         },
         {
             "name": "mammatus/healthz-vhost",
@@ -2687,55 +2692,6 @@
                 }
             ],
             "time": "2020-12-18T17:14:06+00:00"
-        },
-        {
-            "name": "mammatus/metrics",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MammatusPHP/metrics.git",
-                "reference": "7e3800ac58a22488a0c2f59d6b14d06de2908723"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/metrics/zipball/7e3800ac58a22488a0c2f59d6b14d06de2908723",
-                "reference": "7e3800ac58a22488a0c2f59d6b14d06de2908723",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4",
-                "psr/log": "^1.1",
-                "react-parallel/event-loop": "^1.1",
-                "react-parallel/object-proxy": "dev-master",
-                "react-parallel/psr-11-container-proxy": "dev-master",
-                "react-parallel/react-parallel": "^1.1",
-                "wyrihaximus/metrics": "^1.0",
-                "wyrihaximus/metrics-lazy-registry": "^1.0",
-                "wyrihaximus/metrics-tactician": "^1.0",
-                "wyrihaximus/psr-3-callable-throwable-logger": "^2.1"
-            },
-            "require-dev": {
-                "wyrihaximus/async-test-utilities": "^2.3"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "php-di-definitions": {
-                    "di": [
-                        "etc/di/*.php"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "🐙 Metrics Hook-ins",
-            "support": {
-                "issues": "https://github.com/MammatusPHP/metrics/issues",
-                "source": "https://github.com/MammatusPHP/metrics/tree/master"
-            },
-            "time": "2021-03-21T12:46:24+00:00"
         },
         {
             "name": "mammatus/metrics-prometheus-vhost",
@@ -4080,16 +4036,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.6.1",
+            "version": "3.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5"
+                "reference": "06e2ebd25f2869e54a306dda991f7db58066f7f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5",
-                "reference": "943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5",
+                "url": "https://api.github.com/repos/opis/closure/zipball/06e2ebd25f2869e54a306dda991f7db58066f7f6",
+                "reference": "06e2ebd25f2869e54a306dda991f7db58066f7f6",
                 "shasum": ""
             },
             "require": {
@@ -4139,9 +4095,9 @@
             ],
             "support": {
                 "issues": "https://github.com/opis/closure/issues",
-                "source": "https://github.com/opis/closure/tree/3.6.1"
+                "source": "https://github.com/opis/closure/tree/3.6.2"
             },
-            "time": "2020-11-07T02:01:34+00:00"
+            "time": "2021-04-09T13:42:10+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -6208,12 +6164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy.git",
-                "reference": "5bcf3b2a5fabab475deccb60583008c46e8e5fc1"
+                "reference": "ae8e18ec0860ead65c778cce5654b980ef0b5dcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/5bcf3b2a5fabab475deccb60583008c46e8e5fc1",
-                "reference": "5bcf3b2a5fabab475deccb60583008c46e8e5fc1",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/ae8e18ec0860ead65c778cce5654b980ef0b5dcd",
+                "reference": "ae8e18ec0860ead65c778cce5654b980ef0b5dcd",
                 "shasum": ""
             },
             "require": {
@@ -6310,7 +6266,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-31T19:57:32+00:00"
+            "time": "2021-04-07T17:55:46+00:00"
         },
         {
             "name": "react-parallel/object-proxy-attributes",
@@ -6374,12 +6330,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/psr-11-container-proxy.git",
-                "reference": "5b53ba51ab1629a99deea0bc5c21a0231b4affa2"
+                "reference": "aa37331f2953d27b9205bb768a3073216eab453f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/psr-11-container-proxy/zipball/5b53ba51ab1629a99deea0bc5c21a0231b4affa2",
-                "reference": "5b53ba51ab1629a99deea0bc5c21a0231b4affa2",
+                "url": "https://api.github.com/repos/reactphp-parallel/psr-11-container-proxy/zipball/aa37331f2953d27b9205bb768a3073216eab453f",
+                "reference": "aa37331f2953d27b9205bb768a3073216eab453f",
                 "shasum": ""
             },
             "require": {
@@ -6431,7 +6387,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-31T17:23:06+00:00"
+            "time": "2021-04-06T07:27:29+00:00"
         },
         {
             "name": "react-parallel/react-parallel",
@@ -14107,16 +14063,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.3.0",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "aca63581f380f63a492b1e3114604e411e39133a"
+                "reference": "41b7e9999133d5082700d31a1d0977161df8322a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/aca63581f380f63a492b1e3114604e411e39133a",
-                "reference": "aca63581f380f63a492b1e3114604e411e39133a",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/41b7e9999133d5082700d31a1d0977161df8322a",
+                "reference": "41b7e9999133d5082700d31a1d0977161df8322a",
                 "shasum": ""
             },
             "require": {
@@ -14191,7 +14147,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-01-25T15:34:13+00:00"
+            "time": "2021-04-09T13:38:32+00:00"
         },
         {
             "name": "ondram/ci-detector",
@@ -14674,21 +14630,21 @@
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-parallel-lint/PHP-Parallel-Lint.git",
-                "reference": "474f18bc6cc6aca61ca40bfab55139de614e51ca"
+                "reference": "772a954e5f119f6f5871d015b23eabed8cbdadfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-parallel-lint/PHP-Parallel-Lint/zipball/474f18bc6cc6aca61ca40bfab55139de614e51ca",
-                "reference": "474f18bc6cc6aca61ca40bfab55139de614e51ca",
+                "url": "https://api.github.com/repos/php-parallel-lint/PHP-Parallel-Lint/zipball/772a954e5f119f6f5871d015b23eabed8cbdadfb",
+                "reference": "772a954e5f119f6f5871d015b23eabed8cbdadfb",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.4.0"
+                "php": ">=5.3.0"
             },
             "replace": {
                 "grogy/php-parallel-lint": "*",
@@ -14697,7 +14653,7 @@
             "require-dev": {
                 "nette/tester": "^1.3 || ^2.0",
                 "php-parallel-lint/php-console-highlighter": "~0.3",
-                "squizlabs/php_codesniffer": "~3.0"
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "php-parallel-lint/php-console-highlighter": "Highlight syntax in code snippet"
@@ -14725,9 +14681,9 @@
             "homepage": "https://github.com/php-parallel-lint/PHP-Parallel-Lint",
             "support": {
                 "issues": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/issues",
-                "source": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/tree/master"
+                "source": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/tree/v1.3.0"
             },
-            "time": "2020-04-04T12:18:32+00:00"
+            "time": "2021-04-07T14:42:48+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -16967,16 +16923,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.8",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
                 "shasum": ""
             },
             "require": {
@@ -17019,7 +16975,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2020-10-23T02:01:07+00:00"
+            "time": "2021-04-09T00:54:41+00:00"
         },
         {
             "name": "symfony/config",
@@ -18293,16 +18249,16 @@
         },
         {
             "name": "wyrihaximus/async-test-utilities",
-            "version": "3.4.23",
+            "version": "3.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-async-test-utilities.git",
-                "reference": "672572a7ccc8e0d2cd17a3f9c8a97c4614e467db"
+                "reference": "fee2c6404f646d3c4040974040a2001d22a92de7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/672572a7ccc8e0d2cd17a3f9c8a97c4614e467db",
-                "reference": "672572a7ccc8e0d2cd17a3f9c8a97c4614e467db",
+                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/fee2c6404f646d3c4040974040a2001d22a92de7",
+                "reference": "fee2c6404f646d3c4040974040a2001d22a92de7",
                 "shasum": ""
             },
             "require": {
@@ -18311,7 +18267,7 @@
                 "phpunit/phpunit": "^9.5",
                 "react/event-loop": "^1.1",
                 "react/promise": "^2.8",
-                "wyrihaximus/test-utilities": "^3.6.8"
+                "wyrihaximus/test-utilities": "^3.7.0"
             },
             "require-dev": {
                 "wyrihaximus/iterator-or-array-to-array": "^1.1"
@@ -18335,7 +18291,7 @@
             "description": "Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-async-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/3.4.23"
+                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/3.4.24"
             },
             "funding": [
                 {
@@ -18343,7 +18299,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-31T23:19:37+00:00"
+            "time": "2021-04-05T21:31:31+00:00"
         },
         {
             "name": "wyrihaximus/coding-standard",
@@ -18429,20 +18385,20 @@
         },
         {
             "name": "wyrihaximus/test-utilities",
-            "version": "3.6.8",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-test-utilities.git",
-                "reference": "5180fec8f758f7f42ee1797668c2a979e29d1111"
+                "reference": "656bfae3535868ff6511764d9f608e0c15f6244c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/5180fec8f758f7f42ee1797668c2a979e29d1111",
-                "reference": "5180fec8f758f7f42ee1797668c2a979e29d1111",
+                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/656bfae3535868ff6511764d9f608e0c15f6244c",
+                "reference": "656bfae3535868ff6511764d9f608e0c15f6244c",
                 "shasum": ""
             },
             "require": {
-                "composer/composer": "^1.10.20",
+                "composer/composer": "^1.10.21",
                 "ergebnis/composer-normalize": "^2.13.3",
                 "icanhazstring/composer-unused": "^0.7.5",
                 "infection/infection": "^0.20.2",
@@ -18455,7 +18411,7 @@
                 "php-parallel-lint/php-parallel-lint": "^1.2.0",
                 "phpspec/prophecy": "^1.13",
                 "phpspec/prophecy-phpunit": "^2.0.1",
-                "phpstan/phpstan": "^0.12.82",
+                "phpstan/phpstan": "^0.12.83",
                 "phpunit/phpunit": "^9.5.4",
                 "psalm/plugin-phpunit": "^0.15.1",
                 "roave/backward-compatibility-check": "^5.0.0",
@@ -18511,7 +18467,7 @@
             "description": "🛠️ Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/3.6.8"
+                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/3.7.0"
             },
             "funding": [
                 {
@@ -18519,7 +18475,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-31T21:35:50+00:00"
+            "time": "2021-04-05T19:59:58+00:00"
         }
     ],
     "aliases": [],
@@ -18531,7 +18487,6 @@
         "mammatus/http-server-contracts": 20,
         "mammatus/http-server-webroot": 20,
         "mammatus/http-server-websockets": 20,
-        "mammatus/metrics": 20,
         "mammatus/metrics-prometheus-vhost": 20,
         "php-di-definitions/react-event-loop-inspected": 20,
         "react-parallel/logger": 20,
