@@ -36,7 +36,7 @@ final class VhostStub
 
     public function name(): string
     {
-        return $this->name;
+        return str_replace('-', '_____', $this->name);
     }
 
     public function webroot(): Webroot
