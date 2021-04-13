@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Configuration\WebSocket;
 
+use Mammatus\Http\Server\Configuration\Sanitize;
+
 final class Bus
 {
     private string $name;
@@ -18,6 +20,11 @@ final class Bus
     {
         $this->name     = $name;
         $this->handlers = $handlers;
+    }
+
+    public function nameSanitized(): string
+    {
+        return Sanitize::sanitize($this->name);
     }
 
     public function name(): string

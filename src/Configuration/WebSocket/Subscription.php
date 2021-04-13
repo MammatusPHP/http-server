@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Configuration\WebSocket;
 
+use Mammatus\Http\Server\Configuration\Sanitize;
 use function assert;
 
 final class Subscription
@@ -22,6 +23,11 @@ final class Subscription
     }
 
     public function name(): string
+    {
+        return Sanitize::sanitize($this->name);
+    }
+
+    public function rawName(): string
     {
         return $this->name;
     }

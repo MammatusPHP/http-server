@@ -34,9 +34,14 @@ final class VhostStub
         return $this->port;
     }
 
+    public function nameSanitized(): string
+    {
+        return Sanitize::sanitize($this->name);
+    }
+
     public function name(): string
     {
-        return str_replace('-', '_____', $this->name);
+        return $this->name;
     }
 
     public function webroot(): Webroot

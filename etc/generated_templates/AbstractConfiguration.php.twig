@@ -62,19 +62,19 @@ abstract class AbstractConfiguration
         {% for server in servers %}
         $metricsRegistry->counter('vhost', 'Currently active vhosts', new Name('type'))->counter(new Label('type', 'WebSocket'))->incrBy({{ server.realms()|length }});
         $metricsRegistry->counter('vhost_realm', 'Currently active realms per vhosts', new Name('type'), new Name('vhost'))->counter(new Label('type', 'WebSocket'), new Label('vhost', '{{ server.vhost().name() }}'))->incrBy({{ server.realms()|length }});
-        $workerPool_{{ server.vhost().name() }}    = new WorkerPool(
+        $workerPool_{{ server.vhost().nameSanitized() }}    = new WorkerPool(
             $rpFactory,
-            $container->get(RequestWorkerFactory_{{ server.vhost().name() }}::class),
+            $container->get(RequestWorkerFactory_{{ server.vhost().nameSanitized() }}::class),
             (int) '13'
         );
-        $http_server_{{ server.vhost().name() }} = new HttpServer($loop, ...array_merge(
+        $http_server_{{ server.vhost().nameSanitized() }} = new HttpServer($loop, ...array_merge(
                 iteratorOrArrayToArray($this->middleware()),
                 [
                     new LimitConcurrentRequestsMiddleware({% if server.vhost().maxConcurrentRequests() is null %}PHP_INT_MAX{% else %}{{ server.vhost().maxConcurrentRequests() }}{% endif %}),
                     new StreamingRequestMiddleware(),
                     new MiddlewareCollector(MiddlewareCollectorMetrics::create($metricsRegistry, new Label('vhost', '{{ server.vhost().name() }}'))),
                     {% if server.realms()|length > 0 %}
-                        new Middleware(['/', '/ws/'], $loop, $container->get(RouterFactory_{{ server.vhost().name() }}::class)->router()),
+                        new Middleware(['/', '/ws/'], $loop, $container->get(RouterFactory_{{ server.vhost().nameSanitized() }}::class)->router()),
                     {% endif %}
                     new RequestBodyBufferMiddleware(65536),
                     static fn (ServerRequestInterface $request, callable $next): PromiseInterface => resolve($next($request->withAttribute('vhost', '{{ server.vhost().name() }}'))),
@@ -88,15 +88,15 @@ abstract class AbstractConfiguration
                     new HtmlCompressMiddleware($htmlCompress),
                     new CssCompressMiddleware($htmlCompress),
                     new JsCompressMiddleware($htmlCompress),
-                    static fn(ServerRequestInterface $request): PromiseInterface => $workerPool_{{ server.vhost().name() }}->perform(new \Mammatus\Http\Server\Middleware\Work(new \Mammatus\Http\Server\Middleware\Request($request))),
+                    static fn(ServerRequestInterface $request): PromiseInterface => $workerPool_{{ server.vhost().nameSanitized() }}->perform(new \Mammatus\Http\Server\Middleware\Work(new \Mammatus\Http\Server\Middleware\Request($request))),
                 ]
             )
         );
-        $http_server_{{ server.vhost().name() }}->on('error', CallableThrowableLogger::create($logger));
-        $this->server_{{ server.vhost().name() }} = new Server(
+        $http_server_{{ server.vhost().nameSanitized() }}->on('error', CallableThrowableLogger::create($logger));
+        $this->server_{{ server.vhost().nameSanitized() }} = new Server(
             '{{ server.vhost().name() }}',
             '0.0.0.0:{{ server.vhost().port() }}',
-            $http_server_{{ server.vhost().name() }},
+            $http_server_{{ server.vhost().nameSanitized() }},
         );
         {% endfor %}
 
@@ -114,7 +114,7 @@ abstract class AbstractConfiguration
         }
 
         {% for server in servers %}
-        yield '{{ server.vhost().name() }}' => $this->server_{{ server.vhost().name() }};
+        yield '{{ server.vhost().name() }}' => $this->server_{{ server.vhost().nameSanitized() }};
         {% endfor %}
     }
 }

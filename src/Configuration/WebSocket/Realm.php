@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Configuration\WebSocket;
 
+use Mammatus\Http\Server\Configuration\Sanitize;
 use function assert;
 
 final class Realm
@@ -33,6 +34,10 @@ final class Realm
         $this->busses = $busses;
     }
 
+    public function nameSanitized(): string
+    {
+        return Sanitize::sanitize($this->name);
+    }
 
     public function name(): string
     {

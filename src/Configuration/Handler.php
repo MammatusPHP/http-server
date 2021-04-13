@@ -32,6 +32,11 @@ final class Handler
         return $this->methods;
     }
 
+    public function busSanitized(): string
+    {
+        return Sanitize::sanitize($this->bus);
+    }
+
     public function bus(): string
     {
         return $this->bus;
