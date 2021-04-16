@@ -194,7 +194,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                 ['server' => $vhost]
             );
             $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                . '/src/Generated/RequestWorker_' . $vhost->vhost()->name() . '.php';
+                . '/src/Generated/RequestWorker_' . $vhost->vhost()->nameSanitized() . '.php';
             file_put_contents($installPath, $classContents);
             chmod($installPath, 0664);
 
@@ -205,7 +205,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                 ['server' => $vhost]
             );
             $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                . '/src/Generated/RequestWorkerFactory_' . $vhost->vhost()->name() . '.php';
+                . '/src/Generated/RequestWorkerFactory_' . $vhost->vhost()->nameSanitized() . '.php';
             file_put_contents($installPath, $classContents);
             chmod($installPath, 0664);
 
@@ -216,7 +216,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                 ['server' => $vhost]
             );
             $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                . '/src/Generated/RouterFactory_' . $vhost->vhost()->name() . '.php';
+                . '/src/Generated/RouterFactory_' . $vhost->vhost()->nameSanitized() . '.php';
             file_put_contents($installPath, $classContents);
             chmod($installPath, 0664);
 
@@ -228,7 +228,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                     ['server' => $vhost, 'bus' => $bus]
                 );
                 $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                    . '/src/Generated/WebSocketWorker_' . $vhost->vhost()->name() . '_' . $bus->name() . '.php';
+                    . '/src/Generated/WebSocketWorker_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
                 file_put_contents($installPath, $classContents);
                 chmod($installPath, 0664);
 
@@ -239,7 +239,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                     ['server' => $vhost, 'bus' => $bus]
                 );
                 $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                    . '/src/Generated/WebSocketWorkerFactory_' . $vhost->vhost()->name() . '_' . $bus->name() . '.php';
+                    . '/src/Generated/WebSocketWorkerFactory_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
                 file_put_contents($installPath, $classContents);
                 chmod($installPath, 0664);
 
@@ -250,7 +250,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                     ['server' => $vhost, 'bus' => $bus]
                 );
                 $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                    . '/src/Generated/CommandHandlerMiddlewareFactory_' . $vhost->vhost()->name() . '_' . $bus->name() . '.php';
+                    . '/src/Generated/CommandHandlerMiddlewareFactory_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
                 file_put_contents($installPath, $classContents);
                 chmod($installPath, 0664);
             }

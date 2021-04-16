@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Configuration\WebSocket;
 
+use Mammatus\Http\Server\Configuration\Sanitize;
 use function assert;
 
 final class Rpc
@@ -19,6 +20,11 @@ final class Rpc
         $this->command = $command;
         $this->bus = $bus;
         $this->transformer = $transformer;
+    }
+
+    public function nameSanitized(): string
+    {
+        return Sanitize::sanitize($this->name);
     }
 
     public function name(): string

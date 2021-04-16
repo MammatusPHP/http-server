@@ -20,6 +20,11 @@ final class Bus
         $this->handlers = $handlers;
     }
 
+    public function nameSanitized(): string
+    {
+        return Sanitize::sanitize($this->name);
+    }
+
     public function name(): string
     {
         return $this->name;
