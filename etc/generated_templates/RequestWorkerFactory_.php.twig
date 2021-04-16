@@ -6,10 +6,10 @@ namespace Mammatus\Http\Server\Generated;
 use Firehed\SimpleLogger\Stdout;
 use Mammatus\ContainerFactory;
 use Psr\Log\LoggerInterface;
-use ReactParallel\ObjectProxy\ProxyListInterface;
 use ReactParallel\Pool\Worker\Work\Worker;
 use ReactParallel\Pool\Worker\Work\WorkerFactory;
 use ReactParallel\Psr11ContainerProxy\ContainerProxy;
+use ReactParallel\Psr11ContainerProxy\OverridesProvider;
 use WyriHaximus\Monolog\Factory;
 
 /**
@@ -17,12 +17,12 @@ use WyriHaximus\Monolog\Factory;
  */
 final class RequestWorkerFactory_{{ server.vhost().nameSanitized() }} implements WorkerFactory
 {
-    private ProxyListInterface $proxyList;
+    private OverridesProvider $overridesProvider;
     private ContainerProxy $proxy;
 
-    public function __construct(ProxyListInterface $proxyList, ContainerProxy $proxy)
+    public function __construct(OverridesProvider $overridesProvider, ContainerProxy $proxy)
     {
-        $this->proxyList = $proxyList;
+        $this->overridesProvider = $overridesProvider;
         $this->proxy = $proxy;
     }
 
@@ -30,11 +30,8 @@ final class RequestWorkerFactory_{{ server.vhost().nameSanitized() }} implements
     {
         $overrides = [];
 
-        foreach ($this->proxyList->interfaces() as $interface) {
-            $overrides[$interface] = fn (): object => $this->proxy->proxy()->get($interface);
-        }
-        foreach ($this->proxyList->noPromiseKnownInterfaces() as $noPromiseInterface => $interface) {
-            $overrides[$noPromiseInterface] = fn (): object => $this->proxy->proxy()->get($interface);
+        foreach ($this->overridesProvider->list() as $from => $to) {
+            $overrides[$from] = fn (): object => $this->proxy->proxy()->get($to);
         }
         $overrides[LoggerInterface::class] = fn (): LoggerInterface => Factory::create('{{ server.vhost().name() }}-http', new Stdout(), []);
 
