@@ -329,25 +329,31 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                         $realms = $busses = $rpcs = $subscriptions = $broadcasts = [];
                         foreach ($handlers as $handler) {
                             if (isset($handler['annotations'][BroadcastAnnotation::class])) {
-                                $broadcasts[$handler['annotations'][BroadcastAnnotation::class]->realm()][] = new Broadcast($handler['class']);
+                                foreach ($handler['annotations'][BroadcastAnnotation::class] as $annotation) {
+                                    $broadcasts[$annotation->realm()][] = new Broadcast($handler['class']);
+                                }
                             }
                             if (isset($handler['annotations'][RpcAnnotation::class])) {
-                                $rpcs[$handler['annotations'][RpcAnnotation::class]->realm()][] = new Rpc(
-                                    $handler['annotations'][RpcAnnotation::class]->rpc(),
-                                    $handler['annotations'][RpcAnnotation::class]->command(),
-                                    $handler['annotations'][RpcAnnotation::class]->bus(),
-                                    $handler['annotations'][RpcAnnotation::class]->transformer(),
-                                );
-                                $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
+                                foreach ($handler['annotations'][RpcAnnotation::class] as $annotation) {
+                                    $rpcs[$annotation->realm()][] = new Rpc(
+                                        $annotation->rpc(),
+                                        $annotation->command(),
+                                        $annotation->bus(),
+                                        $annotation->transformer(),
+                                    );
+                                    $busses[] = $annotation->bus();
+                                }
                             }
                             if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
-                                $subscriptions[$handler['annotations'][SubscriptionAnnotation::class]->realm()][] = new Subscription(
-                                    $handler['annotations'][SubscriptionAnnotation::class]->topic(),
-                                    $handler['annotations'][SubscriptionAnnotation::class]->command(),
-                                    $handler['annotations'][SubscriptionAnnotation::class]->bus(),
-                                    $handler['annotations'][SubscriptionAnnotation::class]->transformer(),
-                                );
-                                $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
+                                foreach ($handler['annotations'][SubscriptionAnnotation::class] as $annotation) {
+                                    $subscriptions[$annotation->realm()][] = new Subscription(
+                                        $annotation->topic(),
+                                        $annotation->command(),
+                                        $annotation->bus(),
+                                        $annotation->transformer(),
+                                    );
+                                    $busses[] = $annotation->bus();
+                                }
                             }
                         }
 
@@ -372,7 +378,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                         })->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
-                                $annotations[get_class($annotation)] = $annotation;
+                                $annotations[get_class($annotation)][] = $annotation;
                             }
 
                             return [
@@ -398,30 +404,34 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                 return true;
                             }
 
-                            foreach ($classNAnnotations['annotations'] as $annotation) {
-                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                    return true;
+                            foreach ($classNAnnotations['annotations'] as $annotations) {
+                                foreach ($annotations as $annotation) {
+                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                        return true;
+                                    }
                                 }
                             }
 
                             return false;
                         })->filter(static function (array $classNAnnotations) use ($vhost): bool {
-                            return $classNAnnotations['annotations'][VhostAnnotation::class]->vhost() === $vhost->name();
+                            return in_array($vhost->name(), array_map(static fn (VhostAnnotation $vhost): string => $vhost->vhost(), $classNAnnotations['annotations'][VhostAnnotation::class]));
                         })->all()
                     ),
                     (static function (array $handlers): array {
                         $serverHandlers = [];
                         foreach ($handlers as $handler) {
-                            foreach ($handler['annotations'] as $annotation) {
-                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                    $serverHandlers[] = new Handler(
-                                        $annotation->methods,
-                                        $annotation->app,
-                                        property_exists($annotation, 'query') ? $annotation->query : $annotation->command,
-                                        $handler['class'],
-                                        self::ROUTE_BEHAVIOR[get_class($annotation)],
-                                        $annotation->path,
-                                    );
+                            foreach ($handler['annotations'] as $annotations) {
+                                foreach ($annotations as $annotation) {
+                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                        $serverHandlers[] = new Handler(
+                                            $annotation->methods,
+                                            $annotation->app,
+                                            property_exists($annotation, 'query') ? $annotation->query : $annotation->command,
+                                            $handler['class'],
+                                            self::ROUTE_BEHAVIOR[get_class($annotation)],
+                                            $annotation->path,
+                                        );
+                                    }
                                 }
                             }
                         }
@@ -437,7 +447,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                         })->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
-                                $annotations[get_class($annotation)] = $annotation;
+                                $annotations[get_class($annotation)][] = $annotation;
                             }
 
                             return [
@@ -451,31 +461,39 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                 return false;
                             }
 
-                            foreach ($classNAnnotations['annotations'] as $annotation) {
-                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                    return true;
+                            foreach ($classNAnnotations['annotations'] as $annotations) {
+                                foreach ($annotations as $annotation) {
+                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                        return true;
+                                    }
                                 }
                             }
 
                             return false;
                         })->filter(static function (array $classNAnnotations) use ($vhost): bool {
-                            return $classNAnnotations['annotations'][VhostAnnotation::class]->vhost() === $vhost->name();
+                            return in_array($vhost->name(), array_map(static fn (VhostAnnotation $vhost): string => $vhost->vhost(), $classNAnnotations['annotations'][VhostAnnotation::class]));
                         })->all()
                     ),
                     (static function (array $handlers): array {
 
                         $busses = [];
                         foreach ($handlers as $handler) {
-                            foreach ($handler['annotations'] as $annotation) {
-                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                    $busses[] = $annotation->app;
+                            foreach ($handler['annotations'] as $annotations) {
+                                foreach ($annotations as $annotation) {
+                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                        $busses[] = $annotation->app;
+                                    }
                                 }
                             }
                             if (isset($handler['annotations'][RpcAnnotation::class])) {
-                                $busses[] = $handler['annotations'][RpcAnnotation::class]->bus();
+                                foreach ($handler['annotations'][RpcAnnotation::class] as $annotation) {
+                                    $busses[] = $annotation->bus();
+                                }
                             }
                             if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
-                                $busses[] = $handler['annotations'][SubscriptionAnnotation::class]->bus();
+                                foreach ($handler['annotations'][SubscriptionAnnotation::class] as $annotation) {
+                                    $busses[] = $annotation->bus();
+                                }
                             }
                         }
 
@@ -486,34 +504,40 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                 ...array_filter(
                                 array_map(
                                     static function (array $handler) use ($bus) {
-                                        foreach ($handler['annotations'] as $annotation) {
-                                            if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                                if ($annotation->app !== $bus) {
-                                                    continue;
-                                                }
+                                        foreach ($handler['annotations'] as $annotations) {
+                                            foreach ($annotations as $annotation) {
+                                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                                    if ($annotation->app !== $bus) {
+                                                        continue;
+                                                    }
 
+                                                    return new Bus\Handler(
+                                                        $bus,
+                                                        property_exists($annotation, 'query') ? $annotation->query : $annotation->command,
+                                                        $handler['class'],
+                                                    );
+                                                }
+                                            }
+                                        }
+
+                                        if (isset($handler['annotations'][RpcAnnotation::class])) {
+                                            foreach ($handler['annotations'][RpcAnnotation::class] as $annotation) {
                                                 return new Bus\Handler(
                                                     $bus,
-                                                    property_exists($annotation, 'query') ? $annotation->query : $annotation->command,
+                                                    $annotation->command(),
                                                     $handler['class'],
                                                 );
                                             }
                                         }
 
-                                        if (isset($handler['annotations'][RpcAnnotation::class])) {
-                                            return new Bus\Handler(
-                                                $bus,
-                                                $handler['annotations'][RpcAnnotation::class]->command(),
-                                                $handler['class'],
-                                            );
-                                        }
-
                                         if (isset($handler['annotations'][SubscriptionAnnotation::class])) {
-                                            return new Bus\Handler(
-                                                $bus,
-                                                $handler['annotations'][SubscriptionAnnotation::class]->command(),
-                                                $handler['class'],
-                                            );
+                                            foreach ($handler['annotations'][SubscriptionAnnotation::class] as $annotation) {
+                                                return new Bus\Handler(
+                                                    $bus,
+                                                    $annotation->command(),
+                                                    $handler['class'],
+                                                );
+                                            }
                                         }
                                     },
                                     array_values($handlers),
@@ -534,7 +558,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                         })->flatMap(static function (ReflectionClass $class) use ($annotationReader): array {
                             $annotations = [];
                             foreach ($annotationReader->getClassAnnotations(new \ReflectionClass($class->getName())) as $annotation) {
-                                $annotations[get_class($annotation)] = $annotation;
+                                $annotations[get_class($annotation)][] = $annotation;
                             }
 
                             return [
@@ -556,15 +580,17 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                                 return true;
                             }
 
-                            foreach ($classNAnnotations['annotations'] as $annotation) {
-                                if (is_subclass_of($annotation, Routing\Endpoint::class)) {
-                                    return true;
+                            foreach ($classNAnnotations['annotations'] as $annotations) {
+                                foreach ($annotations as $annotation) {
+                                    if (is_subclass_of($annotation, Routing\Endpoint::class)) {
+                                        return true;
+                                    }
                                 }
                             }
 
                             return false;
                         })->filter(static function (array $classNAnnotations) use ($vhost): bool {
-                            return $classNAnnotations['annotations'][VhostAnnotation::class]->vhost() === $vhost->name();
+                            return in_array($vhost->name(), array_map(static fn (VhostAnnotation $vhost): string => $vhost->vhost(), $classNAnnotations['annotations'][VhostAnnotation::class]));
                         })->all()
                     )
                 );
