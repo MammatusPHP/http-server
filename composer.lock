@@ -2321,12 +2321,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "370b836cf9aeea5e04a857b5945b158790bad7cd"
+                "reference": "92123356f2f40e61a15356d7fed3d1a1ada260f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/370b836cf9aeea5e04a857b5945b158790bad7cd",
-                "reference": "370b836cf9aeea5e04a857b5945b158790bad7cd",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/92123356f2f40e61a15356d7fed3d1a1ada260f5",
+                "reference": "92123356f2f40e61a15356d7fed3d1a1ada260f5",
                 "shasum": ""
             },
             "require": {
@@ -2424,7 +2424,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-09T13:48:00+00:00"
+            "time": "2021-04-16T10:55:47+00:00"
         },
         {
             "name": "mammatus/healthz-vhost",
@@ -6164,12 +6164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy.git",
-                "reference": "8c08cf84827a87da93102de491b37aff11ae5265"
+                "reference": "1bf774d7778705b459bfc634f0e17839464814e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/8c08cf84827a87da93102de491b37aff11ae5265",
-                "reference": "8c08cf84827a87da93102de491b37aff11ae5265",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy/zipball/1bf774d7778705b459bfc634f0e17839464814e4",
+                "reference": "1bf774d7778705b459bfc634f0e17839464814e4",
                 "shasum": ""
             },
             "require": {
@@ -6266,7 +6266,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-10T16:36:09+00:00"
+            "time": "2021-04-14T08:42:21+00:00"
         },
         {
             "name": "react-parallel/object-proxy-attributes",
@@ -6330,12 +6330,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/psr-11-container-proxy.git",
-                "reference": "aa37331f2953d27b9205bb768a3073216eab453f"
+                "reference": "988ffdb3af82e9447ef2f67a8fdb5e8b58908608"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/psr-11-container-proxy/zipball/aa37331f2953d27b9205bb768a3073216eab453f",
-                "reference": "aa37331f2953d27b9205bb768a3073216eab453f",
+                "url": "https://api.github.com/repos/reactphp-parallel/psr-11-container-proxy/zipball/988ffdb3af82e9447ef2f67a8fdb5e8b58908608",
+                "reference": "988ffdb3af82e9447ef2f67a8fdb5e8b58908608",
                 "shasum": ""
             },
             "require": {
@@ -6387,7 +6387,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-06T07:27:29+00:00"
+            "time": "2021-04-16T13:36:11+00:00"
         },
         {
             "name": "react-parallel/react-parallel",
