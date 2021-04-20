@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "717a3950f7d1dd40626f60e09561d935",
+    "content-hash": "8a52c11804cd3bdb5bf48ddf08f745f4",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1333,16 +1333,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.37.0",
+            "version": "v8.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "591e31015a8b0731708c54411cb52d50a00b2bc3"
+                "reference": "21690cd5591f2d42d792e5e4a687f9beba829f1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/591e31015a8b0731708c54411cb52d50a00b2bc3",
-                "reference": "591e31015a8b0731708c54411cb52d50a00b2bc3",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/21690cd5591f2d42d792e5e4a687f9beba829f1d",
+                "reference": "21690cd5591f2d42d792e5e4a687f9beba829f1d",
                 "shasum": ""
             },
             "require": {
@@ -1383,11 +1383,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-04-01T13:26:52+00:00"
+            "time": "2021-04-14T11:48:08+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.37.0",
+            "version": "v8.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1435,7 +1435,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.37.0",
+            "version": "v8.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
