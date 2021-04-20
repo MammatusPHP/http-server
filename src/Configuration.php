@@ -10,6 +10,7 @@ use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
 use React\Http\Middleware\RequestBodyBufferMiddleware;
 use React\Http\Middleware\RequestBodyParserMiddleware;
+use WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers;
 use WyriHaximus\React\Http\Middleware\ResumeResponseBodyMiddleware;
 
 use function ini_get;
@@ -37,5 +38,6 @@ final class Configuration extends AbstractConfiguration
         }
 
         yield new RequestBodyParserMiddleware();
+        yield new CustomRequestBodyParsers();
     }
 }

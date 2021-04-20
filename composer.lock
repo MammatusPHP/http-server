@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6099eaa8fd0f4050d02504a0b455cef1",
+    "content-hash": "717a3950f7d1dd40626f60e09561d935",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -10537,6 +10537,60 @@
                 }
             ],
             "time": "2020-10-02T15:22:28+00:00"
+        },
+        {
+            "name": "wyrihaximus/react-http-middleware-custom-request-body-parsers",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/reactphp-http-middleware-custom-request-body-parsers.git",
+                "reference": "36e0e6b267904fc3922ab7915228ddb61f75941a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-custom-request-body-parsers/zipball/36e0e6b267904fc3922ab7915228ddb61f75941a",
+                "reference": "36e0e6b267904fc3922ab7915228ddb61f75941a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4",
+                "psr/http-message": "^1.0.1",
+                "react/http": "^1.3",
+                "react/promise": "^2.8",
+                "ringcentral/psr7": "^1.3",
+                "thecodingmachine/safe": "^1.3.3"
+            },
+            "require-dev": {
+                "wyrihaximus/async-test-utilities": "^3.4.24"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\Http\\Middleware\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "react/http middleware for custom request body parsers",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/reactphp-http-middleware-custom-request-body-parsers/issues",
+                "source": "https://github.com/WyriHaximus/reactphp-http-middleware-custom-request-body-parsers/tree/2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-04-20T16:21:18+00:00"
         },
         {
             "name": "wyrihaximus/react-http-middleware-html-compress",
