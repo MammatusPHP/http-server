@@ -76,7 +76,7 @@ abstract class AbstractConfiguration
                     {% if server.realms()|length > 0 %}
                         new Middleware(['/', '/ws/'], $loop, $container->get(RouterFactory_{{ server.vhost().nameSanitized() }}::class)->router()),
                     {% endif %}
-                    new RequestBodyBufferMiddleware(65536),
+                    new RequestBodyBufferMiddleware(),
                     static fn (ServerRequestInterface $request, callable $next): PromiseInterface => resolve($next($request->withAttribute('vhost', '{{ server.vhost().name() }}'))),
                     {% if server.hasWebroot() %}
                     new WebrootPreloadMiddleware(
