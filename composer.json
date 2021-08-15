@@ -34,7 +34,7 @@
         "middlewares/filesystem": "^1",
         "middlewares/https": "^1.1",
         "middlewares/response-time": "^1",
-        "middlewares/uuid": "^1",
+        "middlewares/uuid": "^2",
         "nikic/fast-route": "^1.2",
         "nikic/php-parser": "^4.10",
         "northwoods/broker": "^3.0",
