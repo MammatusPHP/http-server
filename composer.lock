@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d1c3ec222b96290a33705f94f561221",
+    "content-hash": "286c8a87c762fc5608a24fa83ec40b72",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -189,20 +189,20 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "3.9.8",
+            "version": "4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
-                "reference": "125154fec507d0f1afd0c8913b1cf919dff1da92"
+                "reference": "6bf68000a8d1eba9bb75534ae05d594cf278357b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/collection/zipball/125154fec507d0f1afd0c8913b1cf919dff1da92",
-                "reference": "125154fec507d0f1afd0c8913b1cf919dff1da92",
+                "url": "https://api.github.com/repos/cakephp/collection/zipball/6bf68000a8d1eba9bb75534ae05d594cf278357b",
+                "reference": "6bf68000a8d1eba9bb75534ae05d594cf278357b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0,<8.0.0"
+                "php": ">=7.2.0"
             },
             "type": "library",
             "autoload": {
@@ -237,7 +237,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/collection"
             },
-            "time": "2020-10-28T18:13:14+00:00"
+            "time": "2021-05-24T17:26:44+00:00"
         },
         {
             "name": "cakephp/core",
@@ -18563,5 +18563,5 @@
     "platform-overrides": {
         "php": "7.4.7"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
