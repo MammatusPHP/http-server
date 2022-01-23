@@ -18,9 +18,9 @@ final class JsonResponse
      * @param string     $reason  Reason phrase (a default will be used if possible).
      */
     public static function create(
+        JsonStream $body,
         int $status = 200,
         array $headers = [],
-        JsonStream $body,
         string $version = '1.1',
         string $reason = ''
     ): ResponseInterface {

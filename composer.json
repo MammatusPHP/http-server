@@ -1,23 +1,22 @@
 {
     "name": "mammatus/http-server",
-    "type": "composer-plugin",
     "description": "\ud83d\udc19 Multi vhost HTTP Server",
     "license": "MIT",
+    "type": "composer-plugin",
     "require": {
-        "php": "^8 || ^7.4",
+        "php": "^8.1",
         "composer-plugin-api": "^2",
         "cakephp/collection": "^4.2",
-        "chimera/bus-tactician": "^0.3.0",
-        "chimera/mapping": "^0.3.0",
-        "chimera/routing": "^0.3.4",
-        "chimera/routing-expressive": "^0.3.0",
+        "chimera/bus-tactician": "^0.4.0",
+        "chimera/mapping": "^0.4.0",
+        "chimera/routing": "^0.4.0",
+        "chimera/routing-mezzio": "^0.4.0",
         "doctrine/annotations": "^1.6",
-        "firehed/simplelogger": "^2.3",
         "illuminate/collections": "^8.54",
         "joshdifabio/composed": "^1",
         "laminas/laminas-diactoros": "^2.2",
-        "lcobucci/content-negotiation-middleware": "^2.2",
-        "lcobucci/jwt": "^3.3",
+        "lcobucci/content-negotiation-middleware": "^3.1",
+        "lcobucci/jwt": "^4.1",
         "mammatus/app": "dev-master",
         "mammatus/healthz-vhost": "dev-master",
         "mammatus/http-server-annotations": "dev-master",
@@ -28,60 +27,77 @@
         "mammatus/metrics-prometheus-vhost": "dev-master",
         "mezzio/mezzio-helpers": "^5.6",
         "mezzio/mezzio-router": "^3.6",
-        "middlewares/access-log": "^1",
-        "middlewares/cache": "^1",
-        "middlewares/client-ip": "^1",
-        "middlewares/filesystem": "^1",
-        "middlewares/https": "^1.1",
-        "middlewares/response-time": "^1",
-        "middlewares/uuid": "^1",
+        "middlewares/access-log": "^2",
+        "middlewares/cache": "^2",
+        "middlewares/client-ip": "^2",
+        "middlewares/filesystem": "^2",
+        "middlewares/https": "^2",
+        "middlewares/response-time": "^2",
         "nikic/fast-route": "^1.2",
         "nikic/php-parser": "^4.10",
         "northwoods/broker": "^3.0",
         "opis/closure": "^3.5",
-        "php-di-definitions/react-event-loop-inspected": "dev-master",
         "react-inspector/http-middleware": "^2.0",
-        "react-parallel/event-loop": "^1.1",
-        "react-parallel/infinite-pool": "^2.1",
-        "react-parallel/logger": "dev-master",
-        "react-parallel/object-proxy": "dev-master",
-        "react-parallel/psr-11-container-proxy": "dev-master",
-        "react-parallel/react-parallel": "^1.1",
-        "react-parallel/worker-pool": "^1",
         "react/http": "^1",
-        "roave/better-reflection": "^4.0",
+        "roave/better-reflection": "^5",
         "thecodingmachine/safe": "^1",
+        "thruway/client": "dev-widen-psr-log as 0.5.7",
         "thruway/middleware": "^0.1.0",
         "wyrihaximus/broadcast": "^1.0",
         "wyrihaximus/broadcast-contracts": "^1",
         "wyrihaximus/doctrine-annotation-autoloader": "^1",
-        "wyrihaximus/get-in-packages-composer.jason": "^1",
+        "wyrihaximus/get-in-packages-composer.jason": "^2",
         "wyrihaximus/iterator-or-array-to-array": "^1.1",
-        "wyrihaximus/json-psr7": "^1",
+        "wyrihaximus/json-psr7": "^1.3",
         "wyrihaximus/list-classes-in-directory": "^1.3",
         "wyrihaximus/metrics": "^1.0",
         "wyrihaximus/metrics-tactician": "^1.0",
-        "wyrihaximus/psr-3-callable-throwable-logger": "^2.0",
-        "wyrihaximus/psr-3-context-logger": "^1",
+        "wyrihaximus/psr-3-callable-throwable-logger": "^2.2",
+        "wyrihaximus/psr-3-context-logger": "^2",
         "wyrihaximus/react-http-middleware-compress-assets": "^2.0",
         "wyrihaximus/react-http-middleware-custom-request-body-parsers": "^2.0",
         "wyrihaximus/react-http-middleware-html-compress": "^2.0",
-        "wyrihaximus/react-http-middleware-resume-response-body": "^2.0",
+        "wyrihaximus/react-http-middleware-resume-response-body": "^3.0",
         "wyrihaximus/react-http-middleware-webroot-preload": "^2.0",
         "wyrihaximus/react-stream-json": "^1.2",
-        "wyrihaximus/recoil-promise-coroutine-wrapper": "^1",
-        "wyrihaximus/recoil-queue-caller-pool": "^1.2",
         "wyrihaximus/simple-twig": "^2",
-        "wyrihaximus/string-get-in": "^1",
-        "zendframework/zend-diactoros": "^2.1"
+        "wyrihaximus/string-get-in": "^1"
     },
     "require-dev": {
-        "monolog/monolog": "^2",
-        "wyrihaximus/async-test-utilities": "^3"
+        "mammatus/test-utilities": "dev-master",
+        "monolog/monolog": "^2"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/WyriHaximus-secret-labs/client"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mammatus\\Http\\Server\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mammatus\\Tests\\Http\\Server\\": "tests/"
+        }
     },
     "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupol/composer-packages": true,
+            "ergebnis/composer-normalize": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true,
+            "mindplay/composer-locator": true,
+            "react-parallel/object-proxy": true,
+            "wyrihaximus/broadcast": true,
+            "wyrihaximus/composer-update-bin-autoload-path": true
+        },
         "platform": {
-            "php": "7.4.7"
+            "php": "8.1.0"
         },
         "sort-packages": true
     },
@@ -103,16 +119,6 @@
             "broadcast": {
                 "has-listeners": true
             }
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Mammatus\\Http\\Server\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Mammatus\\Tests\\Http\\Server\\": "tests/"
         }
     },
     "scripts": {

@@ -39,6 +39,7 @@ use React\EventLoop\StreamSelectLoop;
 use Roave\BetterReflection\BetterReflection;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use Roave\BetterReflection\Reflector\ClassReflector;
+use Roave\BetterReflection\Reflector\DefaultReflector;
 use Roave\BetterReflection\Reflector\Exception\IdentifierNotFound;
 use Roave\BetterReflection\SourceLocator\Type\Composer\Factory\MakeLocatorForComposerJsonAndInstalledJson;
 use Roave\BetterReflection\SourceLocator\Type\Composer\Psr\Exception\InvalidPrefixMapping;
@@ -286,7 +287,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         $vendorDir = $composer->getConfig()->get('vendor-dir');
         retry:
         try {
-            $classReflector = new ClassReflector(
+            $classReflector = new DefaultReflector(
                 (new MakeLocatorForComposerJsonAndInstalledJson())(dirname($vendorDir), (new BetterReflection())->astLocator()),
             );
         } catch (InvalidPrefixMapping $invalidPrefixMapping) {
@@ -602,7 +603,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         return $vhosts;
     }
 
-    private static function classes(array $packages, string $vendorDir, ClassReflector $classReflector, IOInterface $io): Collection
+    private static function classes(array $packages, string $vendorDir, DefaultReflector $classReflector, IOInterface $io): Collection
     {
         return (new Collection($packages))->filter(static function (PackageInterface $package): bool {
             return count($package->getAutoload()) > 0;
@@ -661,7 +662,7 @@ final class Installer implements PluginInterface, EventSubscriberInterface
                         $reflectionClass->getMethods();
 
                         return $reflectionClass;
-                    })($classReflector->reflect($class)),
+                    })($classReflector->reflectClass($class)),
                 ];
             } catch (IdentifierNotFound $identifierNotFound) {
                 $io->write(sprintf(
