@@ -41,7 +41,7 @@
         "react/http": "^1",
         "roave/better-reflection": "^5",
         "thecodingmachine/safe": "^1",
-        "thruway/client": "dev-widen-psr-log as 0.5.7",
+        "thruway/client": "^0.5.6",
         "thruway/middleware": "^0.1.0",
         "wyrihaximus/broadcast": "^1.0",
         "wyrihaximus/broadcast-contracts": "^1",
@@ -67,12 +67,6 @@
         "mammatus/test-utilities": "dev-master",
         "monolog/monolog": "^2"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/WyriHaximus-secret-labs/client"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Mammatus\\Http\\Server\\": "src/"

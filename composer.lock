@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8bf826e4d4db0c8f7d29b4dafc7af0a",
+    "content-hash": "9babd4aab6d4514f5913a3230d1809df",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -6037,16 +6037,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.12",
+            "version": "9.5.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "93d4bf4c37aec6384bb9e5d390d9049a463a7256"
+                "reference": "597cb647654ede35e43b137926dfdfef0fb11743"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/93d4bf4c37aec6384bb9e5d390d9049a463a7256",
-                "reference": "93d4bf4c37aec6384bb9e5d390d9049a463a7256",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/597cb647654ede35e43b137926dfdfef0fb11743",
+                "reference": "597cb647654ede35e43b137926dfdfef0fb11743",
                 "shasum": ""
             },
             "require": {
@@ -6124,7 +6124,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.12"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.13"
             },
             "funding": [
                 {
@@ -6136,7 +6136,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-21T05:54:47+00:00"
+            "time": "2022-01-24T07:33:35+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -10883,16 +10883,16 @@
         },
         {
             "name": "thruway/client",
-            "version": "dev-widen-psr-log",
+            "version": "0.5.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WyriHaximus-secret-labs/client.git",
-                "reference": "f740b4836fff916e78a1cedff77e3d05d5dabdb5"
+                "url": "https://github.com/thruway/client.git",
+                "reference": "f4f0310d5588a16a33eb3b53f9a102e290b6b794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus-secret-labs/client/zipball/f740b4836fff916e78a1cedff77e3d05d5dabdb5",
-                "reference": "f740b4836fff916e78a1cedff77e3d05d5dabdb5",
+                "url": "https://api.github.com/repos/thruway/client/zipball/f4f0310d5588a16a33eb3b53f9a102e290b6b794",
+                "reference": "f4f0310d5588a16a33eb3b53f9a102e290b6b794",
                 "shasum": ""
             },
             "require": {
@@ -10912,6 +10912,7 @@
                     "Thruway\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10930,15 +10931,16 @@
             "description": "Thruway WAMP client",
             "keywords": [
                 "Autobahn",
-                "Client",
                 "WAMP",
                 "WAMP2",
-                "WebSockets"
+                "WebSockets",
+                "client"
             ],
             "support": {
-                "source": "https://github.com/WyriHaximus-secret-labs/client/tree/widen-psr-log"
+                "issues": "https://github.com/thruway/client/issues",
+                "source": "https://github.com/thruway/client/tree/0.5.6"
             },
-            "time": "2022-01-18T07:30:50+00:00"
+            "time": "2022-01-24T22:02:05+00:00"
         },
         {
             "name": "thruway/middleware",
@@ -17763,14 +17765,7 @@
             "time": "2022-01-11T06:37:39+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "thruway/client",
-            "version": "dev-widen-psr-log",
-            "alias": "0.5.7",
-            "alias_normalized": "0.5.7.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "mammatus/app": 20,
@@ -17780,7 +17775,6 @@
         "mammatus/http-server-webroot": 20,
         "mammatus/http-server-websockets": 20,
         "mammatus/metrics-prometheus-vhost": 20,
-        "thruway/client": 20,
         "mammatus/test-utilities": 20
     },
     "prefer-stable": false,
