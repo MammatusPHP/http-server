@@ -36,7 +36,7 @@
         "nikic/fast-route": "^1.2",
         "nikic/php-parser": "^4.10",
         "northwoods/broker": "^3.0",
-        "opis/closure": "^3.5",
+        "opis/closure": "^3.6",
         "react-inspector/http-middleware": "^2.0",
         "react/http": "^1",
         "roave/better-reflection": "^5",
