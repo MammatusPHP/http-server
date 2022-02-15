@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Web;
 
-use React\EventLoop\LoopInterface;
-use React\Http\Server as HttpServer;
-use React\Socket\Server as SocketServer;
+use React\Http\HttpServer;
+use React\Socket\SocketServer;
 
 final class Server
 {
@@ -23,9 +22,9 @@ final class Server
         $this->http    = $http;
     }
 
-    public function start(LoopInterface $loop): void
+    public function start(): void
     {
-        $this->socket = new SocketServer($this->address, $loop);
+        $this->socket = new SocketServer($this->address);
         $this->http->listen($this->socket);
     }
 

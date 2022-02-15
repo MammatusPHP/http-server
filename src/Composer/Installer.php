@@ -190,28 +190,6 @@ final class Installer implements PluginInterface, EventSubscriberInterface
         foreach ($vhosts as $vhost) {
             $classContents = render(
                 file_get_contents(
-                    self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/RequestWorker_.php.twig'
-                ),
-                ['server' => $vhost]
-            );
-            $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                . '/src/Generated/RequestWorker_' . $vhost->vhost()->nameSanitized() . '.php';
-            file_put_contents($installPath, $classContents);
-            chmod($installPath, 0664);
-
-            $classContents = render(
-                file_get_contents(
-                    self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/RequestWorkerFactory_.php.twig'
-                ),
-                ['server' => $vhost]
-            );
-            $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                . '/src/Generated/RequestWorkerFactory_' . $vhost->vhost()->nameSanitized() . '.php';
-            file_put_contents($installPath, $classContents);
-            chmod($installPath, 0664);
-
-            $classContents = render(
-                file_get_contents(
                     self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/RouterFactory_.php.twig'
                 ),
                 ['server' => $vhost]
@@ -224,34 +202,23 @@ final class Installer implements PluginInterface, EventSubscriberInterface
             foreach ($vhost->busses() as $bus) {
                 $classContents = render(
                     file_get_contents(
-                        self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/WebSocketWorker_.php.twig'
+                        self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/WebCommandHandlerMiddlewareFactory_.php.twig'
                     ),
                     ['server' => $vhost, 'bus' => $bus]
                 );
                 $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                    . '/src/Generated/WebSocketWorker_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
+                    . '/src/Generated/WebCommandHandlerMiddlewareFactory_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
                 file_put_contents($installPath, $classContents);
                 chmod($installPath, 0664);
 
                 $classContents = render(
                     file_get_contents(
-                        self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/WebSocketWorkerFactory_.php.twig'
+                        self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/WebSocketCommandHandlerMiddlewareFactory_.php.twig'
                     ),
                     ['server' => $vhost, 'bus' => $bus]
                 );
                 $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                    . '/src/Generated/WebSocketWorkerFactory_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
-                file_put_contents($installPath, $classContents);
-                chmod($installPath, 0664);
-
-                $classContents = render(
-                    file_get_contents(
-                        self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/etc/generated_templates/CommandHandlerMiddlewareFactory_.php.twig'
-                    ),
-                    ['server' => $vhost, 'bus' => $bus]
-                );
-                $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage())
-                    . '/src/Generated/CommandHandlerMiddlewareFactory_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
+                    . '/src/Generated/WebSocketCommandHandlerMiddlewareFactory_' . $vhost->vhost()->nameSanitized() . '_' . $bus->nameSanitized() . '.php';
                 file_put_contents($installPath, $classContents);
                 chmod($installPath, 0664);
             }
