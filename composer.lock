@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24b9957dab0c08b8affb6577bbe6ecde",
+    "content-hash": "16278e222f5e7d879b890c9497346b38",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -258,7 +258,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "4.3.5",
+            "version": "4.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
