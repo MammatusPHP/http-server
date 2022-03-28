@@ -13,13 +13,11 @@ use WyriHaximus\Broadcast\Contracts\Listener;
 final class Server implements Listener
 {
     private Configuration $configuration;
-    private LoopInterface $loop;
     private LoggerInterface $logger;
 
-    public function __construct(Configuration $configuration, LoopInterface $loop, LoggerInterface $logger)
+    public function __construct(Configuration $configuration, LoggerInterface $logger)
     {
         $this->configuration = $configuration;
-        $this->loop          = $loop;
         $this->logger        = $logger;
     }
 
@@ -27,7 +25,7 @@ final class Server implements Listener
     {
         foreach ($this->configuration->servers() as $server) {
             $this->logger->debug('Starting server: ' . $server->name());
-            $server->start($this->loop);
+            $server->start();
             $this->logger->debug('Started server: ' . $server->name());
         }
     }
