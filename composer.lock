@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "926a046f2f35e8788e48d8f5749ae84c",
+    "content-hash": "8bd93f66d92c1ca616cbbae72a7dcd6f",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -258,20 +258,20 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "4.3.5",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
-                "reference": "724d821843e7d9ccdba9df27a7cc7fca506d5bc5"
+                "reference": "4b552b9ce511a0b01cd5d3f3cd342bcacdfb343f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/collection/zipball/724d821843e7d9ccdba9df27a7cc7fca506d5bc5",
-                "reference": "724d821843e7d9ccdba9df27a7cc7fca506d5bc5",
+                "url": "https://api.github.com/repos/cakephp/collection/zipball/4b552b9ce511a0b01cd5d3f3cd342bcacdfb343f",
+                "reference": "4b552b9ce511a0b01cd5d3f3cd342bcacdfb343f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.0"
+                "php": ">=7.4.0"
             },
             "type": "library",
             "autoload": {
@@ -306,7 +306,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/collection"
             },
-            "time": "2021-12-17T14:28:04+00:00"
+            "time": "2022-05-31T14:08:14+00:00"
         },
         {
             "name": "cakephp/core",
@@ -17847,5 +17847,5 @@
     "platform-overrides": {
         "php": "8.1.0"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
