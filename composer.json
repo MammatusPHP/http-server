@@ -44,7 +44,7 @@
         "react/http": "^1",
         "roave/better-reflection": "^5",
         "thecodingmachine/safe": "^1",
-        "thruway/client": "^0.5.6",
+        "thruway/client": "^0.5.8",
         "thruway/middleware": "^0.1.1",
         "voryx/thruway": "0.6.1 as 0.5.13",
         "wyrihaximus/broadcast": "^1.0",
