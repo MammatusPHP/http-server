@@ -4334,16 +4334,16 @@
         },
         {
             "name": "middlewares/access-log",
-            "version": "v2.0.0",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/access-log.git",
-                "reference": "1e674e1c73c25e6607adfa0bc11278e1708d48f0"
+                "reference": "20ac3e5bb76ba63676ef6879708235c169d904af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/access-log/zipball/1e674e1c73c25e6607adfa0bc11278e1708d48f0",
-                "reference": "1e674e1c73c25e6607adfa0bc11278e1708d48f0",
+                "url": "https://api.github.com/repos/middlewares/access-log/zipball/20ac3e5bb76ba63676ef6879708235c169d904af",
+                "reference": "20ac3e5bb76ba63676ef6879708235c169d904af",
                 "shasum": ""
             },
             "require": {
@@ -4385,9 +4385,9 @@
             ],
             "support": {
                 "issues": "https://github.com/middlewares/access-log/issues",
-                "source": "https://github.com/middlewares/access-log/tree/v2.0.0"
+                "source": "https://github.com/middlewares/access-log/tree/v2.1.2"
             },
-            "time": "2020-12-02T00:05:08+00:00"
+            "time": "2022-05-17T17:43:36+00:00"
         },
         {
             "name": "middlewares/cache",
