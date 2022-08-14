@@ -11,7 +11,7 @@
         "chimera/mapping": "^0.4.0",
         "chimera/routing": "^0.4.0",
         "chimera/routing-mezzio": "^0.4.0",
-        "doctrine/annotations": "^1.6",
+        "doctrine/annotations": "^1.13",
         "for/http-middleware-psr15-adapter": "dev-fibers",
         "illuminate/collections": "^8.83.23",
         "joshdifabio/composed": "^1",
