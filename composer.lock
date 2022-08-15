@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d4693c15da49f607538df13a5187d43",
+    "content-hash": "7eea44618376ebe90328cb44c156e923",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1749,16 +1749,16 @@
         },
         {
             "name": "for/http-middleware-psr15-adapter",
-            "version": "dev-fibers",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter.git",
-                "reference": "e2bdaa7f8ee3cced57706dfde90a68f50c887d2d"
+                "reference": "078431f1eff2235fcf6bf0fd55fc1425fdbf7eda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/friends-of-reactphp/http-middleware-psr15-adapter/zipball/e2bdaa7f8ee3cced57706dfde90a68f50c887d2d",
-                "reference": "e2bdaa7f8ee3cced57706dfde90a68f50c887d2d",
+                "url": "https://api.github.com/repos/friends-of-reactphp/http-middleware-psr15-adapter/zipball/078431f1eff2235fcf6bf0fd55fc1425fdbf7eda",
+                "reference": "078431f1eff2235fcf6bf0fd55fc1425fdbf7eda",
                 "shasum": ""
             },
             "require": {
@@ -1790,9 +1790,9 @@
             ],
             "support": {
                 "issues": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter/issues",
-                "source": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter/tree/fibers"
+                "source": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter/tree/v2.0.0"
             },
-            "time": "2022-08-12T15:20:20+00:00"
+            "time": "2022-08-14T21:05:23+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -18157,7 +18157,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "for/http-middleware-psr15-adapter": 20,
         "mammatus/app": 20,
         "mammatus/healthz-vhost": 20,
         "mammatus/http-server-annotations": 20,
@@ -18177,5 +18176,5 @@
     "platform-overrides": {
         "php": "8.1.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
