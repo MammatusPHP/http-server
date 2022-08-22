@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc3d7709d1e62098abe7c9fb6e76cb7a",
+    "content-hash": "c0ca9a4ed7595bf2d4aa3be71661d44e",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1955,7 +1955,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v9.24.0",
+            "version": "v9.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2010,7 +2010,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v9.24.0",
+            "version": "v9.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2056,7 +2056,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v9.24.0",
+            "version": "v9.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2104,7 +2104,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v9.24.0",
+            "version": "v9.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
