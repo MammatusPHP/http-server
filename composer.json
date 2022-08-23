@@ -41,7 +41,7 @@
         "opis/closure": "^3.5",
         "react-inspector/http-middleware": "^2.0",
         "react/async": "^4",
-        "react/http": "^1",
+        "react/http": "^1.7",
         "roave/better-reflection": "^5",
         "thecodingmachine/safe": "^1",
         "thruway/client": "^0.5.8",
