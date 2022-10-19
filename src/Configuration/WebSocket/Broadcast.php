@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Configuration\WebSocket;
 
+use Mammatus\Http\Server\Configuration\Sanitize;
+
 final class Broadcast
 {
-    private string $class;
+    public readonly string $classSanitized;
 
-    public function __construct(string $class)
-    {
-        $this->class = $class;
-    }
-
-    public function class(): string
-    {
-        return $this->class;
+    public function __construct(
+        public readonly string $class
+    ) {
+        $this->classSanitized = Sanitize::sanitize($this->class);
     }
 }

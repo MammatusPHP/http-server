@@ -11,12 +11,8 @@ use Psr\Http\Message\StreamInterface;
 
 final class StreamFactory extends LDStreamFactory implements StreamFactoryInterface
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function createStream(string $content = '') : StreamInterface
+    public function createStream(string $content = ''): StreamInterface
     {
         return new StringStream($content);
     }
-
 }

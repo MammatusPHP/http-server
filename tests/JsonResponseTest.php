@@ -1,43 +1,47 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace ReactiveApps\Tests\Command\HttpServer;
+declare(strict_types=1);
 
-use React\EventLoop\Factory;
-use function React\Promise\Stream\buffer;
-use ReactiveApps\Command\HttpServer\JsonResponse;
+namespace Mammatus\Tests\Http\Server;
+
+use Mammatus\Http\Server\JsonResponse;
+use React\EventLoop\Loop;
+use React\Stream\ReadableStreamInterface;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\React\Stream\Json\JsonStream;
-use function Safe\json_encode;
 
-/**
- * @internal
- */
+use function React\Async\await;
+use function React\Promise\Stream\buffer;
+use function Safe\json_encode;
+use function time;
+
 final class JsonResponseTest extends AsyncTestCase
 {
     public function testDataTransfer(): void
     {
-        $loop = Factory::create();
         $data = [
             'bool' => [
                 false,
                 true,
             ],
             'string' => 'beer',
-            'int' => \time(),
+            'int' => time(),
         ];
 
         $jsonStream = new JsonStream();
 
-        $loop->addTimer(0.1, function () use ($jsonStream, $data): void {
+        Loop::addTimer(0.1, static function () use ($jsonStream, $data): void {
             $jsonStream->end($data);
         });
 
-        $response = JsonResponse::create(666, [], $jsonStream);
+        $response = JsonResponse::create($jsonStream, 666, [], '1.1', 'oops');
 
-        /** @var JsonStream $body */
+        self::assertSame('oops', $response->getReasonPhrase());
+
         $body = $response->getBody();
+        self::assertInstanceOf(ReadableStreamInterface::class, $body);
 
-        $body = $this->await(buffer($body), $loop);
+        $body = await(buffer($body));
         self::assertSame(json_encode($data), $body);
     }
 }

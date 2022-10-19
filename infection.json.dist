@@ -1,54 +1,28 @@
 {
-    "timeout": 120,
+    "timeout": 10,
     "source": {
         "directories": [
             "src"
+        ],
+        "excludes": [
+            "Generated",
+            "Configuration.php",
+            "Server.php"
         ]
     },
+    "minMsi": 100,
+    "minCoveredMsi": 100,
+    "ignoreMsiWithNoMutations": true,
     "logs": {
-        "text": "infection-log.txt"
+        "text": "infection-log.txt",
+        "perMutator": "per-mutator.md",
+        "github": true
     },
     "mutators": {
         "@default": true,
-        "FunctionCallRemoval": {
+        "InstanceOf_": {
             "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::waitUntilTheNextSecond"
-            ]
-        },
-        "MethodCallRemoval": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::tearDown"
-            ]
-        },
-        "Continue_": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::rmdir"
-            ]
-        },
-        "TrueValue": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::provideTrueFalse"
-            ]
-        },
-        "ArrayItemRemoval": false,
-        "FalseValue": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::provideTrueFalse"
-            ]
-        },
-        "PublicVisibility": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::provideTrueFalse"
-            ]
-        },
-        "Identical": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::getSysTempDir"
-            ]
-        },
-        "UnwrapStrToUpper": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::getSysTempDir"
+                "Mammatus\\Http\\Server\\Middleware\\UnformattedContent::__invoke::20"
             ]
         }
     }

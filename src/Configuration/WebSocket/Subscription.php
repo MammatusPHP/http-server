@@ -5,45 +5,17 @@ declare(strict_types=1);
 namespace Mammatus\Http\Server\Configuration\WebSocket;
 
 use Mammatus\Http\Server\Configuration\Sanitize;
-use function assert;
 
 final class Subscription
 {
-    private string $name;
-    private string $command;
-    private string $bus;
-    private ?string $transformer;
+    public readonly string $nameSanitized;
 
-    public function __construct(string $name, string $command, string $bus, ?string $transformer)
-    {
-        $this->name = $name;
-        $this->command = $command;
-        $this->bus = $bus;
-        $this->transformer = $transformer;
-    }
-
-    public function name(): string
-    {
-        return Sanitize::sanitize($this->name);
-    }
-
-    public function rawName(): string
-    {
-        return $this->name;
-    }
-
-    public function command(): string
-    {
-        return $this->command;
-    }
-
-    public function bus(): string
-    {
-        return $this->bus;
-    }
-
-    public function transformer(): ?string
-    {
-        return $this->transformer;
+    public function __construct(
+        public readonly string $name,
+        public readonly string $command,
+        public readonly string $bus,
+        public readonly ?string $transformer
+    ) {
+        $this->nameSanitized = Sanitize::sanitize($this->name);
     }
 }
