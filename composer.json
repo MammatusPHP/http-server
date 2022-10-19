@@ -13,7 +13,7 @@
         "chimera/routing-mezzio": "^0.4.0",
         "doctrine/annotations": "^1.13",
         "for/http-middleware-psr15-adapter": "^2",
-        "illuminate/collections": "^9.25.1",
+        "illuminate/collections": "^9.36.3",
         "joshdifabio/composed": "^1",
         "laminas/laminas-diactoros": "^2.14",
         "lcobucci/content-negotiation-middleware": "^3.1",
