@@ -254,7 +254,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "4.4.4",
+            "version": "4.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -18310,5 +18310,5 @@
     "platform-overrides": {
         "php": "8.1.0"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
