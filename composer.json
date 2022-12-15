@@ -15,7 +15,7 @@
         "for/http-middleware-psr15-adapter": "^2",
         "illuminate/collections": "^9.25.1",
         "joshdifabio/composed": "^1",
-        "laminas/laminas-diactoros": "^2.14",
+        "laminas/laminas-diactoros": "^2.23",
         "lcobucci/content-negotiation-middleware": "^3.1",
         "lcobucci/jwt": "^4.2",
         "league/tactician-container": "^3 || ^2",
