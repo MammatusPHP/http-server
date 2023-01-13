@@ -4,70 +4,47 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\Configuration;
 
+use Mammatus\Http\Server\Configuration\WebSocket\Realm;
 use Mammatus\Http\Server\Webroot\WebrootPath;
+
+use function array_filter;
 use function assert;
+use function count;
 
 final class Server
 {
-    private VhostStub $vhost;
-    /** @var array<\Mammatus\Http\Server\Configuration\WebSocket\Realm>  */
-    private array $realms;
-    /** @var array<Handler>  */
-    private array $handlers;
-    /** @var array<Bus>  */
-    private array $busses;
-
     /**
-     * @param array<\Mammatus\Http\Server\Configuration\WebSocket\Realm> $realms
+     * @param array<Realm>   $realms
      * @param array<Handler> $handlers
-     * @param array<Bus> $busses
+     * @param array<Bus>     $busses
      */
-    public function __construct(VhostStub $vhost, array $realms, array $handlers, array $busses)
-    {
-        $this->vhost  = $vhost;
-        $this->realms = $realms;
-        $this->handlers = $handlers;
-        $this->busses = $busses;
+    public function __construct(
+        public readonly VhostStub $vhost,
+        public readonly array $realms,
+        public readonly array $handlers,
+        public readonly array $busses,
+    ) {
     }
 
-    /**
-     * @return iterable<Handler>
-     */
-    public function handlers(): iterable
+    public function hasRpcs(): bool
     {
-        yield from $this->handlers;
+        return count($this->realms) > count(array_filter($this->realms, static fn (Realm $realm): bool => count($realm->rpcs) === 0));
     }
 
-    /**
-     * @return iterable<Bus>
-     */
-    public function busses(): iterable
+    public function hasSubscriptions(): bool
     {
-        yield from $this->busses;
-    }
-
-    /**
-     * @return iterable<\Mammatus\Http\Server\Configuration\WebSocket\Realm>
-     */
-    public function realms(): iterable
-    {
-        yield from $this->realms;
-    }
-
-    public function vhost(): VhostStub
-    {
-        return $this->vhost;
+        return count($this->realms) > count(array_filter($this->realms, static fn (Realm $realm): bool => count($realm->subscriptions) === 0));
     }
 
     public function hasWebroot(): bool
     {
-        return $this->vhost->webroot() instanceof WebrootPath;
+        return $this->vhost->webroot instanceof WebrootPath;
     }
 
     public function webroot(): string
     {
-        assert($this->vhost->webroot() instanceof WebrootPath);
+        assert($this->vhost->webroot instanceof WebrootPath);
 
-        return $this->vhost->webroot()->path();
+        return $this->vhost->webroot->path();
     }
 }

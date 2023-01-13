@@ -9,15 +9,13 @@ use React\Socket\SocketServer;
 
 final class Server
 {
-    private string $name;
     private string $address;
     /** @psalm-suppress PropertyNotSetInConstructor */
     private ?SocketServer $socket = null;
     private HttpServer $http;
 
-    public function __construct(string $name, string $address, HttpServer $http)
+    public function __construct(public readonly string $name, string $address, HttpServer $http)
     {
-        $this->name    = $name;
         $this->address = $address;
         $this->http    = $http;
     }
@@ -35,10 +33,5 @@ final class Server
         }
 
         $this->socket->close();
-    }
-
-    public function name(): string
-    {
-        return $this->name;
     }
 }

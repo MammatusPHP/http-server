@@ -9,6 +9,9 @@ use Psr\Http\Server\MiddlewareInterface;
 
 final class Psr15Decorator
 {
+    /**
+     * @return iterable<callable>
+     */
     public static function decorate(MiddlewareInterface|callable ...$middleware): iterable
     {
         foreach ($middleware as $handler) {

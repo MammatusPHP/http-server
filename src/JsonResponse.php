@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Mammatus\Http\Server;
 
 use Psr\Http\Message\ResponseInterface;
-use React\Http\Response;
+use React\Http\Message\Response;
 use WyriHaximus\React\Stream\Json\JsonStream;
+
+use const WyriHaximus\Constants\HTTPStatusCodes\OK;
 
 final class JsonResponse
 {
@@ -19,7 +21,7 @@ final class JsonResponse
      */
     public static function create(
         JsonStream $body,
-        int $status = 200,
+        int $status = OK,
         array $headers = [],
         string $version = '1.1',
         string $reason = ''
