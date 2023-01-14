@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d6963c28880fe155e8423cb789d6c02",
+    "content-hash": "6d2d23f58a5e99be20e1762aa2c26f4a",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -3105,12 +3105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "8cde3b1bc45371cd173725433b6ece9fb4bd21c8"
+                "reference": "81e6dfdffa5c7044c0e5ac22d08bbedb74eb3acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/8cde3b1bc45371cd173725433b6ece9fb4bd21c8",
-                "reference": "8cde3b1bc45371cd173725433b6ece9fb4bd21c8",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/81e6dfdffa5c7044c0e5ac22d08bbedb74eb3acd",
+                "reference": "81e6dfdffa5c7044c0e5ac22d08bbedb74eb3acd",
                 "shasum": ""
             },
             "require": {
@@ -3127,7 +3127,7 @@
                 "psr/event-dispatcher": "^1",
                 "psr/log": "^2",
                 "react/event-loop": "^1",
-                "thecodingmachine/safe": "^1.3",
+                "thecodingmachine/safe": "^2 || ^1.3",
                 "wyrihaximus/broadcast": "^2.0.0",
                 "wyrihaximus/broadcast-contracts": "^1.3",
                 "wyrihaximus/composer-update-bin-autoload-path": "^1 || ^1.0.1",
@@ -3202,7 +3202,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-14T08:17:46+00:00"
+            "time": "2023-01-13T22:06:30+00:00"
         },
         {
             "name": "mammatus/healthz-vhost",
@@ -4876,22 +4876,22 @@
         },
         {
             "name": "php-di-definitions/definitions-gatherer",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI-Definitions/definitions-gatherer.git",
-                "reference": "462176cecfef9903bcde56bfdb848ca64ccdb6ee"
+                "reference": "f6a56cdc15cc299d993729e455613aca9d018e08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI-Definitions/definitions-gatherer/zipball/462176cecfef9903bcde56bfdb848ca64ccdb6ee",
-                "reference": "462176cecfef9903bcde56bfdb848ca64ccdb6ee",
+                "url": "https://api.github.com/repos/PHP-DI-Definitions/definitions-gatherer/zipball/f6a56cdc15cc299d993729e455613aca9d018e08",
+                "reference": "f6a56cdc15cc299d993729e455613aca9d018e08",
                 "shasum": ""
             },
             "require": {
                 "php": "^8 || ^7.4",
                 "php-di-definitions/dummy": "^1.0",
-                "thecodingmachine/safe": "^1.3",
+                "thecodingmachine/safe": "^2 || ^1.3",
                 "wyrihaximus/get-in-packages-composer.jason": "^2 || ^1.0"
             },
             "require-dev": {
@@ -4916,7 +4916,7 @@
             "description": "Collect definition files from composer.json's",
             "support": {
                 "issues": "https://github.com/PHP-DI-Definitions/definitions-gatherer/issues",
-                "source": "https://github.com/PHP-DI-Definitions/definitions-gatherer/tree/1.3.0"
+                "source": "https://github.com/PHP-DI-Definitions/definitions-gatherer/tree/1.3.1"
             },
             "funding": [
                 {
@@ -4924,7 +4924,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-23T14:17:54+00:00"
+            "time": "2023-01-13T22:20:06+00:00"
         },
         {
             "name": "php-di-definitions/dummy",
@@ -15524,20 +15524,20 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.27",
+            "version": "9.5.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a2bc7ffdca99f92d959b3f2270529334030bba38"
+                "reference": "954ca3113a03bf780d22f07bf055d883ee04b65e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a2bc7ffdca99f92d959b3f2270529334030bba38",
-                "reference": "a2bc7ffdca99f92d959b3f2270529334030bba38",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/954ca3113a03bf780d22f07bf055d883ee04b65e",
+                "reference": "954ca3113a03bf780d22f07bf055d883ee04b65e",
                 "shasum": ""
             },
             "require": {
-                "doctrine/instantiator": "^1.3.1",
+                "doctrine/instantiator": "^1.3.1 || ^2",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-libxml": "*",
@@ -15606,7 +15606,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.27"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.28"
             },
             "funding": [
                 {
@@ -15622,7 +15622,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-09T07:31:23+00:00"
+            "time": "2023-01-14T12:32:24+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
