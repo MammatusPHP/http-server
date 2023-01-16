@@ -73,7 +73,7 @@
         "wyrihaximus/react-http-middleware-custom-request-body-parsers": "^2.0",
         "wyrihaximus/react-http-middleware-html-compress": "^2.0",
         "wyrihaximus/react-http-middleware-resume-response-body": "^3.0",
-        "wyrihaximus/react-http-middleware-webroot-preload": "^2.0",
+        "wyrihaximus/react-http-middleware-webroot-preload": "^2.3",
         "wyrihaximus/react-stream-json": "^1.2",
         "wyrihaximus/simple-twig": "^2",
         "wyrihaximus/string-get-in": "^1"
