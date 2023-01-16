@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d2d23f58a5e99be20e1762aa2c26f4a",
+    "content-hash": "16a3918543289d4cf13bd346753eed01",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -10625,22 +10625,22 @@
         },
         {
             "name": "wyrihaximus/metrics-tactician",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics-tactician.git",
-                "reference": "7126fb6712d19e7135af9f20e1594d56b9654fca"
+                "reference": "d8121abedf497b8a0dbd893a77c4e1f89b420b82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/7126fb6712d19e7135af9f20e1594d56b9654fca",
-                "reference": "7126fb6712d19e7135af9f20e1594d56b9654fca",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics-tactician/zipball/d8121abedf497b8a0dbd893a77c4e1f89b420b82",
+                "reference": "d8121abedf497b8a0dbd893a77c4e1f89b420b82",
                 "shasum": ""
             },
             "require": {
                 "league/tactician": "^1.1.0",
                 "php": "^8 || ^7.4",
-                "wyrihaximus/metrics": "^1.1"
+                "wyrihaximus/metrics": "^2 || ^1.1"
             },
             "require-dev": {
                 "phpbench/phpbench": "^0.17.1",
@@ -10666,7 +10666,7 @@
             "description": "Metric collection for Tactician",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-metrics-tactician/issues",
-                "source": "https://github.com/WyriHaximus/php-metrics-tactician/tree/1.1.0"
+                "source": "https://github.com/WyriHaximus/php-metrics-tactician/tree/1.1.1"
             },
             "funding": [
                 {
@@ -10674,7 +10674,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-15T13:01:04+00:00"
+            "time": "2023-01-14T18:48:17+00:00"
         },
         {
             "name": "wyrihaximus/monolog-factory",
