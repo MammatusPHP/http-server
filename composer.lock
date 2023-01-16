@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d2d23f58a5e99be20e1762aa2c26f4a",
+    "content-hash": "80ed0fb895f358f84dc5e73d32f2416e",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -11001,16 +11001,16 @@
         },
         {
             "name": "wyrihaximus/react-http-middleware-compress-assets",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-http-middleware-compress-assets.git",
-                "reference": "7186ac22c319965937846683c706fb075e309d43"
+                "reference": "88184d1ac16105b063f0fa0f23e89cabc3e1712b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-compress-assets/zipball/7186ac22c319965937846683c706fb075e309d43",
-                "reference": "7186ac22c319965937846683c706fb075e309d43",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-compress-assets/zipball/88184d1ac16105b063f0fa0f23e89cabc3e1712b",
+                "reference": "88184d1ac16105b063f0fa0f23e89cabc3e1712b",
                 "shasum": ""
             },
             "require": {
@@ -11018,7 +11018,7 @@
                 "psr/http-message": "^1.0.1",
                 "react/http": "^1.5.0",
                 "react/promise": "^2.8",
-                "thecodingmachine/safe": "^1.3",
+                "thecodingmachine/safe": "^2 || ^1.3",
                 "wyrihaximus/html-compress": "^4.1"
             },
             "require-dev": {
@@ -11044,7 +11044,7 @@
             "description": "react/http middleware that compresses JS/CSS response bodies",
             "support": {
                 "issues": "https://github.com/WyriHaximus/reactphp-http-middleware-compress-assets/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-http-middleware-compress-assets/tree/2.1.0"
+                "source": "https://github.com/WyriHaximus/reactphp-http-middleware-compress-assets/tree/2.1.1"
             },
             "funding": [
                 {
@@ -11052,7 +11052,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-29T20:06:56+00:00"
+            "time": "2023-01-16T00:56:52+00:00"
         },
         {
             "name": "wyrihaximus/react-http-middleware-custom-request-body-parsers",

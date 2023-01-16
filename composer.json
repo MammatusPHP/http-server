@@ -69,7 +69,7 @@
         "wyrihaximus/metrics-tactician": "^1.0",
         "wyrihaximus/psr-3-callable-throwable-logger": "^2.2",
         "wyrihaximus/psr-3-context-logger": "^2",
-        "wyrihaximus/react-http-middleware-compress-assets": "^2.0",
+        "wyrihaximus/react-http-middleware-compress-assets": "^2.1",
         "wyrihaximus/react-http-middleware-custom-request-body-parsers": "^2.0",
         "wyrihaximus/react-http-middleware-html-compress": "^2.0",
         "wyrihaximus/react-http-middleware-resume-response-body": "^3.0",
