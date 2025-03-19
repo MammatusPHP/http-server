@@ -1,0 +1,14 @@
+on:
+  repository_dispatch:
+    types:
+      - dependency_update # For Packagist Conductor
+
+name: Utils
+
+permissions:
+  contents: write
+
+jobs:
+  ci:
+    name: Continuous Integration
+    uses: WyriHaximus/github-workflows/.github/workflows/package-utils.yaml@main
