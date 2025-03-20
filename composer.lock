@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d2d23f58a5e99be20e1762aa2c26f4a",
+    "content-hash": "ce04f52835c6854f72ed9bb36d47076c",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -11220,16 +11220,16 @@
         },
         {
             "name": "wyrihaximus/react-http-middleware-webroot-preload",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload.git",
-                "reference": "57141699e6e482aaab80723ceafa841e20a58fb8"
+                "reference": "2284425682acbbe5a56ceed483ce18391183c215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-webroot-preload/zipball/57141699e6e482aaab80723ceafa841e20a58fb8",
-                "reference": "57141699e6e482aaab80723ceafa841e20a58fb8",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-http-middleware-webroot-preload/zipball/2284425682acbbe5a56ceed483ce18391183c215",
+                "reference": "2284425682acbbe5a56ceed483ce18391183c215",
                 "shasum": ""
             },
             "require": {
@@ -11242,7 +11242,7 @@
                 "react/http": "^1",
                 "react/promise": "^2.8",
                 "scriptfusion/byte-formatter": "^3.2 || ^4.0",
-                "thecodingmachine/safe": "^1.3",
+                "thecodingmachine/safe": "^2 || ^1.3",
                 "wyrihaximus/constants": "^1.5"
             },
             "require-dev": {
@@ -11268,7 +11268,7 @@
             "description": "react/http middleware static webroot serving",
             "support": {
                 "issues": "https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload/tree/2.3.0"
+                "source": "https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload/tree/2.3.1"
             },
             "funding": [
                 {
@@ -11276,7 +11276,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-17T22:21:52+00:00"
+            "time": "2023-01-14T19:58:49+00:00"
         },
         {
             "name": "wyrihaximus/react-psr-3-stdio",
