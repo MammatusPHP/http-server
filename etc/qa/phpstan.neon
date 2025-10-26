@@ -1,0 +1,17 @@
+parameters:
+	level: max
+	paths:
+		- ../../etc
+		- ../../src
+		- ../../tests
+		- ../dev-app
+	ergebnis:
+		noExtends:
+			classesAllowedToBeExtended:
+			- Composer\IO\NullIO
+			- Laminas\Diactoros\StreamFactory
+			- Mammatus\Http\Server\Generated\AbstractConfiguration
+			- Mammatus\LifeCycleEvents\Promise\AbstractPromise
+			- Mammatus\Tests\LifeCycleEvents\Promise\AbstractPromiseTest
+			- Mammatus\Http\Server\Generated\AbstractServer
+			- Mammatus\Http\Server\Generated\AbstractHelm
