@@ -34,7 +34,7 @@
         "middlewares/access-log": "^2",
         "middlewares/cache": "^2",
         "middlewares/client-ip": "^2",
-        "middlewares/filesystem": "^2",
+        "middlewares/filesystem": "^3",
         "middlewares/https": "^2",
         "middlewares/negotiation": "^2.1",
         "middlewares/response-time": "^2",
