@@ -4,37 +4,42 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server;
 
-use Mammatus\LifeCycleEvents\Initialize;
+use Mammatus\Groups\Contracts\LifeCycleHandler;
+use Mammatus\Http\Server\Generated\AbstractServer;
+use Mammatus\LifeCycleEvents\Boot;
 use Mammatus\LifeCycleEvents\Shutdown;
-use Psr\Log\LoggerInterface;
+use Mammatus\LifeCycleEvents\Start;
+use Psr\Container\ContainerInterface;
 use WyriHaximus\Broadcast\Contracts\Listener;
 
-final class Server implements Listener
+final class Server extends AbstractServer implements Listener
 {
-    private Configuration $configuration;
-    private LoggerInterface $logger;
+    /** @var list<LifeCycleHandler> */
+    private array $runningServers = [];
 
-    public function __construct(Configuration $configuration, LoggerInterface $logger)
-    {
-        $this->configuration = $configuration;
-        $this->logger        = $logger;
+    /** @phpstan-ignore ergebnis.noParameterWithContainerTypeDeclaration */
+    public function __construct(
+        private readonly ContainerInterface $container,
+    ) {
     }
 
-    public function start(Initialize $event): void
+    public function start(Boot|Start $event): void
     {
-        foreach ($this->configuration->servers() as $server) {
-            $this->logger->debug('Starting server: ' . $server->name);
+        foreach ($this->servers() as $serverClass) {
+            $server = $this->container->get($serverClass);
+            if (! $server instanceof LifeCycleHandler) {
+                continue;
+            }
+
             $server->start();
-            $this->logger->debug('Started server: ' . $server->name);
+            $this->runningServers[] = $server;
         }
     }
 
     public function stop(Shutdown $event): void
     {
-        foreach ($this->configuration->servers() as $server) {
-            $this->logger->debug('Stopping server: ' . $server->name);
+        foreach ($this->runningServers as $server) {
             $server->stop();
-            $this->logger->debug('Stopped server: ' . $server->name);
         }
     }
 }

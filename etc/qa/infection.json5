@@ -1,0 +1,31 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Generated",
+            "Configuration.php",
+            "Server.php"
+        ]
+    },
+    "minMsi": 100,
+    "minCoveredMsi": 100,
+    "ignoreMsiWithNoMutations": true,
+    "logs": {
+        "text": "../../var/infection.log",
+        "perMutator": "../../var/infection-per-mutator.md",
+        "github": true,
+        "summary": "../../var/infection-summary.log",
+        "json": "../../var/infection.json"
+    },
+    "mutators": {
+        "@default": true,
+        "InstanceOf_": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\Middleware\\UnformattedContent::__invoke::20"
+            ]
+        }
+    }
+}
