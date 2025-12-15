@@ -55,8 +55,8 @@ final readonly class Healthz implements LifeCycleHandler
         $dispatcher = FastRoute::recommendedSettings(static function (ConfigureRoutes $routes): void {
             $routes->addRoute(
                 'GET',
-                '/probe/liveness',
-                '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
+                '/probe/startup',
+                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
             );
             $routes->addRoute(
                 'GET',
@@ -70,13 +70,13 @@ final readonly class Healthz implements LifeCycleHandler
             );
             $routes->addRoute(
                 'GET',
-                '/probe/startup',
-                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
+                '/healthz',
+                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
             );
             $routes->addRoute(
                 'GET',
-                '/healthz',
-                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
+                '/probe/liveness',
+                '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
             );
         }, 'healthz')->dispatcher();
         /** @phpstan-ignore argument.type */
@@ -103,7 +103,7 @@ final readonly class Healthz implements LifeCycleHandler
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
             ...$this->vhost->middleware(), // @TODO: PSR-15 wrapping
             new WebrootPreloadMiddleware(
-                '/home/wyrihaximus/Projects/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
+                '/tmp/renovate/repos/github/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
                 $this->logger,
                 new ArrayCache(),
             ),

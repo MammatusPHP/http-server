@@ -33,16 +33,16 @@ abstract class AbstractHelm
                     'helper' => 'mammatus.container.probe',
                     'type' => 'container',
                     'arguments' => [
-                        'liveness' => [
-                            'path' => '/probe/liveness',
+                        'startUp' => [
+                            'path' => '/probe/startup',
                             'vhost' => 'healthz',
                         ],
                         'readiness' => [
                             'path' => '/probe/readiness',
                             'vhost' => 'healthz',
                         ],
-                        'startUp' => [
-                            'path' => '/probe/startup',
+                        'liveness' => [
+                            'path' => '/probe/liveness',
                             'vhost' => 'healthz',
                         ],
                     ],
