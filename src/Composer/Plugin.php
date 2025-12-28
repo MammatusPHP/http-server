@@ -113,12 +113,6 @@ final class Plugin implements GenerativePlugin
             $rootPath . '/src/Generated/AbstractHelm.php',
             ['vhosts' => $vhosts],
         );
-
-        TwigFile::render(
-            $rootPath . '/etc/generated_templates/AbstractServer.php.twig',
-            $rootPath . '/src/Generated/AbstractServer.php',
-            ['vhosts' => $vhosts],
-        );
     }
 
     private function probeTypeToHelmChartPropertyName(Attributes\ProbeType $probeType): string
