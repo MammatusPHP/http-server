@@ -9,7 +9,7 @@
     "composer-plugin-api": "^2.0.0",
     "composer/composer": "^2.9.2",
     "mammatus/app": "dev-master",
-    "mammatus/groups": "^0.1.1",
+    "mammatus/groups": "^0.1.3",
     "mammatus/healthz-vhost": "dev-master",
     "mammatus/http-server-attributes": "dev-main",
     "mammatus/http-server-contracts": "dev-master",

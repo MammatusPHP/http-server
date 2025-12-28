@@ -13,13 +13,19 @@ use WyriHaximus\TestUtilities\TestCase;
 final class HealthzTest extends TestCase
 {
     #[Test]
-    public function stop(): void
+    public function fullCycle(): void
     {
         $vhost  = new HealthCheckVhost();
         $logger = new TestLogger();
 
-        new Healthz($vhost, $logger)->stop();
+        $server = new Healthz($vhost, $logger);
+        $server->start();
+        $server->start();
+        $server->stop();
 
+        self::assertTrue($logger->hasDebugThatContains('Starting server: '));
+        self::assertTrue($logger->hasDebugThatContains('Started server: '));
+        self::assertTrue($logger->hasWarningThatContains('Server already started: '));
         self::assertTrue($logger->hasDebugThatContains('Stopping server: '));
         self::assertTrue($logger->hasDebugThatContains('Stopped server: '));
     }
