@@ -94,7 +94,8 @@ final class Plugin implements GenerativePlugin
             }
         }
 
-        Remove::directoryContents($rootPath . '/src/Generated');
+        Remove::directoryContentsOnlyIfItExists($rootPath . '/src/Server');
+        Remove::fileOnlyIfItExists($rootPath . '/src/Kubernetes/Helm/ServerValues.php');
 
         foreach ($vhosts as $vhostName => $vhost) {
             if (! array_key_exists('server_class_name', $vhost)) {
@@ -103,14 +104,14 @@ final class Plugin implements GenerativePlugin
 
             TwigFile::render(
                 $rootPath . '/etc/generated_templates/Server.php.twig',
-                $rootPath . '/src/Generated/Server/' . $vhost['server_class_name'] . '.php',
+                $rootPath . '/src/Server/' . $vhost['server_class_name'] . '.php',
                 ['vhost' => $vhost],
             );
         }
 
         TwigFile::render(
-            $rootPath . '/etc/generated_templates/AbstractHelm.php.twig',
-            $rootPath . '/src/Generated/AbstractHelm.php',
+            $rootPath . '/etc/generated_templates/ServerValues.php.twig',
+            $rootPath . '/src/Kubernetes/Helm/ServerValues.php',
             ['vhosts' => $vhosts],
         );
     }

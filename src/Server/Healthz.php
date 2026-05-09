@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mammatus\Http\Server\Generated\Server;
+namespace Mammatus\Http\Server\Server;
 
 use FastRoute\ConfigureRoutes;
 use FastRoute\Dispatcher\Result\Matched;
@@ -63,18 +63,8 @@ final class Healthz implements LifeCycleHandler
         $dispatcher = FastRoute::recommendedSettings(static function (ConfigureRoutes $routes): void {
             $routes->addRoute(
                 'GET',
-                '/probe/startup',
-                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
-            );
-            $routes->addRoute(
-                'GET',
-                '/probe/readiness',
-                '\Mammatus\Vhost\Healthz\ReadinessProbeHandler::handle',
-            );
-            $routes->addRoute(
-                'GET',
-                '/healthz',
-                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
+                '/probe/liveness',
+                '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
             );
             $routes->addRoute(
                 'GET',
@@ -83,8 +73,18 @@ final class Healthz implements LifeCycleHandler
             );
             $routes->addRoute(
                 'GET',
-                '/probe/liveness',
-                '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
+                '/probe/readiness',
+                '\Mammatus\Vhost\Healthz\ReadinessProbeHandler::handle',
+            );
+            $routes->addRoute(
+                'GET',
+                '/probe/startup',
+                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
+            );
+            $routes->addRoute(
+                'GET',
+                '/healthz',
+                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
             );
         }, 'healthz')->dispatcher();
         /** @phpstan-ignore argument.type */
@@ -111,7 +111,7 @@ final class Healthz implements LifeCycleHandler
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
             ...$this->vhost->middleware(), // @TODO: PSR-15 wrapping
             new WebrootPreloadMiddleware(
-                '/tmp/renovate/repos/github/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
+                '/home/wyrihaximus/Projects/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
                 $this->logger,
                 new ArrayCache(),
             ),
