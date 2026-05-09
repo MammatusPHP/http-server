@@ -14,7 +14,7 @@
     "mammatus/http-server-attributes": "dev-main",
     "mammatus/http-server-contracts": "dev-master",
     "mammatus/http-server-webroot": "dev-master",
-    "mammatus/kubernetes-events": "^3.0.0",
+    "mammatus/kubernetes-events": "^3.0.0 || ^4.0.0",
     "mammatus/life-cycle-events": "^2.3.0",
     "nikic/fast-route": "2.0.0-beta1",
     "nikic/php-parser": "^5.7.0",

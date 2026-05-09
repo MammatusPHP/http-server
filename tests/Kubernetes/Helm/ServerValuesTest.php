@@ -14,7 +14,7 @@ final class ServerValuesTest extends TestCase
     #[Test]
     public function values(): void
     {
-        $values = new Values(new Values\Groups(), new Values\Registry(), Values\ValuesFile::createFromFile());
+        $values = Values::createFromFile();
         self::assertSame([], $values->get());
 
         new ServerValues()->values($values);
