@@ -18,7 +18,6 @@ abstract class AbstractHelm
     final public function vhosts(): iterable
     {
         yield 'healthz' => new Vhost(
-            /** @phpstan-ignore-next-line */
             new Group(Type::from('daemon'), 'healthz'),
             [
                 [
