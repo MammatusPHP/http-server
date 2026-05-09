@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mammatus\Tests\Http\Server\Generated\Server;
+namespace Mammatus\Tests\Http\Server\Server;
 
 use ColinODell\PsrTestLogger\TestLogger;
-use Mammatus\Http\Server\Generated\Server\Healthz;
+use Mammatus\Http\Server\Server\Healthz;
 use Mammatus\Vhost\Healthz\HealthCheckVhost;
 use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;

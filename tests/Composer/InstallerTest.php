@@ -117,9 +117,7 @@ final class InstallerTest extends TestCase
 
         $this->recurseCopy(dirname(__DIR__, 2) . '/', $this->getTmpDir());
 
-        $fileNameList    = $this->getTmpDir() . 'src/Generated/AbstractList.php';
-        $fileNameManager = $this->getTmpDir() . 'src/Generated/Manager.php';
-        $sneakyFile      = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Generated' . DIRECTORY_SEPARATOR . 'sneaky.file';
+        $sneakyFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Server' . DIRECTORY_SEPARATOR . 'sneaky.file';
         touch($sneakyFile);
 
         self::assertFileExists($sneakyFile);
