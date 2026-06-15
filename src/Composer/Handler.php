@@ -30,7 +30,7 @@ final readonly class Handler implements ItemContract, JsonSerializable
     ) {
     }
 
-    /** @return array{class: class-string, method: string, static: bool, probeTypes: array<ProbeType>, payload: class-string|null} */
+    /** @return array{class: class-string, method: string, static: bool, probeTypes: array<ProbeType>, vhost: Vhost, route: Route, payload: class-string|null} */
     public function jsonSerialize(): array
     {
         return [

@@ -32,16 +32,16 @@ final class ServerValues implements Listener
                     'helper' => 'mammatus.container.probe',
                     'type' => 'container',
                     'arguments' => [
-                        'startUp' => [
-                            'path' => '/probe/startup',
-                            'vhost' => 'healthz',
-                        ],
                         'liveness' => [
                             'path' => '/probe/liveness',
                             'vhost' => 'healthz',
                         ],
                         'readiness' => [
                             'path' => '/probe/readiness',
+                            'vhost' => 'healthz',
+                        ],
+                        'startUp' => [
+                            'path' => '/probe/startup',
                             'vhost' => 'healthz',
                         ],
                     ],
