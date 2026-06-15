@@ -114,6 +114,12 @@ final class Plugin implements GenerativePlugin
             $rootPath . '/src/Kubernetes/Helm/ServerValues.php',
             ['vhosts' => $vhosts],
         );
+
+        TwigFile::render(
+            $rootPath . '/etc/generated_templates/ShipMonkDeadCode.php.twig',
+            $rootPath . '/src/PHPSan/ShipMonkDeadCode.php',
+            ['vhosts' => $vhosts],
+        );
     }
 
     private function probeTypeToHelmChartPropertyName(Attributes\ProbeType $probeType): string
