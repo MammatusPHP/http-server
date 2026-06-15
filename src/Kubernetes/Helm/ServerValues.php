@@ -36,12 +36,12 @@ final class ServerValues implements Listener
                             'path' => '/probe/liveness',
                             'vhost' => 'healthz',
                         ],
-                        'readiness' => [
-                            'path' => '/probe/readiness',
-                            'vhost' => 'healthz',
-                        ],
                         'startUp' => [
                             'path' => '/probe/startup',
+                            'vhost' => 'healthz',
+                        ],
+                        'readiness' => [
+                            'path' => '/probe/readiness',
                             'vhost' => 'healthz',
                         ],
                     ],
