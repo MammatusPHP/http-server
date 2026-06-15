@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\PHPSan;
 
+use Mammatus\DevApp\Http\Server\FrontendVhost;
+use Mammatus\DevApp\Http\Server\HomePageHandler;
 use Mammatus\Vhost\Healthz\HealthCheckVhost;
 use Mammatus\Vhost\Healthz\HealthzHandler;
 use Mammatus\Vhost\Healthz\IndexHandler;
@@ -20,6 +22,17 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
     #[Override]
     public function shouldMarkMethodAsUsed(ReflectionMethod $method): VirtualUsageData|null
     {
+        /**
+         * vhost: frontend
+         */
+        if ($method->getDeclaringClass()->getName() === FrontendVhost::class) {
+            return VirtualUsageData::withNote('Class is a Vhost');
+        }
+
+        if ($method->getDeclaringClass()->getName() === HomePageHandler::class) {
+            return VirtualUsageData::withNote('Class is a Handler');
+        }
+
         /**
          * vhost: healthz
          */
