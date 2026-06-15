@@ -15,3 +15,6 @@ parameters:
 			- Mammatus\Tests\LifeCycleEvents\Promise\AbstractPromiseTest
 			- Mammatus\Http\Server\Generated\AbstractServer
 			- Mammatus\Http\Server\Generated\AbstractHelm
+			- ShipMonk\PHPStan\DeadCode\Provider\ReflectionBasedMemberUsageProvider
+includes:
+    - ../../extension.neon

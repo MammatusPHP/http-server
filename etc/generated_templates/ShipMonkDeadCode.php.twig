@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Mammatus\Http\Server\PHPSan;
+
+use Override;
+use ReflectionMethod;
+use ShipMonk\PHPStan\DeadCode\Provider\ReflectionBasedMemberUsageProvider;
+use ShipMonk\PHPStan\DeadCode\Provider\VirtualUsageData;
+
+final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
+{
+    #[Override]
+    public function shouldMarkMethodAsUsed(ReflectionMethod $method): VirtualUsageData|null
+    {
+        {% for vhost in vhosts -%}
+        /**
+         * vhost: {{ vhost.vhost.name }}
+         */
+        if ($method->getDeclaringClass()->getName() === \{{ vhost.vhost.class }}::class) {
+            return VirtualUsageData::withNote('Class is a Vhost');
+        }
+
+        {% for handler in vhost.handlers -%}
+        if ($method->getDeclaringClass()->getName() === \{{ handler.class }}::class) {
+            return VirtualUsageData::withNote('Class is a Handler');
+        }
+        {% endfor %}
+
+        {% endfor -%}
+        return null;
+    }
+}

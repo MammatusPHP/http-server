@@ -5,7 +5,8 @@
     "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object", "mixed",
     "WyriHaximus\\Constants\\Boolean\\FALSE_", "WyriHaximus\\Constants\\Boolean\\TRUE_",
     "WyriHaximus\\getIn", "WyriHaximus\\iteratorOrArrayToArray", "WyriHaximus\\listClassesInDirectories",
-    "WyriHaximus\\Constants\\HTTPStatusCodes\\OK"
+    "WyriHaximus\\Constants\\HTTPStatusCodes\\OK",
+    "ShipMonk\\PHPStan\\DeadCode\\Provider\\ReflectionBasedMemberUsageProvider", "ShipMonk\\PHPStan\\DeadCode\\Provider\\VirtualUsageData"
   ],
   "php-core-extensions" : [
     "Core",
