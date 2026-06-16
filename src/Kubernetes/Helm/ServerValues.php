@@ -18,6 +18,19 @@ final class ServerValues implements Listener
     public function values(Values $values): void
     {
         $values->addToGroup(
+            new Group(Type::Daemon, 'frontend'),
+            [
+                [
+                    'helper' => 'mammatus.container.port',
+                    'type' => 'container',
+                    'arguments' => [
+                        'name' => 'frontend',
+                        'containerPort' => 1337,
+                    ],
+                ],
+            ],
+        );
+        $values->addToGroup(
             new Group(Type::Daemon, 'healthz'),
             [
                 [

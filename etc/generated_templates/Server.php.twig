@@ -16,6 +16,9 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
     public function __construct(
         private readonly \{{ vhost.vhost.class }} $vhost,
         private readonly \Psr\Log\LoggerInterface $logger,
+        {% for class, name in handlerClasses %}
+        private readonly \{{ class }} ${{ name }},
+        {% endfor %}
     ) {
         $this->server = new \React\Socket\SocketServer('0.0.0.0:{{ vhost.vhost.port }}');
     }
@@ -33,7 +36,7 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
         }
         $this->started = true;
         $this->logger->debug('Starting server: {serverName}', ['serverName' => self::NAME]);
-        $dispatcher = \FastRoute\FastRoute::recommendedSettings(static function(\FastRoute\ConfigureRoutes $routes): void {
+        $dispatcher = \FastRoute\FastRoute::recommendedSettings({% if handlerClasses|length == 0 %}static {% endif %}function(\FastRoute\ConfigureRoutes $routes): void {
             {% for handler in vhost.handlers -%}
             $routes->addRoute(
                 '{{ handler.route.httpMethod.value }}',
@@ -41,7 +44,7 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
                 {% if handler.static -%}
                 '\{{ handler.class }}::{{ handler.method }}',
                 {% else -%}
-                'get_all_users_handler',
+                $this->{{ handlerClasses[handler.class] }}->{{ handler.method }}(...),
                 {% endif %}
             );
             {% endfor %}
@@ -87,7 +90,7 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
                             "Method not allowed!\n"
                         )->withStatus(405),
                     /** @phpstan-ignore callable.nonCallable */
-                    \FastRoute\Dispatcher\Result\Matched::class => ($routeInfo->handler)($routeInfo->variables),
+                    \FastRoute\Dispatcher\Result\Matched::class => ($routeInfo->handler)($request, $routeInfo->variables),
                 };
             }),
         ]);

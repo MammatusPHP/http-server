@@ -20,6 +20,7 @@ use WyriHaximus\Composer\GenerativePluginTooling\Item;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
 use function array_key_exists;
+use function str_replace;
 
 final class Plugin implements GenerativePlugin
 {
@@ -62,6 +63,7 @@ final class Plugin implements GenerativePlugin
 
     public function compile(string $rootPath, Item ...$items): void
     {
+        /** @var array<string, array{vhost: Server, server_class_name: string, handlers: array<Handler>, probes: array<Attributes\Probe>}> $vhosts */
         $vhosts = [];
         foreach ($items as $item) {
             if ($item instanceof Server) {
@@ -102,10 +104,22 @@ final class Plugin implements GenerativePlugin
                 continue;
             }
 
+            $handlerClasses = [];
+            foreach ($vhost['handlers'] as $handler) {
+                if ($handler->static) {
+                    continue;
+                }
+
+                $handlerClasses[$handler->class] = 'handler' . str_replace('\\', '', $handler->class);
+            }
+
             TwigFile::render(
                 $rootPath . '/etc/generated_templates/Server.php.twig',
                 $rootPath . '/src/Server/' . $vhost['server_class_name'] . '.php',
-                ['vhost' => $vhost],
+                [
+                    'vhost' => $vhost,
+                    'handlerClasses' => $handlerClasses,
+                ],
             );
         }
 
