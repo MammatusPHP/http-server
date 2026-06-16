@@ -20,7 +20,6 @@ use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\ItemCollector;
 
 use function array_map;
-use function class_exists;
 use function count;
 use function in_array;
 
@@ -136,10 +135,6 @@ final class Collector implements ItemCollector
                             continue;
                         }
 
-                        if (! class_exists($eventType->getName(), false)) {
-                            continue;
-                        }
-
                         yield new Handler(
                             $class->getName(),
                             $method->getName(),
@@ -147,6 +142,11 @@ final class Collector implements ItemCollector
                             $probeTypes,
                             $vhost,
                             $route,
+                            /**
+                             * It's a class-string coming out of this regardless
+                             *
+                             * @phpstan-ignore argument.type
+                             */
                             $eventType->getName(),
                         );
                     }

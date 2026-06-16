@@ -11,6 +11,7 @@ use FastRoute\Dispatcher\Result\NotMatched;
 use FastRoute\FastRoute;
 use FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware;
 use Mammatus\Groups\Contracts\LifeCycleHandler;
+use Mammatus\Http\Server\Attributes\HttpMethod;
 use Mammatus\Vhost\Healthz\HealthCheckVhost;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -65,33 +66,32 @@ final class Healthz implements LifeCycleHandler
         $this->logger->debug('Starting server: {serverName}', ['serverName' => self::NAME]);
         $dispatcher = FastRoute::recommendedSettings(static function (ConfigureRoutes $routes): void {
             $routes->addRoute(
-                'GET',
+                HttpMethod::GET->value,
                 '/probe/liveness',
                 '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
             );
             $routes->addRoute(
-                'GET',
-                '/healthz',
-                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
-            );
-            $routes->addRoute(
-                'GET',
-                '/probe/startup',
-                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
-            );
-            $routes->addRoute(
-                'GET',
+                HttpMethod::GET->value,
                 '/',
                 '\Mammatus\Vhost\Healthz\IndexHandler::handle',
             );
             $routes->addRoute(
-                'GET',
+                HttpMethod::GET->value,
                 '/probe/readiness',
                 '\Mammatus\Vhost\Healthz\ReadinessProbeHandler::handle',
             );
+            $routes->addRoute(
+                HttpMethod::GET->value,
+                '/probe/startup',
+                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
+            );
+            $routes->addRoute(
+                HttpMethod::GET->value,
+                '/healthz',
+                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
+            );
         }, 'healthz')->dispatcher();
-        /** @phpstan-ignore argument.type */
-        $http = new HttpServer(...[
+        $http       = new HttpServer(...[
             async(function (ServerRequestInterface $request, callable $next): ResponseInterface {
                 /** @var callable(ServerRequestInterface): PromiseInterface<ResponseInterface> $next */
                 $response = await($next($request));
@@ -114,7 +114,7 @@ final class Healthz implements LifeCycleHandler
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
             ...array_map(static fn (MiddlewareInterface $middleware): callable => new PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             new WebrootPreloadMiddleware(
-                '/tmp/renovate/repos/github/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
+                '/home/wyrihaximus/Projects/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
                 $this->logger,
                 new ArrayCache(),
             ),

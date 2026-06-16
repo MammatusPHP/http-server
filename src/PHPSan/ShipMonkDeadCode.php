@@ -6,6 +6,7 @@ namespace Mammatus\Http\Server\PHPSan;
 
 use Mammatus\DevApp\Http\Server\FrontendVhost;
 use Mammatus\DevApp\Http\Server\HomePageHandler;
+use Mammatus\DevApp\Http\Server\PingHandler;
 use Mammatus\Vhost\Healthz\HealthCheckVhost;
 use Mammatus\Vhost\Healthz\HealthzHandler;
 use Mammatus\Vhost\Healthz\IndexHandler;
@@ -33,6 +34,10 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
+        if ($method->getDeclaringClass()->getName() === PingHandler::class) {
+            return VirtualUsageData::withNote('Class is a Handler');
+        }
+
         /**
          * vhost: healthz
          */
@@ -44,7 +49,11 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
-        if ($method->getDeclaringClass()->getName() === HealthzHandler::class) {
+        if ($method->getDeclaringClass()->getName() === IndexHandler::class) {
+            return VirtualUsageData::withNote('Class is a Handler');
+        }
+
+        if ($method->getDeclaringClass()->getName() === ReadinessProbeHandler::class) {
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
@@ -52,11 +61,7 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
-        if ($method->getDeclaringClass()->getName() === IndexHandler::class) {
-            return VirtualUsageData::withNote('Class is a Handler');
-        }
-
-        if ($method->getDeclaringClass()->getName() === ReadinessProbeHandler::class) {
+        if ($method->getDeclaringClass()->getName() === HealthzHandler::class) {
             return VirtualUsageData::withNote('Class is a Handler');
         }
 

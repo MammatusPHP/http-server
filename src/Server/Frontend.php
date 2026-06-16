@@ -12,7 +12,10 @@ use FastRoute\FastRoute;
 use FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware;
 use Mammatus\DevApp\Http\Server\FrontendVhost;
 use Mammatus\DevApp\Http\Server\HomePageHandler;
+use Mammatus\DevApp\Http\Server\Ping;
+use Mammatus\DevApp\Http\Server\PingHandler;
 use Mammatus\Groups\Contracts\LifeCycleHandler;
+use Mammatus\Http\Server\Attributes\HttpMethod;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -44,6 +47,7 @@ final class Frontend implements LifeCycleHandler
         private readonly FrontendVhost $vhost,
         private readonly LoggerInterface $logger,
         private readonly HomePageHandler $handlerMammatusDevAppHttpServerHomePageHandler,
+        private readonly PingHandler $handlerMammatusDevAppHttpServerPingHandler,
     ) {
         $this->server = new SocketServer('0.0.0.0:1337');
     }
@@ -65,13 +69,23 @@ final class Frontend implements LifeCycleHandler
         $this->logger->debug('Starting server: {serverName}', ['serverName' => self::NAME]);
         $dispatcher = FastRoute::recommendedSettings(function (ConfigureRoutes $routes): void {
             $routes->addRoute(
-                'GET',
+                HttpMethod::GET->value,
                 '/',
                 $this->handlerMammatusDevAppHttpServerHomePageHandler->handle(...),
             );
+            $routes->addRoute(
+                HttpMethod::GET->value,
+                '/ping/{name}',
+                /**
+                  * PHPStan is right here, `\Mammatus\DevApp\Http\Server\Ping::create` expects a sealed array shape, but we don't know the shape here.
+                  * (Given this code is generated.)
+                 *
+                 * @phpstan-ignore argument.type
+                  */
+                fn (ServerRequestInterface $request, array $params): ResponseInterface => $this->handlerMammatusDevAppHttpServerPingHandler->handle(Ping::create($request, $params)),
+            );
         }, 'frontend')->dispatcher();
-        /** @phpstan-ignore argument.type */
-        $http = new HttpServer(...[
+        $http       = new HttpServer(...[
             async(function (ServerRequestInterface $request, callable $next): ResponseInterface {
                 /** @var callable(ServerRequestInterface): PromiseInterface<ResponseInterface> $next */
                 $response = await($next($request));
