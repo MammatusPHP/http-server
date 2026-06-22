@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6725a0405e552988ed78c5c26b90119",
+    "content-hash": "8813fef58ddfa4b9b4fd730d86e91d7b",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -866,6 +866,53 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
+        },
+        {
+            "name": "for/http-middleware-psr15-adapter",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter.git",
+                "reference": "078431f1eff2235fcf6bf0fd55fc1425fdbf7eda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/friends-of-reactphp/http-middleware-psr15-adapter/zipball/078431f1eff2235fcf6bf0fd55fc1425fdbf7eda",
+                "reference": "078431f1eff2235fcf6bf0fd55fc1425fdbf7eda",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr/http-server-middleware": "^1.0",
+                "react/async": "^4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "react/http": "^1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FriendsOfReact\\Http\\Middleware\\Psr15Adapter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PSR15 adapter for react/http middleware",
+            "keywords": [
+                "http",
+                "https",
+                "middleware",
+                "psr15",
+                "reactphp"
+            ],
+            "support": {
+                "issues": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter/issues",
+                "source": "https://github.com/friends-of-reactphp/http-middleware-psr15-adapter/tree/v2.0.0"
+            },
+            "time": "2022-08-14T21:05:23+00:00"
         },
         {
             "name": "igorw/get-in",

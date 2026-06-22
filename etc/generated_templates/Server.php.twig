@@ -71,7 +71,7 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
             new \React\Http\Middleware\RequestBodyBufferMiddleware(),
             new \React\Http\Middleware\RequestBodyParserMiddleware(),
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
-            ...$this->vhost->middleware(), // @TODO: PSR-15 wrapping
+            ...array_map(static fn (\Psr\Http\Server\MiddlewareInterface $middleware): callable => new \FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             {% if vhost.vhost.webrootPath != '' -%}
             new \WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware(
                 '{{ vhost.vhost.webrootPath }}',

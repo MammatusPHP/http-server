@@ -8,6 +8,7 @@
     "ext-json": "^8.4",
     "composer-plugin-api": "^2.0.0",
     "composer/composer": "^2.9.2",
+    "for/http-middleware-psr15-adapter": "^2.0",
     "mammatus/app": "dev-master",
     "mammatus/groups": "^0.2.0",
     "mammatus/healthz-vhost": "dev-master",
