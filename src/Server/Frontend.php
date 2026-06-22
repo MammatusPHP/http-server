@@ -9,11 +9,13 @@ use FastRoute\Dispatcher\Result\Matched;
 use FastRoute\Dispatcher\Result\MethodNotAllowed;
 use FastRoute\Dispatcher\Result\NotMatched;
 use FastRoute\FastRoute;
+use FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware;
 use Mammatus\DevApp\Http\Server\FrontendVhost;
 use Mammatus\DevApp\Http\Server\HomePageHandler;
 use Mammatus\Groups\Contracts\LifeCycleHandler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Log\LoggerInterface;
 use React\Http\HttpServer;
 use React\Http\Message\Response;
@@ -23,6 +25,7 @@ use React\Promise\PromiseInterface;
 use React\Socket\SocketServer;
 use Throwable;
 
+use function array_map;
 use function React\Async\async;
 use function React\Async\await;
 
@@ -89,7 +92,7 @@ final class Frontend implements LifeCycleHandler
             new RequestBodyBufferMiddleware(),
             new RequestBodyParserMiddleware(),
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
-            ...$this->vhost->middleware(), // @TODO: PSR-15 wrapping
+            ...array_map(static fn (MiddlewareInterface $middleware): callable => new PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             async(static function (ServerRequestInterface $request) use ($dispatcher): ResponseInterface {
                 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
 

@@ -9,10 +9,12 @@ use FastRoute\Dispatcher\Result\Matched;
 use FastRoute\Dispatcher\Result\MethodNotAllowed;
 use FastRoute\Dispatcher\Result\NotMatched;
 use FastRoute\FastRoute;
+use FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware;
 use Mammatus\Groups\Contracts\LifeCycleHandler;
 use Mammatus\Vhost\Healthz\HealthCheckVhost;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Log\LoggerInterface;
 use React\Cache\ArrayCache;
 use React\Http\HttpServer;
@@ -24,6 +26,7 @@ use React\Socket\SocketServer;
 use Throwable;
 use WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware;
 
+use function array_map;
 use function React\Async\async;
 use function React\Async\await;
 
@@ -109,7 +112,7 @@ final class Healthz implements LifeCycleHandler
             new RequestBodyBufferMiddleware(),
             new RequestBodyParserMiddleware(),
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
-            ...$this->vhost->middleware(), // @TODO: PSR-15 wrapping
+            ...array_map(static fn (MiddlewareInterface $middleware): callable => new PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             new WebrootPreloadMiddleware(
                 '/home/wyrihaximus/Projects/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
                 $this->logger,
