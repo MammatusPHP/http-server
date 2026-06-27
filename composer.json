@@ -45,7 +45,7 @@
     "pimple/pimple": "^3.6.0",
     "shipmonk/dead-code-detector": "^0.14.1 || ^0.15.0 || ^1.0.0",
     "wyrihaximus/makefiles": "0.12.1",
-    "wyrihaximus/test-utilities": "^13.2.0"
+    "wyrihaximus/test-utilities": "^13.3.0"
   },
   "suggest": {
     "shipmonk/dead-code-detector": "This package supports ^1 || ^0.15 || ^0.14.1 by hooking in and marking all listeners as alive"
