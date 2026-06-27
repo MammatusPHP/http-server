@@ -10,7 +10,7 @@
     "composer/composer": "^2.9.2",
     "for/http-middleware-psr15-adapter": "^2.0",
     "mammatus/app": "dev-master",
-    "mammatus/groups": "^0.2.0",
+    "mammatus/groups": "^0.2.0 || ^0.3.0",
     "mammatus/healthz-vhost": "dev-master",
     "mammatus/http-server-attributes": "dev-main",
     "mammatus/http-server-contracts": "dev-master",
