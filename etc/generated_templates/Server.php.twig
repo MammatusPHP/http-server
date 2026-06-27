@@ -39,17 +39,25 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
         $dispatcher = \FastRoute\FastRoute::recommendedSettings({% if handlerClasses|length == 0 %}static {% endif %}function(\FastRoute\ConfigureRoutes $routes): void {
             {% for handler in vhost.handlers -%}
             $routes->addRoute(
-                '{{ handler.route.httpMethod.value }}',
+                \Mammatus\Http\Server\Attributes\HttpMethod::{{ handler.route.httpMethod.name }}->value,
                 '{{ handler.route.path }}',
                 {% if handler.static -%}
                 '\{{ handler.class }}::{{ handler.method }}',
                 {% else -%}
+                    {% if handler.payload -%}
+                /**
+                  * PHPStan is right here, `\{{ handler.payload }}::create` expects a sealed array shape, but we don't know the shape here.
+                  * (Given this code is generated.)
+                  * @phpstan-ignore argument.type
+                  */
+                fn (\Psr\Http\Message\ServerRequestInterface $request, array $params): \Psr\Http\Message\ResponseInterface => $this->{{ handlerClasses[handler.class] }}->{{ handler.method }}(\{{ handler.payload }}::create($request, $params)),
+                    {% else -%}
                 $this->{{ handlerClasses[handler.class] }}->{{ handler.method }}(...),
+                    {% endif %}
                 {% endif %}
             );
             {% endfor %}
         }, '{{ vhost.vhost.name }}')->dispatcher();
-        /** @phpstan-ignore argument.type */
         $http = new \React\Http\HttpServer(...[
             \React\Async\async(function (\Psr\Http\Message\ServerRequestInterface $request, callable $next): \Psr\Http\Message\ResponseInterface {
                 /** @var callable(\Psr\Http\Message\ServerRequestInterface): \React\Promise\PromiseInterface<\Psr\Http\Message\ResponseInterface> $next */

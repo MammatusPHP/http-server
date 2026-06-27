@@ -20,6 +20,8 @@ use WyriHaximus\Composer\GenerativePluginTooling\Item;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
 use function array_key_exists;
+use function ksort;
+use function sort;
 use function str_replace;
 
 final class Plugin implements GenerativePlugin
@@ -99,7 +101,13 @@ final class Plugin implements GenerativePlugin
         Remove::directoryContentsOnlyIfItExists($rootPath . '/src/Server');
         Remove::fileOnlyIfItExists($rootPath . '/src/Kubernetes/Helm/ServerValues.php');
 
-        foreach ($vhosts as $vhostName => $vhost) {
+        ksort($vhosts);
+        foreach ($vhosts as $vhost) {
+            ksort($vhost['probes']);
+            sort($vhost['handlers']);
+        }
+
+        foreach ($vhosts as $vhost) {
             if (! array_key_exists('server_class_name', $vhost)) {
                 continue;
             }
@@ -112,6 +120,8 @@ final class Plugin implements GenerativePlugin
 
                 $handlerClasses[$handler->class] = 'handler' . str_replace('\\', '', $handler->class);
             }
+
+            ksort($handlerClasses);
 
             TwigFile::render(
                 $rootPath . '/etc/generated_templates/Server.php.twig',
