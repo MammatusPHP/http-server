@@ -49,11 +49,7 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
-        if ($method->getDeclaringClass()->getName() === IndexHandler::class) {
-            return VirtualUsageData::withNote('Class is a Handler');
-        }
-
-        if ($method->getDeclaringClass()->getName() === ReadinessProbeHandler::class) {
+        if ($method->getDeclaringClass()->getName() === HealthzHandler::class) {
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
@@ -61,7 +57,11 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
-        if ($method->getDeclaringClass()->getName() === HealthzHandler::class) {
+        if ($method->getDeclaringClass()->getName() === IndexHandler::class) {
+            return VirtualUsageData::withNote('Class is a Handler');
+        }
+
+        if ($method->getDeclaringClass()->getName() === ReadinessProbeHandler::class) {
             return VirtualUsageData::withNote('Class is a Handler');
         }
 
