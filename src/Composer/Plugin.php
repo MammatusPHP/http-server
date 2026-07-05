@@ -65,9 +65,16 @@ final class Plugin implements GenerativePlugin
 
     public function compile(string $rootPath, Item ...$items): void
     {
+        /** @var array<Service> $services */
+        $services = [];
         /** @var array<string, array{vhost: Server, server_class_name: string, handlers: array<Handler>, probes: array<Attributes\Probe>}> $vhosts */
         $vhosts = [];
         foreach ($items as $item) {
+            if ($item instanceof Service) {
+                $services[] = $item;
+                continue;
+            }
+
             if ($item instanceof Server) {
                 if (! array_key_exists($item->name, $vhosts)) {
                     $vhosts[$item->name] = [
@@ -136,7 +143,7 @@ final class Plugin implements GenerativePlugin
         TwigFile::render(
             $rootPath . '/etc/generated_templates/ServerValues.php.twig',
             $rootPath . '/src/Kubernetes/Helm/ServerValues.php',
-            ['vhosts' => $vhosts],
+            ['vhosts' => $vhosts, 'services' => $services],
         );
 
         TwigFile::render(

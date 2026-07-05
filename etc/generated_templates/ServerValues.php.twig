@@ -39,5 +39,16 @@ final class ServerValues implements \WyriHaximus\Broadcast\Contracts\Listener
             ],
         );
         {% endfor -%}
+        {% for service in services -%}
+        foreach (\Mammatus\Groups\Groups::lookUpNormalFor('{{ service.group }}') as $group) {
+            $values->add(
+                new \Mammatus\Kubernetes\Events\Helm\Values\Registry\Service(
+                    '{{ service.name }}',
+                    $group,
+                    {{ service.port }},
+                ),
+            );
+        }
+        {% endfor -%}
     }
 }

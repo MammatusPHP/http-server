@@ -51,25 +51,34 @@ final class Collector implements ItemCollector
         $webroot   = $className::webroot();
         /** @var array<\ReflectionAttribute<Group>> $groupAttributes */
         $groupAttributes = new \ReflectionClass($className)->getAttributes(Group::class);
+        /** @var array<\ReflectionAttribute<Group>> $groupAttributes */
+        $serviceAttributes = new \ReflectionClass($className)->getAttributes(\Mammatus\Kubernetes\Attributes\Service::class);
+        $groups            = [];
         if (count($groupAttributes) === 0) {
+            $groups[] = new Group(
+                Type::Normal,
+                'vhost-' . $className::name(),
+            );
+        } else {
+            foreach ($groupAttributes as $groupAttribute) {
+                $groups[] = $groupAttribute->newInstance();
+            }
+        }
+
+        foreach ($groups as $group) {
             yield new Server(
                 $className,
                 $className::name(),
                 $className::port(),
                 $webroot instanceof WebrootPath ? $webroot->path() : '',
-                new Group(
-                    Type::Normal,
-                    'vhost-' . $className::name(),
-                ),
+                $group,
             );
-        } else {
-            foreach ($groupAttributes as $groupAttribute) {
-                yield new Server(
-                    $className,
+
+            foreach ($serviceAttributes as $serviceAttribute) {
+                yield new Service(
                     $className::name(),
+                    $group->name,
                     $className::port(),
-                    $webroot instanceof WebrootPath ? $webroot->path() : '',
-                    $groupAttribute->newInstance(),
                 );
             }
         }

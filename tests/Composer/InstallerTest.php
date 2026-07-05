@@ -128,7 +128,7 @@ final class InstallerTest extends TestCase
 
         self::assertStringContainsString('<info>mammatus/http-server:</info> Locating Virtual Hosts', $output);
         self::assertStringContainsString('<info>mammatus/http-server:</info> Generated Virtual Host(s) config in ', $output);
-        self::assertStringContainsString('<info>mammatus/http-server:</info> Found 9 Virtual Host(s)', $output);
+        self::assertStringContainsString('<info>mammatus/http-server:</info> Found 10 Virtual Host(s)', $output);
         //self::assertStringContainsString('<error>mammatus/cron:</error> An error occurred:  Cannot reflect "<fg=cyan>Mammatus\Cron\Manager</>": <fg=yellow>Roave\BetterReflection\Reflection\ReflectionClass "Mammatus\Cron\Generated\AbstractManager" could not be found in the located source</>', $output);
 
 //        self::assertFileExists($fileNameList);
