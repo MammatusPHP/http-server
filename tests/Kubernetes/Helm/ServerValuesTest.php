@@ -29,6 +29,13 @@ final class ServerValuesTest extends TestCase
 
         new ServerValues()->values($values);
         self::assertSame([
+            'services' => [
+                'frontend' => [
+                    'name' => 'frontend',
+                    'group' => 'app',
+                    'port' => 1337,
+                ],
+            ],
             'deployments' => [
                 'app' => [
                     'name' => 'app',

@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Mammatus\Http\Server\Kubernetes\Helm;
 
 use Mammatus\Groups\Attributes\Group;
+use Mammatus\Groups\Groups;
 use Mammatus\Groups\Type;
 use Mammatus\Kubernetes\Events\Helm\Values;
+use Mammatus\Kubernetes\Events\Helm\Values\Registry\Service;
 use WyriHaximus\Broadcast\Contracts\Listener;
 
 /**
@@ -61,5 +63,14 @@ final class ServerValues implements Listener
                 ],
             ],
         );
+        foreach (Groups::lookUpNormalFor('frontend') as $group) {
+            $values->add(
+                new Service(
+                    'frontend',
+                    $group,
+                    1337,
+                ),
+            );
+        }
     }
 }
