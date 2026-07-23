@@ -21,7 +21,6 @@ use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
 use function array_key_exists;
 use function ksort;
-use function sort;
 use function str_replace;
 
 final class Plugin implements GenerativePlugin
@@ -98,7 +97,7 @@ final class Plugin implements GenerativePlugin
                 ];
             }
 
-            $vhosts[$item->vhost->vhost]['handlers'][] = $item;
+            $vhosts[$item->vhost->vhost]['handlers'][$item->route->httpMethod->value . ' ' . $item->route->path] = $item;
 
             foreach ($item->probeTypes as $probeType) {
                 $vhosts[$item->vhost->vhost]['probes'][$this->probeTypeToHelmChartPropertyName($probeType)] = $item;
@@ -111,7 +110,7 @@ final class Plugin implements GenerativePlugin
         ksort($vhosts);
         foreach ($vhosts as $vhost) {
             ksort($vhost['probes']);
-            sort($vhost['handlers']);
+            ksort($vhost['handlers']);
         }
 
         foreach ($vhosts as $vhost) {
