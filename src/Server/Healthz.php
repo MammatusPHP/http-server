@@ -67,13 +67,13 @@ final class Healthz implements LifeCycleHandler
         $dispatcher = FastRoute::recommendedSettings(static function (ConfigureRoutes $routes): void {
             $routes->addRoute(
                 HttpMethod::GET->value,
-                '/probe/liveness',
-                '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
+                '/',
+                '\Mammatus\Vhost\Healthz\IndexHandler::handle',
             );
             $routes->addRoute(
                 HttpMethod::GET->value,
-                '/',
-                '\Mammatus\Vhost\Healthz\IndexHandler::handle',
+                '/probe/liveness',
+                '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
             );
             $routes->addRoute(
                 HttpMethod::GET->value,
@@ -82,13 +82,13 @@ final class Healthz implements LifeCycleHandler
             );
             $routes->addRoute(
                 HttpMethod::GET->value,
-                '/probe/startup',
-                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
+                '/healthz',
+                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
             );
             $routes->addRoute(
                 HttpMethod::GET->value,
-                '/healthz',
-                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
+                '/probe/startup',
+                '\Mammatus\Vhost\Healthz\StartUpProbeHandler::handle',
             );
         }, 'healthz')->dispatcher();
         $http       = new HttpServer(...[
