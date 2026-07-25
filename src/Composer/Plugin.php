@@ -108,9 +108,9 @@ final class Plugin implements GenerativePlugin
         Remove::fileOnlyIfItExists($rootPath . '/src/Kubernetes/Helm/ServerValues.php');
 
         ksort($vhosts);
-        foreach ($vhosts as $vhost) {
-            ksort($vhost['probes']);
-            ksort($vhost['handlers']);
+        foreach ($vhosts as $vhostName => $vhost) {
+            ksort($vhosts[$vhostName]['probes']);
+            ksort($vhosts[$vhostName]['handlers']);
         }
 
         foreach ($vhosts as $vhost) {
