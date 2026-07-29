@@ -72,6 +72,11 @@ final class Healthz implements LifeCycleHandler
             );
             $routes->addRoute(
                 HttpMethod::GET->value,
+                '/healthz',
+                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
+            );
+            $routes->addRoute(
+                HttpMethod::GET->value,
                 '/probe/liveness',
                 '\Mammatus\Vhost\Healthz\LivenessProbeHandler::handle',
             );
@@ -79,11 +84,6 @@ final class Healthz implements LifeCycleHandler
                 HttpMethod::GET->value,
                 '/probe/readiness',
                 '\Mammatus\Vhost\Healthz\ReadinessProbeHandler::handle',
-            );
-            $routes->addRoute(
-                HttpMethod::GET->value,
-                '/healthz',
-                '\Mammatus\Vhost\Healthz\HealthzHandler::handle',
             );
             $routes->addRoute(
                 HttpMethod::GET->value,
@@ -114,7 +114,7 @@ final class Healthz implements LifeCycleHandler
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
             ...array_map(static fn (MiddlewareInterface $middleware): callable => new PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             new WebrootPreloadMiddleware(
-                '/home/wyrihaximus/Projects/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
+                '/tmp/renovate/repos/github/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
                 $this->logger,
                 new ArrayCache(),
             ),
