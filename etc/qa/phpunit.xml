@@ -20,6 +20,10 @@
         <include>
             <directory suffix=".php">../../src/</directory>
         </include>
+        <exclude>
+            <directory>../../src/Server/</directory>
+            <directory>../../src/PHPSan/</directory>
+        </exclude>
     </source>
     <extensions>
         <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>

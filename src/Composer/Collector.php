@@ -53,6 +53,8 @@ final class Collector implements ItemCollector
         $groupAttributes = new \ReflectionClass($className)->getAttributes(Group::class);
         /** @var array<\ReflectionAttribute<Group>> $groupAttributes */
         $serviceAttributes = new \ReflectionClass($className)->getAttributes(\Mammatus\Kubernetes\Attributes\Service::class);
+        /** @var array<\ReflectionAttribute<\Mammatus\Kubernetes\Attributes\Ingress>> $ingressAttributes */
+        $ingressAttributes = new \ReflectionClass($className)->getAttributes(\Mammatus\Kubernetes\Attributes\Ingress::class);
         $groups            = [];
         if (count($groupAttributes) === 0) {
             $groups[] = new Group(
@@ -79,6 +81,16 @@ final class Collector implements ItemCollector
                     $className::name(),
                     $group->name,
                     $className::port(),
+                );
+            }
+
+            foreach ($ingressAttributes as $ingressAttribute) {
+                $ingress = $ingressAttribute->newInstance();
+
+                yield new Ingress(
+                    $className::name(),
+                    $ingress->host,
+                    $ingress->path,
                 );
             }
         }
