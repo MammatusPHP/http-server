@@ -50,5 +50,15 @@ final class ServerValues implements \WyriHaximus\Broadcast\Contracts\Listener
             );
         }
         {% endfor -%}
+        {% for ingress in ingresses -%}
+        $values->add(
+            new \Mammatus\Kubernetes\Events\Helm\Values\Registry\Ingress(
+                '{{ ingress.name }}',
+                '{{ ingress.name }}',
+                '{{ ingress.host }}',
+                '{{ ingress.path }}',
+            ),
+        );
+        {% endfor -%}
     }
 }

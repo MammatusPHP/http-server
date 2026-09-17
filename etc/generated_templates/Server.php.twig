@@ -57,7 +57,7 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
                 {% endif %}
             );
             {% endfor %}
-        }, '{{ vhost.vhost.name }}')->dispatcher();
+        }, \dirname(__DIR__, 2) . \DIRECTORY_SEPARATOR . 'var' . \DIRECTORY_SEPARATOR . 'fast-route' . \DIRECTORY_SEPARATOR . '{{ vhost.vhost.name }}')->dispatcher();
         $http = new \React\Http\HttpServer(...[
             \React\Async\async(function (\Psr\Http\Message\ServerRequestInterface $request, callable $next): \Psr\Http\Message\ResponseInterface {
                 /** @var callable(\Psr\Http\Message\ServerRequestInterface): \React\Promise\PromiseInterface<\Psr\Http\Message\ResponseInterface> $next */

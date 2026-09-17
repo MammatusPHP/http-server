@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76172f12df7eb28d8f261bfef3311b8e",
+    "content-hash": "159fa09db2db7178722f71171bb3c156",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1761,16 +1761,16 @@
         },
         {
             "name": "mammatus/kubernetes-events",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/kubernetes-events.git",
-                "reference": "d585b6ccd613e1c580caa3abf3e67d5a0a33d16b"
+                "reference": "b7b5e0d3a192f7ad44a6074a400c6a70d644c1f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/kubernetes-events/zipball/d585b6ccd613e1c580caa3abf3e67d5a0a33d16b",
-                "reference": "d585b6ccd613e1c580caa3abf3e67d5a0a33d16b",
+                "url": "https://api.github.com/repos/MammatusPHP/kubernetes-events/zipball/b7b5e0d3a192f7ad44a6074a400c6a70d644c1f8",
+                "reference": "b7b5e0d3a192f7ad44a6074a400c6a70d644c1f8",
                 "shasum": ""
             },
             "require": {
@@ -1780,8 +1780,8 @@
                 "symfony/yaml": "^8.1.1"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.12.3",
-                "wyrihaximus/test-utilities": "^13.3.0"
+                "wyrihaximus/makefiles": "^0.14.8",
+                "wyrihaximus/test-utilities": "^14.3.0"
             },
             "type": "library",
             "extra": {
@@ -1808,7 +1808,7 @@
             "description": "☸📣 Kubernetes related Events",
             "support": {
                 "issues": "https://github.com/MammatusPHP/kubernetes-events/issues",
-                "source": "https://github.com/MammatusPHP/kubernetes-events/tree/5.1.0"
+                "source": "https://github.com/MammatusPHP/kubernetes-events/tree/5.2.0"
             },
             "funding": [
                 {
@@ -1816,7 +1816,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-05T10:05:52+00:00"
+            "time": "2026-09-16T19:05:48+00:00"
         },
         {
             "name": "mammatus/life-cycle-events",

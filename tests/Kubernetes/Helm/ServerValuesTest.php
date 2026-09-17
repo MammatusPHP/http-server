@@ -36,6 +36,14 @@ final class ServerValuesTest extends TestCase
                     'port' => 1337,
                 ],
             ],
+            'ingresses' => [
+                'frontend' => [
+                    'name' => 'frontend',
+                    'service' => 'frontend',
+                    'host' => 'www.example.com',
+                    'path' => '/',
+                ],
+            ],
             'deployments' => [
                 'app' => [
                     'name' => 'app',

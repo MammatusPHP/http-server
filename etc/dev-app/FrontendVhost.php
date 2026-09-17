@@ -9,11 +9,13 @@ use Mammatus\Groups\Type;
 use Mammatus\Http\Server\Configuration\Vhost;
 use Mammatus\Http\Server\Configuration\Webroot;
 use Mammatus\Http\Server\Webroot\NoWebroot;
+use Mammatus\Kubernetes\Attributes\Ingress;
 use Mammatus\Kubernetes\Attributes\Service;
 use Psr\Http\Server\MiddlewareInterface;
 
 #[Group(Type::Daemon, 'frontend')]
 #[Service]
+#[Ingress('www.example.com')]
 final class FrontendVhost implements Vhost
 {
     private const string SERVER_NAME = 'frontend';

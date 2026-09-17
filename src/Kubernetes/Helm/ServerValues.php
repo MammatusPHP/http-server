@@ -8,6 +8,7 @@ use Mammatus\Groups\Attributes\Group;
 use Mammatus\Groups\Groups;
 use Mammatus\Groups\Type;
 use Mammatus\Kubernetes\Events\Helm\Values;
+use Mammatus\Kubernetes\Events\Helm\Values\Registry\Ingress;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\Service;
 use WyriHaximus\Broadcast\Contracts\Listener;
 
@@ -72,5 +73,14 @@ final class ServerValues implements Listener
                 ),
             );
         }
+
+        $values->add(
+            new Ingress(
+                'frontend',
+                'frontend',
+                'www.example.com',
+                '/',
+            ),
+        );
     }
 }
