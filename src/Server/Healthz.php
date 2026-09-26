@@ -117,7 +117,7 @@ final class Healthz implements LifeCycleHandler
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
             ...array_map(static fn (MiddlewareInterface $middleware): callable => new PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             new WebrootPreloadMiddleware(
-                '/home/wyrihaximus/Projects/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
+                '/tmp/renovate/repos/github/MammatusPHP/http-server/vendor/mammatus/healthz-vhost/public',
                 $this->logger,
                 new ArrayCache(),
             ),
