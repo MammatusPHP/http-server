@@ -6,15 +6,17 @@ namespace Mammatus\Http\Server\PHPSan;
 
 use Override;
 use ReflectionMethod;
+use ReflectionProperty;
 use ShipMonk\PHPStan\DeadCode\Provider\ReflectionBasedMemberUsageProvider;
 use ShipMonk\PHPStan\DeadCode\Provider\VirtualUsageData;
 
 final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
 {
     #[Override]
-    public function shouldMarkMethodAsUsed(ReflectionMethod $method): VirtualUsageData|null
+    protected function shouldMarkMethodAsUsed(ReflectionMethod $method): VirtualUsageData|null
     {
         {% for vhost in vhosts -%}
+        {% if vhost.vhost is defined -%}
         /**
          * vhost: {{ vhost.vhost.name }}
          */
@@ -27,8 +29,70 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
             return VirtualUsageData::withNote('Class is a Handler');
         }
         {% endfor %}
+        {% for wsHandler in vhost.ws.handlers -%}
+        if ($method->getDeclaringClass()->getName() === \{{ wsHandler.class }}::class) {
+            return VirtualUsageData::withNote('Class is a WebSocket Handler');
+        }
+
+        {% if wsHandler.paramsClass != '' -%}
+        if ($method->getDeclaringClass()->getName() === \{{ wsHandler.paramsClass }}::class) {
+            return VirtualUsageData::withNote('Class is a WebSocket RPC params DTO');
+        }
+        {% endif -%}
+        {% if wsHandler.returnClass != '' and '\\' in wsHandler.returnClass -%}
+        if ($method->getDeclaringClass()->getName() === \{{ wsHandler.returnClass }}::class) {
+            return VirtualUsageData::withNote('Class is a WebSocket RPC return DTO');
+        }
+        {% endif -%}
+        {% endfor %}
+        {% for wsChannel in vhost.ws.channels -%}
+        if ($method->getDeclaringClass()->getName() === \{{ wsChannel.payloadClass }}::class) {
+            return VirtualUsageData::withNote('Class is a WebSocket channel payload');
+        }
+        {% endfor %}
+        {% endif -%}
 
         {% endfor -%}
+        $webSocketRuntime = str_starts_with($method->getDeclaringClass()->getName(), 'Mammatus\\Http\\Server\\WebSocket\\');
+
+        if ($webSocketRuntime) {
+            return VirtualUsageData::withNote('WebSocket runtime (wired from generated server)');
+        }
+
         return null;
+    }
+
+    #[Override]
+    protected function shouldMarkPropertyAsRead(ReflectionProperty $property): VirtualUsageData|null
+    {
+        {% for vhost in vhosts -%}
+        {% if vhost.vhost is defined -%}
+        {% for wsHandler in vhost.ws.handlers -%}
+        {% if wsHandler.paramsClass != '' -%}
+        if ($property->getDeclaringClass()->getName() === \{{ wsHandler.paramsClass }}::class) {
+            return VirtualUsageData::withNote('WebSocket RPC params DTO property (hydrated at runtime)');
+        }
+        {% endif -%}
+        {% if wsHandler.returnClass != '' and '\\' in wsHandler.returnClass -%}
+        if ($property->getDeclaringClass()->getName() === \{{ wsHandler.returnClass }}::class) {
+            return VirtualUsageData::withNote('WebSocket RPC return DTO property (serialized at runtime)');
+        }
+        {% endif -%}
+        {% endfor %}
+        {% for wsChannel in vhost.ws.channels -%}
+        if ($property->getDeclaringClass()->getName() === \{{ wsChannel.payloadClass }}::class) {
+            return VirtualUsageData::withNote('WebSocket channel payload property (pub/sub at runtime)');
+        }
+        {% endfor %}
+        {% endif -%}
+        {% endfor -%}
+
+        return null;
+    }
+
+    #[Override]
+    protected function shouldMarkPropertyAsWritten(ReflectionProperty $property): VirtualUsageData|null
+    {
+        return $this->shouldMarkPropertyAsRead($property);
     }
 }
