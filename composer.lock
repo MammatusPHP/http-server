@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5838d07c1681fba12e8f0d3ce89b2e7e",
+    "content-hash": "01b543c8ebfa32898655cef72ce7d64e",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1485,23 +1485,23 @@
         },
         {
             "name": "mammatus/healthz-vhost",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/healthz-vhost.git",
-                "reference": "db927d7b0dacae9c39ba04a68a0b16c0364d3216"
+                "reference": "9fabd49c66c3df530b57f092d63c1435e6e638ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/healthz-vhost/zipball/db927d7b0dacae9c39ba04a68a0b16c0364d3216",
-                "reference": "db927d7b0dacae9c39ba04a68a0b16c0364d3216",
+                "url": "https://api.github.com/repos/MammatusPHP/healthz-vhost/zipball/9fabd49c66c3df530b57f092d63c1435e6e638ca",
+                "reference": "9fabd49c66c3df530b57f092d63c1435e6e638ca",
                 "shasum": ""
             },
             "require": {
                 "mammatus/groups": "^0.1.1 || ^0.2.0 || ^0.3.0 || ^0.4.0",
-                "mammatus/http-server-attributes": "0.1.0 as dev-main",
-                "mammatus/http-server-contracts": "0.1.0 as dev-master",
-                "mammatus/http-server-webroot": "0.1.2 as dev-master",
+                "mammatus/http-server-attributes": "^0.1.0",
+                "mammatus/http-server-contracts": "^0.1.0",
+                "mammatus/http-server-webroot": "^0.1.2",
                 "mammatus/life-cycle-events": "^2.3.0",
                 "php": "^8.4",
                 "psr/http-message": "^1.1.0",
@@ -1515,7 +1515,6 @@
                 "wyrihaximus/test-utilities": "^14.4.0",
                 "wyrihaximus/ticking-promise": "^3.1.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "mammatus": {
@@ -1539,9 +1538,9 @@
             "description": "⚕️ Basic health check vhost",
             "support": {
                 "issues": "https://github.com/MammatusPHP/healthz-vhost/issues",
-                "source": "https://github.com/MammatusPHP/healthz-vhost/tree/master"
+                "source": "https://github.com/MammatusPHP/healthz-vhost/tree/0.1.0"
             },
-            "time": "2026-09-27T14:22:08+00:00"
+            "time": "2026-09-27T14:34:29+00:00"
         },
         {
             "name": "mammatus/http-server-attributes",
@@ -13381,7 +13380,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "mammatus/app": 20,
-        "mammatus/healthz-vhost": 20,
         "nikic/fast-route": 10
     },
     "prefer-stable": false,
