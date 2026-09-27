@@ -11,5 +11,7 @@
     <file>../../tests</file>
     <file>../dev-app</file>
 
+    <exclude-pattern>*/Server/*</exclude-pattern>
+
     <rule ref="WyriHaximus-OSS" />
 </ruleset>
