@@ -5,15 +5,23 @@ declare(strict_types=1);
 namespace Mammatus\Tests\Http\Server\Composer;
 
 use Mammatus\DevApp\Http\Server\FrontendVhost;
+use Mammatus\DevApp\Http\Server\WebSocketDemoEvent;
+use Mammatus\DevApp\Http\Server\WebSocketPingHandler;
+use Mammatus\DevApp\Http\Server\WebSocketPingParams;
+use Mammatus\DevApp\Http\Server\WebSocketPingResult;
 use Mammatus\Groups\Attributes\Group;
 use Mammatus\Groups\Type;
 use Mammatus\Http\Server\Attributes\HttpMethod;
 use Mammatus\Http\Server\Attributes\Route;
 use Mammatus\Http\Server\Attributes\Vhost;
+use Mammatus\Http\Server\Attributes\WebSocket\Channel;
+use Mammatus\Http\Server\Attributes\WebSocket\Rpc;
 use Mammatus\Http\Server\Composer\Handler;
 use Mammatus\Http\Server\Composer\Ingress;
 use Mammatus\Http\Server\Composer\Server;
 use Mammatus\Http\Server\Composer\Service;
+use Mammatus\Http\Server\Composer\WebSocketChannelRegistration;
+use Mammatus\Http\Server\Composer\WebSocketHandler;
 use Mammatus\Vhost\Healthz\IndexHandler;
 use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
@@ -88,6 +96,52 @@ final class ItemsTest extends TestCase
                 'payload' => null,
             ],
             $handler->jsonSerialize(),
+        );
+    }
+
+    #[Test]
+    public function webSocketHandlerJsonSerialize(): void
+    {
+        $vhost   = new Vhost('frontend');
+        $rpc     = new Rpc('ping');
+        $handler = new WebSocketHandler(
+            WebSocketPingHandler::class,
+            'ping',
+            false,
+            $vhost,
+            $rpc,
+            WebSocketPingParams::class,
+            WebSocketPingResult::class,
+        );
+
+        self::assertSame(
+            [
+                'class' => WebSocketPingHandler::class,
+                'method' => 'ping',
+                'static' => false,
+                'vhost' => $vhost,
+                'rpc' => $rpc,
+                'paramsClass' => WebSocketPingParams::class,
+                'returnClass' => WebSocketPingResult::class,
+            ],
+            $handler->jsonSerialize(),
+        );
+    }
+
+    #[Test]
+    public function webSocketChannelRegistrationJsonSerialize(): void
+    {
+        $vhost   = new Vhost('frontend');
+        $channel = new Channel('demo-events', WebSocketDemoEvent::class);
+        $item    = new WebSocketChannelRegistration($vhost, $channel, WebSocketDemoEvent::class);
+
+        self::assertSame(
+            [
+                'vhost' => $vhost,
+                'channel' => $channel,
+                'payloadClass' => WebSocketDemoEvent::class,
+            ],
+            $item->jsonSerialize(),
         );
     }
 }

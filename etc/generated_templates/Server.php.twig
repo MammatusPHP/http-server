@@ -12,16 +12,54 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
 
     private readonly \React\Socket\SocketServer $server;
     private bool $started = false;
+    {% if vhost.hasWebSocketHub %}
+    private readonly \Mammatus\Http\Server\WebSocket\WebSocketHub $webSocketHub;
+    {% endif %}
 
     public function __construct(
         private readonly \{{ vhost.vhost.class }} $vhost,
         private readonly \Psr\Log\LoggerInterface $logger,
+        {% if vhost.webSocketServeClientAsset -%}
+        private readonly \Mammatus\Http\Server\WebSocket\Middleware\WebSocketClientAssetMiddleware $webSocketClientAssetMiddleware,
+        {% endif -%}
         {% for class, name in handlerClasses %}
         private readonly \{{ class }} ${{ name }},
         {% endfor %}
     ) {
         $this->server = new \React\Socket\SocketServer('0.0.0.0:{{ vhost.vhost.port }}');
+        {% if vhost.hasWebSocketHub %}
+        $mapper = new \Mammatus\Http\Server\Server\WebSocket\Hydrators\{{ vhost.server_class_name }}();
+        $codec = new \Mammatus\Http\Server\WebSocket\WebSocketPayloadCodec($mapper);
+        $this->webSocketHub = new \Mammatus\Http\Server\WebSocket\WebSocketHub($codec, {% if vhost.webSocketHeartbeatIntervalSeconds is null %}null{% else %}{{ vhost.webSocketHeartbeatIntervalSeconds }}{% endif %}, '{{ vhost.webSocketHeartbeatChannel|e('js') }}');
+        {% for wsHandler in vhost.ws.handlers %}
+        $this->webSocketHub->registerRpc(
+            '{{ wsHandler.rpc.method }}',
+            {% if wsHandler.static -%}
+                {% if wsHandler.paramsClass -%}
+            \{{ wsHandler.class }}::{{ wsHandler.method }}(...),
+                {% else -%}
+            fn (mixed $_params, \Psr\Http\Message\ServerRequestInterface $request): mixed => \{{ wsHandler.class }}::{{ wsHandler.method }}($request),
+                {% endif -%}
+            {% else -%}
+                {% if wsHandler.paramsClass -%}
+            fn (mixed $params, \Psr\Http\Message\ServerRequestInterface $request): mixed => $this->{{ handlerClasses[wsHandler.class] }}->{{ wsHandler.method }}($params, $request),
+                {% else -%}
+            fn (mixed $_params, \Psr\Http\Message\ServerRequestInterface $request): mixed => $this->{{ handlerClasses[wsHandler.class] }}->{{ wsHandler.method }}($request),
+                {% endif -%}
+            {% endif -%}
+            {% if wsHandler.paramsClass != '' -%}'{{ wsHandler.paramsClass }}'{% else -%}''{% endif %},
+            {% if wsHandler.returnClass != '' -%}'{{ wsHandler.returnClass }}'{% else -%}''{% endif %},
+        );
+        {% endfor %}
+        {% endif %}
     }
+
+    {% if vhost.hasWebSocketHub %}
+    public function webSocketHub(): \Mammatus\Http\Server\WebSocket\WebSocketHub
+    {
+        return $this->webSocketHub;
+    }
+    {% endif %}
 
     public static function group(): string
     {
@@ -79,6 +117,12 @@ final class {{ vhost.server_class_name }} implements \Mammatus\Groups\Contracts\
             new \React\Http\Middleware\RequestBodyBufferMiddleware(),
             new \React\Http\Middleware\RequestBodyParserMiddleware(),
             //new \WyriHaximus\React\Http\Middleware\CustomRequestBodyParsers(),
+            {% if vhost.webSocketServeClientAsset -%}
+            new \FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware($this->webSocketClientAssetMiddleware),
+            {% endif -%}
+            {% if vhost.hasWebSocketHub -%}
+            new \Mammatus\Http\Server\WebSocket\Rfc6455UpgradeMiddleware($this->webSocketHub),
+            {% endif -%}
             ...array_map(static fn (\Psr\Http\Server\MiddlewareInterface $middleware): callable => new \FriendsOfReact\Http\Middleware\Psr15Adapter\PSR15Middleware($middleware), [...$this->vhost->middleware()]),
             {% if vhost.vhost.webrootPath != '' -%}
             new \WyriHaximus\React\Http\Middleware\WebrootPreloadMiddleware(

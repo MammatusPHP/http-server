@@ -1,10 +1,34 @@
 parameters:
 	level: max
+	reportUnmatchedIgnoredErrors: false
 	paths:
 		- ../../etc
 		- ../../src
 		- ../../tests
 		- ../dev-app
+	excludePaths:
+		- ../../src/Server/**
+		- ../../tests/Composer/Fixtures/**
+		- ../../tests/WebSocket/ThrowingSerializeMapper.php
+	ignoreErrors:
+		-
+			message: '#^Method Mammatus\\Http\\Server\\WebSocket\\WebSocketHub::__construct\(\) has parameter \$heartbeatIntervalSeconds with a nullable type declaration\.$#'
+			path: ../../src/WebSocket/WebSocketHub.php
+		-
+			message: '#^Method Mammatus\\Http\\Server\\WebSocket\\WebSocketVhostConfiguration::__construct\(\) has parameter \$heartbeatIntervalSeconds with a nullable type declaration\.$#'
+			path: ../../src/WebSocket/WebSocketVhostConfiguration.php
+		-
+			message: '#^Method Mammatus\\Http\\Server\\WebSocket\\WebSocketHub::sendRpcResult\(\) has parameter \$id with a nullable type declaration\.$#'
+			path: ../../src/WebSocket/WebSocketHub.php
+		-
+			message: '#^Method Mammatus\\Http\\Server\\WebSocket\\WebSocketHub::sendRpcError\(\) has parameter \$id with a nullable type declaration\.$#'
+			path: ../../src/WebSocket/WebSocketHub.php
+		-
+			message: '#^Class Mammatus\\Http\\Server\\WebSocket\\Connection is neither abstract nor final\.$#'
+			path: ../../src/WebSocket/Connection.php
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			path: ../../src/WebSocket/Connection.php
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:
@@ -15,6 +39,8 @@ parameters:
 			- Mammatus\Tests\LifeCycleEvents\Promise\AbstractPromiseTest
 			- Mammatus\Http\Server\Generated\AbstractServer
 			- Mammatus\Http\Server\Generated\AbstractHelm
+			- Mammatus\Http\Server\WebSocket\Connection
+			- Evenement\EventEmitter
 			- ShipMonk\PHPStan\DeadCode\Provider\ReflectionBasedMemberUsageProvider
 includes:
     - ../../extension.neon
