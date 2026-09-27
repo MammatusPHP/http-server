@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace Mammatus\Http\Server\Composer;
 
 use Mammatus\Http\Server\Attributes;
+use Mammatus\Http\Server\Composer\Handler as HttpHandler;
+use Mammatus\Http\Server\Composer\WebSocket\ChannelRegistration;
+use Mammatus\Http\Server\Composer\WebSocket\Handler as WebSocketHandler;
+use Mammatus\Http\Server\Composer\WebSocket\HydratorGenerator;
 use Mammatus\Http\Server\Configuration\Vhost;
+use Mammatus\Http\Server\WebSocket\VhostConfiguration;
 use Realodix\ChangeCase\ChangeCase;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\HasAttributes;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\ImplementsInterface;
@@ -20,6 +25,8 @@ use WyriHaximus\Composer\GenerativePluginTooling\Item;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
 use function array_key_exists;
+use function array_values;
+use function in_array;
 use function ksort;
 use function str_replace;
 
@@ -53,6 +60,10 @@ final class Plugin implements GenerativePlugin
                     new HasAttributes(Attributes\Route::class),
                 ),
             ),
+            ...LogicalAnd::create(
+                new IsInstantiable(),
+                new HasAttributes(Attributes\Vhost::class),
+            ),
         );
     }
 
@@ -68,7 +79,7 @@ final class Plugin implements GenerativePlugin
         $services = [];
         /** @var array<Ingress> $ingresses */
         $ingresses = [];
-        /** @var array<string, array{vhost: Server, server_class_name: string, handlers: array<Handler>, probes: array<Attributes\Probe>}> $vhosts */
+        /** @var array<string, array{vhost?: Server, server_class_name?: string, handlers: array<HttpHandler>, probes: array<Attributes\Probe>, ws: array{handlers: array<string, WebSocketHandler>, channels: array<string, ChannelRegistration>}}> $vhosts */
         $vhosts = [];
         foreach ($items as $item) {
             if ($item instanceof Service) {
@@ -83,25 +94,19 @@ final class Plugin implements GenerativePlugin
 
             if ($item instanceof Server) {
                 if (! array_key_exists($item->name, $vhosts)) {
-                    $vhosts[$item->name] = [
-                        'handlers' => [],
-                        'probes' => [],
-                    ];
+                    $vhosts[$item->name] = self::emptyVhostBucket();
                 }
 
                 $vhosts[$item->name]['vhost']             = $item;
                 $vhosts[$item->name]['server_class_name'] = ChangeCase::pascal($item->name);
             }
 
-            if (! ($item instanceof Handler)) {
+            if (! ($item instanceof HttpHandler)) {
                 continue;
             }
 
             if (! array_key_exists($item->vhost->vhost, $vhosts)) {
-                $vhosts[$item->vhost->vhost] = [
-                    'handlers' => [],
-                    'probes' => [],
-                ];
+                $vhosts[$item->vhost->vhost] = self::emptyVhostBucket();
             }
 
             $vhosts[$item->vhost->vhost]['handlers'][$item->route->httpMethod->value . ' ' . $item->route->path] = $item;
@@ -111,6 +116,26 @@ final class Plugin implements GenerativePlugin
             }
         }
 
+        foreach ($items as $item) {
+            if ($item instanceof WebSocketHandler) {
+                if (! array_key_exists($item->vhost->vhost, $vhosts)) {
+                    $vhosts[$item->vhost->vhost] = self::emptyVhostBucket();
+                }
+
+                $vhosts[$item->vhost->vhost]['ws']['handlers'][$item->rpc->method] = $item;
+            }
+
+            if (! ($item instanceof ChannelRegistration)) {
+                continue;
+            }
+
+            if (! array_key_exists($item->vhost->vhost, $vhosts)) {
+                $vhosts[$item->vhost->vhost] = self::emptyVhostBucket();
+            }
+
+            $vhosts[$item->vhost->vhost]['ws']['channels'][$item->channel->channel] = $item;
+        }
+
         Remove::directoryContentsOnlyIfItExists($rootPath . '/src/Server');
         Remove::fileOnlyIfItExists($rootPath . '/src/Kubernetes/Helm/ServerValues.php');
 
@@ -118,10 +143,12 @@ final class Plugin implements GenerativePlugin
         foreach ($vhosts as $vhostName => $vhost) {
             ksort($vhosts[$vhostName]['probes']);
             ksort($vhosts[$vhostName]['handlers']);
+            ksort($vhosts[$vhostName]['ws']['handlers']);
+            ksort($vhosts[$vhostName]['ws']['channels']);
         }
 
         foreach ($vhosts as $vhost) {
-            if (! array_key_exists('server_class_name', $vhost)) {
+            if (! array_key_exists('server_class_name', $vhost) || ! array_key_exists('vhost', $vhost)) {
                 continue;
             }
 
@@ -134,7 +161,31 @@ final class Plugin implements GenerativePlugin
                 $handlerClasses[$handler->class] = 'handler' . str_replace('\\', '', $handler->class);
             }
 
+            foreach ($vhost['ws']['handlers'] as $wsHandler) {
+                if ($wsHandler->static) {
+                    continue;
+                }
+
+                $handlerClasses[$wsHandler->class] = 'handler' . str_replace('\\', '', $wsHandler->class);
+            }
+
             ksort($handlerClasses);
+
+            $vhostClass = $vhost['vhost']->class;
+            /** @var class-string $vhostClass */
+            $webSocketVhost                     = VhostConfiguration::fromVhostClass($vhostClass);
+            $vhost['webSocketServeClientAsset'] = $webSocketVhost->serveClientAsset;
+            $vhost['hasWebSocketHub']           = $vhost['ws']['handlers'] !== [] || $vhost['ws']['channels'] !== [];
+            if ($vhost['hasWebSocketHub']) {
+                $vhost['webSocketHeartbeatIntervalSeconds'] = $webSocketVhost->heartbeatIntervalSeconds;
+                $vhost['webSocketHeartbeatChannel']         = $webSocketVhost->heartbeatChannel;
+            }
+
+            HydratorGenerator::generate(
+                $rootPath,
+                $vhost['server_class_name'],
+                self::webSocketMapperClasses($vhost['ws']['handlers'], $vhost['ws']['channels']),
+            );
 
             TwigFile::render(
                 $rootPath . '/etc/generated_templates/Server.php.twig',
@@ -159,6 +210,19 @@ final class Plugin implements GenerativePlugin
         );
     }
 
+    /** @return array{handlers: array<HttpHandler>, probes: array<Attributes\Probe>, ws: array{handlers: array<string, WebSocketHandler>, channels: array<string, ChannelRegistration>}} */
+    private static function emptyVhostBucket(): array
+    {
+        return [
+            'handlers' => [],
+            'probes' => [],
+            'ws' => [
+                'handlers' => [],
+                'channels' => [],
+            ],
+        ];
+    }
+
     private function probeTypeToHelmChartPropertyName(Attributes\ProbeType $probeType): string
     {
         return match ($probeType) {
@@ -166,5 +230,41 @@ final class Plugin implements GenerativePlugin
             Attributes\ProbeType::Liveness => 'liveness',
             Attributes\ProbeType::Readiness => 'readiness',
         };
+    }
+
+    /**
+     * @param array<string, WebSocketHandler>    $wsHandlers
+     * @param array<string, ChannelRegistration> $wsChannels
+     *
+     * @return list<class-string>
+     */
+    private static function webSocketMapperClasses(array $wsHandlers, array $wsChannels): array
+    {
+        $classes = [];
+        foreach ($wsHandlers as $wsHandler) {
+            if ($wsHandler->paramsClass !== '') {
+                $classes[$wsHandler->paramsClass] = $wsHandler->paramsClass;
+            }
+
+            if ($wsHandler->returnClass === '' || self::isBuiltinType($wsHandler->returnClass)) {
+                continue;
+            }
+
+            $classes[$wsHandler->returnClass] = $wsHandler->returnClass;
+        }
+
+        foreach ($wsChannels as $wsChannel) {
+            $classes[$wsChannel->payloadClass] = $wsChannel->payloadClass;
+        }
+
+        /** @var list<class-string> $classList */
+        $classList = array_values($classes);
+
+        return $classList;
+    }
+
+    private static function isBuiltinType(string $type): bool
+    {
+        return in_array($type, ['void', 'null', 'bool', 'int', 'float', 'string', 'array', 'mixed'], true);
     }
 }

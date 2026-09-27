@@ -6,6 +6,7 @@ namespace Mammatus\DevApp\Http\Server;
 
 use Mammatus\Groups\Attributes\Group;
 use Mammatus\Groups\Type;
+use Mammatus\Http\Server\Attributes\WebSocket\ServeClientAsset;
 use Mammatus\Http\Server\Configuration\Vhost;
 use Mammatus\Http\Server\Configuration\Webroot;
 use Mammatus\Http\Server\Webroot\NoWebroot;
@@ -16,6 +17,7 @@ use Psr\Http\Server\MiddlewareInterface;
 #[Group(Type::Daemon, 'frontend')]
 #[Service]
 #[Ingress('www.example.com')]
+#[ServeClientAsset]
 final class FrontendVhost implements Vhost
 {
     private const string SERVER_NAME = 'frontend';

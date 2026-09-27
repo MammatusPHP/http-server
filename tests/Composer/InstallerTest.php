@@ -129,13 +129,17 @@ final class InstallerTest extends TestCase
 
         self::assertStringContainsString('<info>mammatus/http-server:</info> Locating Virtual Hosts', $output);
         self::assertStringContainsString('<info>mammatus/http-server:</info> Generated Virtual Host(s) config in ', $output);
-        self::assertStringContainsString('<info>mammatus/http-server:</info> Found 11 Virtual Host(s)', $output);
+        self::assertStringContainsString('<info>mammatus/http-server:</info> Found 14 Virtual Host(s)', $output);
         $serverValuesFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR
             . 'Kubernetes' . DIRECTORY_SEPARATOR . 'Helm' . DIRECTORY_SEPARATOR . 'ServerValues.php';
         self::assertStringContainsString(
             'new \\Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Service(',
             (string) file_get_contents($serverValuesFile),
         );
+        $frontendServer = file_get_contents($this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Server' . DIRECTORY_SEPARATOR . 'Frontend.php');
+        self::assertIsString($frontendServer);
+        self::assertStringContainsString('webSocketHub', $frontendServer);
+        self::assertStringContainsString("'heartbeat'", $frontendServer);
         //self::assertStringContainsString('<error>mammatus/cron:</error> An error occurred:  Cannot reflect "<fg=cyan>Mammatus\Cron\Manager</>": <fg=yellow>Roave\BetterReflection\Reflection\ReflectionClass "Mammatus\Cron\Generated\AbstractManager" could not be found in the located source</>', $output);
 
 //        self::assertFileExists($fileNameList);

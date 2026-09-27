@@ -11,6 +11,7 @@ final class ServerValues implements \WyriHaximus\Broadcast\Contracts\Listener
     public function values(\Mammatus\Kubernetes\Events\Helm\Values $values): void
     {
         {% for vhost in vhosts -%}
+        {% if vhost.vhost is defined -%}
         $values->addToGroup(
             new \Mammatus\Groups\Attributes\Group(\Mammatus\Groups\Type::{{ vhost.vhost.group.type.name }}, '{{ vhost.vhost.group.name }}'),
             [
@@ -38,6 +39,7 @@ final class ServerValues implements \WyriHaximus\Broadcast\Contracts\Listener
             {% endif -%}
             ],
         );
+        {% endif -%}
         {% endfor -%}
         {% for service in services -%}
         foreach (\Mammatus\Groups\Groups::lookUpNormalFor('{{ service.group }}') as $group) {
