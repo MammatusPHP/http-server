@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cff12883bd3c104413c63ccdf79ffe37",
+    "content-hash": "5838d07c1681fba12e8f0d3ce89b2e7e",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1489,19 +1489,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/healthz-vhost.git",
-                "reference": "3e8ff2aea60c3b1af2460bca99f7697375f41d61"
+                "reference": "db927d7b0dacae9c39ba04a68a0b16c0364d3216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/healthz-vhost/zipball/3e8ff2aea60c3b1af2460bca99f7697375f41d61",
-                "reference": "3e8ff2aea60c3b1af2460bca99f7697375f41d61",
+                "url": "https://api.github.com/repos/MammatusPHP/healthz-vhost/zipball/db927d7b0dacae9c39ba04a68a0b16c0364d3216",
+                "reference": "db927d7b0dacae9c39ba04a68a0b16c0364d3216",
                 "shasum": ""
             },
             "require": {
                 "mammatus/groups": "^0.1.1 || ^0.2.0 || ^0.3.0 || ^0.4.0",
-                "mammatus/http-server-attributes": "dev-main",
-                "mammatus/http-server-contracts": "dev-master",
-                "mammatus/http-server-webroot": "dev-master",
+                "mammatus/http-server-attributes": "0.1.0 as dev-main",
+                "mammatus/http-server-contracts": "0.1.0 as dev-master",
+                "mammatus/http-server-webroot": "0.1.2 as dev-master",
                 "mammatus/life-cycle-events": "^2.3.0",
                 "php": "^8.4",
                 "psr/http-message": "^1.1.0",
@@ -1511,8 +1511,8 @@
             "require-dev": {
                 "mammatus/app": "dev-master",
                 "mammatus/http-server": "dev-master",
-                "wyrihaximus/makefiles": "^0.13.2",
-                "wyrihaximus/test-utilities": "^14.1.0",
+                "wyrihaximus/makefiles": "^0.14.8",
+                "wyrihaximus/test-utilities": "^14.4.0",
                 "wyrihaximus/ticking-promise": "^3.1.0"
             },
             "default-branch": true,
@@ -1541,30 +1541,29 @@
                 "issues": "https://github.com/MammatusPHP/healthz-vhost/issues",
                 "source": "https://github.com/MammatusPHP/healthz-vhost/tree/master"
             },
-            "time": "2026-08-24T05:13:36+00:00"
+            "time": "2026-09-27T14:22:08+00:00"
         },
         {
             "name": "mammatus/http-server-attributes",
-            "version": "dev-main",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/http-server-attributes.git",
-                "reference": "bf547505226163efb7da306941d2377b8e45ec87"
+                "reference": "f6ff936cb98b3be7aa716954f745f3df291696da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/http-server-attributes/zipball/bf547505226163efb7da306941d2377b8e45ec87",
-                "reference": "bf547505226163efb7da306941d2377b8e45ec87",
+                "url": "https://api.github.com/repos/MammatusPHP/http-server-attributes/zipball/f6ff936cb98b3be7aa716954f745f3df291696da",
+                "reference": "f6ff936cb98b3be7aa716954f745f3df291696da",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.13.3",
-                "wyrihaximus/test-utilities": "^14.1.0"
+                "wyrihaximus/makefiles": "^0.14.8",
+                "wyrihaximus/test-utilities": "^14.4.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1575,25 +1574,25 @@
             "license": [
                 "MIT"
             ],
-            "description": "HTTP Server Attributes",
+            "description": "Attributes for the HTTP server",
             "support": {
                 "issues": "https://github.com/MammatusPHP/http-server-attributes/issues",
-                "source": "https://github.com/MammatusPHP/http-server-attributes/tree/main"
+                "source": "https://github.com/MammatusPHP/http-server-attributes/tree/0.1.0"
             },
-            "time": "2026-08-24T05:11:16+00:00"
+            "time": "2026-09-27T12:15:17+00:00"
         },
         {
             "name": "mammatus/http-server-contracts",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/http-server-contracts.git",
-                "reference": "ca30d752531ae34e6aceba414fa80b03fad3a4fb"
+                "reference": "469117f322b15f2f7c337e50384eb9e95c357f76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/http-server-contracts/zipball/ca30d752531ae34e6aceba414fa80b03fad3a4fb",
-                "reference": "ca30d752531ae34e6aceba414fa80b03fad3a4fb",
+                "url": "https://api.github.com/repos/MammatusPHP/http-server-contracts/zipball/469117f322b15f2f7c337e50384eb9e95c357f76",
+                "reference": "469117f322b15f2f7c337e50384eb9e95c357f76",
                 "shasum": ""
             },
             "require": {
@@ -1602,10 +1601,9 @@
                 "psr/http-server-middleware": "^1.0.2"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.14.7",
-                "wyrihaximus/test-utilities": "^14.1.0"
+                "wyrihaximus/makefiles": "^0.14.8",
+                "wyrihaximus/test-utilities": "^14.4.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "wyrihaximus": {
@@ -1623,36 +1621,35 @@
             "license": [
                 "MIT"
             ],
-            "description": "HTTP Server contracts",
+            "description": "Contracts for the HTTP server",
             "support": {
                 "issues": "https://github.com/MammatusPHP/http-server-contracts/issues",
-                "source": "https://github.com/MammatusPHP/http-server-contracts/tree/master"
+                "source": "https://github.com/MammatusPHP/http-server-contracts/tree/0.1.0"
             },
-            "time": "2026-09-26T15:07:29+00:00"
+            "time": "2026-09-27T12:29:41+00:00"
         },
         {
             "name": "mammatus/http-server-webroot",
-            "version": "dev-master",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/http-server-webroot.git",
-                "reference": "5636bf13d07403e8d26a29f46b4078e1b5e32410"
+                "reference": "0151a1b2c2a3e9db4dbb5aaeb6517c7139027bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/http-server-webroot/zipball/5636bf13d07403e8d26a29f46b4078e1b5e32410",
-                "reference": "5636bf13d07403e8d26a29f46b4078e1b5e32410",
+                "url": "https://api.github.com/repos/MammatusPHP/http-server-webroot/zipball/0151a1b2c2a3e9db4dbb5aaeb6517c7139027bbe",
+                "reference": "0151a1b2c2a3e9db4dbb5aaeb6517c7139027bbe",
                 "shasum": ""
             },
             "require": {
-                "mammatus/http-server-contracts": "dev-master",
+                "mammatus/http-server-contracts": "^0.1.0",
                 "php": "^8.4"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.14.7",
-                "wyrihaximus/test-utilities": "^14.1.0"
+                "wyrihaximus/makefiles": "^0.14.8",
+                "wyrihaximus/test-utilities": "^14.4.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1666,9 +1663,9 @@
             "description": "HTTP Server webroot implementations",
             "support": {
                 "issues": "https://github.com/MammatusPHP/http-server-webroot/issues",
-                "source": "https://github.com/MammatusPHP/http-server-webroot/tree/master"
+                "source": "https://github.com/MammatusPHP/http-server-webroot/tree/0.1.2"
             },
-            "time": "2026-09-26T15:07:42+00:00"
+            "time": "2026-09-27T13:00:02+00:00"
         },
         {
             "name": "mammatus/kubernetes-attributes",
@@ -9000,22 +8997,22 @@
         },
         {
             "name": "phpstan/phpstan-phpunit",
-            "version": "2.0.18",
+            "version": "2.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-phpunit.git",
-                "reference": "f5dc20ff8082d02339b60cab68ec3eb0d859fb30"
+                "reference": "33a190a5e8e69fd18308443a80d4f43f42d43604"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/f5dc20ff8082d02339b60cab68ec3eb0d859fb30",
-                "reference": "f5dc20ff8082d02339b60cab68ec3eb0d859fb30",
+                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/33a190a5e8e69fd18308443a80d4f43f42d43604",
+                "reference": "33a190a5e8e69fd18308443a80d4f43f42d43604",
                 "shasum": ""
             },
             "require": {
                 "phar-io/version": "^3.2",
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^2.2.3"
+                "phpstan/phpstan": "^2.2.6"
             },
             "conflict": {
                 "phpunit/phpunit": "<7.0"
@@ -9052,9 +9049,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-phpunit/issues",
-                "source": "https://github.com/phpstan/phpstan-phpunit/tree/2.0.18"
+                "source": "https://github.com/phpstan/phpstan-phpunit/tree/2.0.19"
             },
-            "time": "2026-07-04T12:16:09+00:00"
+            "time": "2026-09-26T17:07:06+00:00"
         },
         {
             "name": "phpstan/phpstan-strict-rules",
@@ -13385,9 +13382,6 @@
     "stability-flags": {
         "mammatus/app": 20,
         "mammatus/healthz-vhost": 20,
-        "mammatus/http-server-attributes": 20,
-        "mammatus/http-server-contracts": 20,
-        "mammatus/http-server-webroot": 20,
         "nikic/fast-route": 10
     },
     "prefer-stable": false,
