@@ -39,13 +39,14 @@ flowchart LR
 ```
 
 - **Discovery filters**: [`Plugin::filters()`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Plugin.php) matches packages with `extra.mammatus.http.server.has-vhosts`, classes implementing [`Vhost`](https://github.com/MammatusPHP/http-server-contracts/blob/master/src/Configuration/Vhost.php), and handler classes that carry both [`#[Vhost]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/Vhost.php) and [`#[Route]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/Route.php).
-- **Collection**: [`Collector`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Collector.php) yields servers, handlers, and optional [`Service`](https://github.com/MammatusPHP/kubernetes-attributes) / [`Ingress`](https://github.com/MammatusPHP/kubernetes-attributes) items from vhost classes.
+- **Collection**: [`Collector`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Collector.php) yields servers, HTTP handlers, WebSocket [`#[Rpc]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/WebSocket/Rpc.php) methods and [`#[Channel]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/WebSocket/Channel.php) registrations, and optional [`Service`](https://github.com/MammatusPHP/kubernetes-attributes) / [`Ingress`](https://github.com/MammatusPHP/kubernetes-attributes) items from vhost classes.
 - **Generated output**:
   - [`Server.php.twig`](https://github.com/MammatusPHP/http-server/blob/master/etc/generated_templates/Server.php.twig) to `src/Server/{PascalVhostName}.php` (one [`LifeCycleHandler`](https://github.com/MammatusPHP/groups/blob/main/src/Contracts/LifeCycleHandler.php) per vhost)
   - [`ServerValues.php.twig`](https://github.com/MammatusPHP/http-server/blob/master/etc/generated_templates/ServerValues.php.twig) to [`ServerValues`](https://github.com/MammatusPHP/http-server/blob/master/src/Kubernetes/Helm/ServerValues.php) for Helm integration
 - **Do not edit generated files manually**. They are overwritten on the next install or update (see the banner on [`Frontend`](https://github.com/MammatusPHP/http-server/blob/master/src/Server/Frontend.php)).
 - **Routing**: [FastRoute](https://github.com/nikic/FastRoute) with a on-disk route cache under `var/fast-route/{vhostName}` inside generated code.
 - **Per-vhost HTTP stack**: request logging, body buffer and parser, optional PSR-15 middleware from the vhost, optional [webroot preload middleware](https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload), then FastRoute dispatch.
+- **WebSockets**: when a vhost has RPC or channel handlers (or vhost WebSocket attributes), generated servers add [`Rfc6455UpgradeMiddleware`](src/WebSocket/Rfc6455UpgradeMiddleware.php), a [`Hub`](src/WebSocket/Hub.php) (via `webSocketHub()` with `publish()` and [`onChannelSubscribe()`](src/WebSocket/Hub.php)), an object hydrator under `src/Server/WebSocket/Hydrators/`, and optionally [`ClientAssetMiddleware`](src/WebSocket/Middleware/ClientAssetMiddleware.php) when [`#[ServeClientAsset]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/WebSocket/ServeClientAsset.php) is present on the vhost class.
 
 # Define a virtual host
 
@@ -138,6 +139,57 @@ final readonly class PingHandler
 ```
 
 Probe routes and other attributes are documented in [mammatus/http-server-attributes](https://github.com/MammatusPHP/http-server-attributes/blob/main/README.md).
+
+# WebSockets
+
+WebSockets share the vhost listen port. After an HTTP upgrade, clients send JSON frames with an `o` operation field ([`Operation`](src/WebSocket/Protocol/Operation.php), [`WireMessage`](src/WebSocket/Protocol/WireMessage.php)). Attributes live in [mammatus/http-server-attributes](https://github.com/MammatusPHP/http-server-attributes/tree/main/src/WebSocket).
+
+**Vhost class attributes** (read by [`VhostConfiguration`](src/WebSocket/VhostConfiguration.php)):
+
+| Attribute | Purpose |
+|-----------|---------|
+| [`#[HeartbeatInterval(seconds: float)]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/WebSocket/HeartbeatInterval.php) | Periodic RFC6455 PING and optional `evt` on the heartbeat channel. Omit for default **13** seconds; **`seconds <= 0`** disables heartbeat. |
+| [`#[HeartbeatChannel('name')]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/WebSocket/HeartbeatChannel.php) | Channel name for heartbeat events (default [`heartbeat`](src/WebSocket/Defaults.php)). |
+| [`#[ServeClientAsset]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/WebSocket/ServeClientAsset.php) | Serves the bundled ES module at [`/.well-known/mammatus/websocket-client.mjs`](src/WebSocket/ClientAsset.php). |
+
+The dev-app vhost uses `#[ServeClientAsset]` ([`FrontendVhost.php`](https://github.com/MammatusPHP/http-server/blob/master/etc/dev-app/FrontendVhost.php)).
+
+**RPC handlers:** `#[Vhost('…')]` on the class and `#[Rpc('methodName')]` on a public method. Supported signatures ([`Collector`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Collector.php)):
+
+- `(ServerRequestInterface $upgradeRequest)` only
+- `(ParamsDto $params, ServerRequestInterface $upgradeRequest)` with a DTO first argument
+
+Return a DTO, scalar, or `React\Promise\PromiseInterface` for async work. Example [`PingHandler.php`](etc/dev-app/WebSocket/PingHandler.php):
+
+```php
+#[Vhost('frontend')]
+final readonly class PingHandler
+{
+    #[Rpc('ping')]
+    public function ping(PingParams $params, ServerRequestInterface $upgradeRequest): PingResult
+    {
+        return new PingResult(pong: true, echo: $params->message);
+    }
+}
+```
+
+**Pub/sub channels:** `#[Channel('channel-name', PayloadClass::class)]` on a class with the same `#[Vhost]`. Payload objects serialize through the generated hydrator. Example [`DemoEvent.php`](etc/dev-app/WebSocket/DemoEvent.php).
+
+- **Publish:** from application code that can reach the vhost generated [`LifeCycleHandler`](https://github.com/MammatusPHP/groups/blob/main/src/Contracts/LifeCycleHandler.php), call `webSocketHub()->publish('channel-name', $payload)`.
+- **Subscribe hook:** [`Hub::onChannelSubscribe()`](src/WebSocket/Hub.php) registers a `callable` invoked with a [`Connection`](src/WebSocket/Connection.php) and the channel name when a client successfully subscribes. Clients send `{"o":"sub","c":"channel-name"}` (see [`subscribe()`](etc/js/mammatus-websocket-client.mjs) in the browser client; [`Operation`](src/WebSocket/Protocol/Operation.php) and [`WireProperties`](src/WebSocket/Protocol/WireProperties.php) values are injected at serve time). Register during startup from the same kind of code that calls `publish()`; do not edit generated `src/Server/*.php`. Each call replaces the previous callback. Duplicate `sub` for the same connection and channel does not invoke the callback again.
+
+```php
+use Mammatus\Http\Server\WebSocket\Connection;
+
+// $vhostServer: generated LifeCycleHandler for the vhost (inject via your DI container).
+$vhostServer->webSocketHub()->onChannelSubscribe(
+    static function (Connection $connection, string $channel): void {
+        // Metrics, logging, or push an initial evt to $connection, etc.
+    },
+);
+```
+
+**Browser client:** import [`MammatusWebSocket`](etc/js/mammatus-websocket-client.mjs) from the well-known URL when `#[ServeClientAsset]` is enabled. `connect()` keeps the socket open with exponential backoff reconnect; each successful `open` re-subscribes the heartbeat channel and every channel passed to `subscribe()`. Call `disconnect()` to close and disable reconnect. Event handlers registered with `on()` survive reconnects; in-flight `rpc()` promises reject when the connection drops. Interactive demo: HTTP route [`/demo/websocket`](etc/dev-app/DemoWebSocketPageHandler.php).
 
 # Publishing vhosts from a Composer package
 
