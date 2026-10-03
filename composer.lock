@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01b543c8ebfa32898655cef72ce7d64e",
+    "content-hash": "b8a7268069e46353054ae9eb53fce0c8",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -12943,16 +12943,16 @@
         },
         {
             "name": "wyrihaximus/makefiles",
-            "version": "0.14.8",
+            "version": "0.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/Makefiles.git",
-                "reference": "d469a26ffa094738d0d5b15b72a8298fa86dc119"
+                "reference": "6caf17e8ac1fcfa8152311da7c2c005d7498a828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/d469a26ffa094738d0d5b15b72a8298fa86dc119",
-                "reference": "d469a26ffa094738d0d5b15b72a8298fa86dc119",
+                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/6caf17e8ac1fcfa8152311da7c2c005d7498a828",
+                "reference": "6caf17e8ac1fcfa8152311da7c2c005d7498a828",
                 "shasum": ""
             },
             "require": {
@@ -12964,7 +12964,7 @@
                 "infection/infection": "<0.32.0"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^14.2.0"
+                "wyrihaximus/test-utilities": "^14.4.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -12993,7 +12993,7 @@
             "description": "🧱 Makefile building blocks",
             "support": {
                 "issues": "https://github.com/WyriHaximus/Makefiles/issues",
-                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.14.8"
+                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.15.1"
             },
             "funding": [
                 {
@@ -13001,7 +13001,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-15T05:05:53+00:00"
+            "time": "2026-10-03T15:29:24+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-no-safe",

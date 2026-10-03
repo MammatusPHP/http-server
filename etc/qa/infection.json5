@@ -27,5 +27,6 @@
                 "Mammatus\\Http\\Server\\Middleware\\UnformattedContent::__invoke::20"
             ]
         }
-    }
+    },
+    "threads": 64
 }
