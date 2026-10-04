@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7afb6acf7f026df7ff1dbb035ae5f4f",
+    "content-hash": "fb84af24317f18a78a805f8575437d2f",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1485,21 +1485,21 @@
         },
         {
             "name": "mammatus/healthz-vhost",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/healthz-vhost.git",
-                "reference": "9fabd49c66c3df530b57f092d63c1435e6e638ca"
+                "reference": "c6d8baeed33a1308085cebf7685b039c2bb532e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/healthz-vhost/zipball/9fabd49c66c3df530b57f092d63c1435e6e638ca",
-                "reference": "9fabd49c66c3df530b57f092d63c1435e6e638ca",
+                "url": "https://api.github.com/repos/MammatusPHP/healthz-vhost/zipball/c6d8baeed33a1308085cebf7685b039c2bb532e1",
+                "reference": "c6d8baeed33a1308085cebf7685b039c2bb532e1",
                 "shasum": ""
             },
             "require": {
                 "mammatus/groups": "^0.1.1 || ^0.2.0 || ^0.3.0 || ^0.4.0",
-                "mammatus/http-server-attributes": "^0.1.0",
+                "mammatus/http-server-attributes": "^0.1.0 || ^0.2.0 || ^0.3.0",
                 "mammatus/http-server-contracts": "^0.1.0",
                 "mammatus/http-server-webroot": "^0.1.2",
                 "mammatus/life-cycle-events": "^2.3.0",
@@ -1510,8 +1510,7 @@
             },
             "require-dev": {
                 "mammatus/app": "dev-master",
-                "mammatus/http-server": "dev-master",
-                "wyrihaximus/makefiles": "^0.14.8",
+                "wyrihaximus/makefiles": "^0.15.1",
                 "wyrihaximus/test-utilities": "^14.4.0",
                 "wyrihaximus/ticking-promise": "^3.1.0"
             },
@@ -1538,9 +1537,9 @@
             "description": "⚕️ Basic health check vhost",
             "support": {
                 "issues": "https://github.com/MammatusPHP/healthz-vhost/issues",
-                "source": "https://github.com/MammatusPHP/healthz-vhost/tree/0.1.0"
+                "source": "https://github.com/MammatusPHP/healthz-vhost/tree/0.2.0"
             },
-            "time": "2026-09-27T14:34:29+00:00"
+            "time": "2026-10-04T15:44:31+00:00"
         },
         {
             "name": "mammatus/http-server-attributes",
