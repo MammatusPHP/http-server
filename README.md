@@ -1,223 +1,165 @@
-```bash
-time docker run --rm -w `pwd` -v `pwd`:`pwd` -p 9666:9666  -it wyrihaximusnet/php:7.4-zts-alpine3.11 php ./vendor/bin/mammatus
-```
+# Multi-vhost HTTP server
 
+![Continuous Integration](https://github.com/MammatusPHP/http-server/workflows/Continuous%20Integration/badge.svg)
+[![Latest Stable Version](https://poser.pugx.org/mammatus/http-server/v/stable.png)](https://packagist.org/packages/mammatus/http-server)
+[![Total Downloads](https://poser.pugx.org/mammatus/http-server/downloads.png)](https://packagist.org/packages/mammatus/http-server/stats)
+[![Type Coverage](https://shepherd.dev/github/MammatusPHP/http-server/coverage.svg)](https://shepherd.dev/github/MammatusPHP/http-server)
+[![License](https://poser.pugx.org/mammatus/http-server/license.png)](https://packagist.org/packages/mammatus/http-server)
 
-# HTTP Server command
-
-[![Build Status](https://travis-ci.com/reactive-apps/command-http-server.svg?branch=master)](https://travis-ci.com/reactive-apps/command-http-server)
-[![Latest Stable Version](https://poser.pugx.org/reactive-apps/command-http-server/v/stable.png)](https://packagist.org/packages/reactive-apps/command-http-server)
-[![Total Downloads](https://poser.pugx.org/reactive-apps/command-http-server/downloads.png)](https://packagist.org/packages/reactive-apps/command-http-server/stats)
-[![Code Coverage](https://scrutinizer-ci.com/g/reactive-apps/command-http-server/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/reactive-apps/command-http-server/?branch=master)
-[![License](https://poser.pugx.org/reactive-apps/command-http-server/license.png)](https://packagist.org/packages/reactive-apps/command-http-server)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/reactive-apps/command-http-server/badge.svg)](https://travis-ci.com/reactive-apps/command-http-server)
+Async **multi-vhost** HTTP on [ReactPHP](https://reactphp.org/) and [react/http](https://github.com/reactphp/http) for [MammatusPHP](https://github.com/MammatusPHP/app) applications. [mammatus/http-server](https://github.com/MammatusPHP/http-server) is a Composer plugin that discovers virtual hosts and route handlers across your project and installed packages, then generates ReactPHP server classes and Kubernetes-oriented Helm values. Generated servers implement [`LifeCycleHandler`](https://github.com/MammatusPHP/groups/blob/main/src/Contracts/LifeCycleHandler.php) and start or stop with Mammatus [groups](https://github.com/MammatusPHP/groups).
 
 # Install
 
-To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `^`.
+To install via [Composer](https://getcomposer.org/), use the command below. Composer picks the latest compatible version and applies a `^` constraint.
 
 ```
-composer require reactive-apps/command-http-server
+composer require mammatus/http-server
 ```
 
-# Controllers
+The plugin runs on every `composer dump-autoload` (`pre-autoload-dump`) and via the [`composer generate-config`](https://github.com/MammatusPHP/http-server/blob/master/composer.json) script. Both call [`Mammatus\Http\Server\Composer\Installer::findServers`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Installer.php).
 
-Controllers come in two different flavours static and instantiated controllers.
+# How it works
 
-## Static Controllers
+On autoload dump the plugin scans the codebase and installed packages, collects vhosts, HTTP handlers, and optional Kubernetes metadata, then writes generated PHP under the plugin install path (for example `vendor/mammatus/http-server/` in an application).
 
-Static controllers are recommended when your controller doesn't have any dependencies like this ping controller used for
-[`updown.io`](https://updown.io/r/rPWzd) health checks. ***Note: `/ping` isn't a updown standard but it's my personal
-standard of doing health checks for my apps*** This controller only has a single method with a single route and no
-dependencies:
+```mermaid
+flowchart LR
+  subgraph discover [Discovery on composer dump]
+    VhostClasses["Classes implementing Vhost"]
+    HandlerClasses["Classes with Vhost plus Route attributes"]
+    Packages["Packages with extra.mammatus.http.server.has-vhosts"]
+  end
+  Plugin["mammatus/http-server Plugin"]
+  Generated["src/Server LifeCycleHandlers"]
+  Helm["Kubernetes Helm ServerValues"]
+  discover --> Plugin
+  Plugin --> Generated
+  Plugin --> Helm
+  Generated --> Groups["Mammatus groups start and stop"]
+```
+
+- **Discovery filters**: [`Plugin::filters()`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Plugin.php) matches packages with `extra.mammatus.http.server.has-vhosts`, classes implementing [`Vhost`](https://github.com/MammatusPHP/http-server-contracts/blob/master/src/Configuration/Vhost.php), and handler classes that carry both [`#[Vhost]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/Vhost.php) and [`#[Route]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/Route.php).
+- **Collection**: [`Collector`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Collector.php) yields servers, handlers, and optional [`Service`](https://github.com/MammatusPHP/kubernetes-attributes) / [`Ingress`](https://github.com/MammatusPHP/kubernetes-attributes) items from vhost classes.
+- **Generated output**:
+  - [`Server.php.twig`](https://github.com/MammatusPHP/http-server/blob/master/etc/generated_templates/Server.php.twig) to `src/Server/{PascalVhostName}.php` (one [`LifeCycleHandler`](https://github.com/MammatusPHP/groups/blob/main/src/Contracts/LifeCycleHandler.php) per vhost)
+  - [`ServerValues.php.twig`](https://github.com/MammatusPHP/http-server/blob/master/etc/generated_templates/ServerValues.php.twig) to [`ServerValues`](https://github.com/MammatusPHP/http-server/blob/master/src/Kubernetes/Helm/ServerValues.php) for Helm integration
+- **Do not edit generated files manually**. They are overwritten on the next install or update (see the banner on [`Frontend`](https://github.com/MammatusPHP/http-server/blob/master/src/Server/Frontend.php)).
+- **Routing**: [FastRoute](https://github.com/nikic/FastRoute) with a on-disk route cache under `var/fast-route/{vhostName}` inside generated code.
+- **Per-vhost HTTP stack**: request logging, body buffer and parser, optional PSR-15 middleware from the vhost, optional [webroot preload middleware](https://github.com/WyriHaximus/reactphp-http-middleware-webroot-preload), then FastRoute dispatch.
+
+# Define a virtual host
+
+Implement [`Mammatus\Http\Server\Configuration\Vhost`](https://github.com/MammatusPHP/http-server-contracts/blob/master/src/Configuration/Vhost.php): static `name()`, `port()`, and `webroot()` ([`NoWebroot`](https://github.com/MammatusPHP/http-server-webroot) or a path-backed webroot), plus instance `middleware()`. Optional [`#[Group]`](https://github.com/MammatusPHP/groups), [`#[Service]`](https://github.com/MammatusPHP/kubernetes-attributes), and [`#[Ingress]`](https://github.com/MammatusPHP/kubernetes-attributes) on the class feed Helm values generation.
+
+Example from this repository's dev app ([`FrontendVhost.php`](https://github.com/MammatusPHP/http-server/blob/master/etc/dev-app/FrontendVhost.php)):
 
 ```php
 <?php declare(strict_types=1);
 
-namespace App\Controller;
+namespace Mammatus\DevApp\Http\Server;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use ReactiveApps\Command\HttpServer\Annotations\Method;
-use ReactiveApps\Command\HttpServer\Annotations\Routes;
-use RingCentral\Psr7\Response;
+use Mammatus\Groups\Attributes\Group;
+use Mammatus\Groups\Type;
+use Mammatus\Http\Server\Configuration\Vhost;
+use Mammatus\Http\Server\Configuration\Webroot;
+use Mammatus\Http\Server\Webroot\NoWebroot;
+use Mammatus\Kubernetes\Attributes\Ingress;
+use Mammatus\Kubernetes\Attributes\Service;
+use Psr\Http\Server\MiddlewareInterface;
 
-final class Ping
+#[Group(Type::Daemon, 'frontend')]
+#[Service]
+#[Ingress('www.example.com')]
+final class FrontendVhost implements Vhost
 {
-    /**
-     * @Method("GET")
-     * @Routes("/ping")
-     *
-     * @param  ServerRequestInterface $request
-     * @return ResponseInterface
-     */
-    public static function ping(ServerRequestInterface $request): ResponseInterface
+    private const string SERVER_NAME = 'frontend';
+    private const int LISTEN_PORT    = 1337;
+
+    public static function port(): int
     {
-        return new Response(
-            200,
-            ['Content-Type' => 'text/plain'],
-            'pong'
-        );
+        return self::LISTEN_PORT;
+    }
+
+    public static function name(): string
+    {
+        return self::SERVER_NAME;
+    }
+
+    public static function webroot(): Webroot
+    {
+        return new NoWebroot();
+    }
+
+    public static function maxConcurrentRequests(): null
+    {
+        return null;
+    }
+
+    /** @return iterable<MiddlewareInterface> */
+    public function middleware(): iterable
+    {
+        yield from [];
     }
 }
 ```
 
-## Instantiated Controllers
+For a ready-made health and probe vhost, see [mammatus/healthz-vhost](https://github.com/MammatusPHP/healthz-vhost) (port **9666**, Kubernetes probes, static files under [`public/`](https://github.com/MammatusPHP/healthz-vhost/tree/master/public)).
 
-Instantiated Controllers on the other hand will be instantiated and kept around to handle more requests in the future
-as such they can have dependencies injected. The example below is a controller that has the event loop injected to wait
-for a random number of seconds before returning the response. It also uses coroutines to make the code more readable:
+# HTTP route handlers
+
+Handlers are plain PHP classes annotated with [`#[Vhost]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/Vhost.php) and [`#[Route]`](https://github.com/MammatusPHP/http-server-attributes/blob/main/src/Route.php). The collector ([`Collector::handler()`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Collector.php)) registers each matching **public** method that is not a constructor or destructor and has **zero or one** parameter. With one parameter, the type is a route payload DTO (FastRoute path segments map into it). Static and instance methods are both supported ([`Handler`](https://github.com/MammatusPHP/http-server/blob/master/src/Composer/Handler.php)).
+
+Home page handler ([`HomePageHandler.php`](https://github.com/MammatusPHP/http-server/blob/master/etc/dev-app/HomePageHandler.php)):
 
 ```php
-<?php declare(strict_types=1);
-
-namespace App\Controller;
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use React\EventLoop\LoopInterface;
-use ReactiveApps\Command\HttpServer\Annotations\Method;
-use ReactiveApps\Command\HttpServer\Annotations\Routes;
-use ReactiveApps\Command\HttpServer\Annotations\Template;
-use ReactiveApps\Command\HttpServer\TemplateResponse;
-use WyriHaximus\Annotations\Coroutine;
-use function WyriHaximus\React\timedPromise;
-
-/**
- * @Coroutine())
- */
-final class Root
+#[Vhost('frontend')]
+#[Route(HttpMethod::GET, '/')]
+final readonly class HomePageHandler
 {
-    /** @var LoopInterface */
-    private $loop;
-
-    /** @var int */
-    private $time;
-
-    public function __construct(LoopInterface $loop)
+    public function handle(): ResponseInterface
     {
-        $this->loop = $loop;
-        $this->time = \time();
-    }
-
-    /**
-     * @Method("GET")
-     * @Routes("/")
-     * @Template("root")
-     *
-     * @param  ServerRequestInterface $request
-     * @return ResponseInterface
-     */
-    public function root(ServerRequestInterface $request)
-    {
-        $start = \time();
-
-        yield timedPromise($this->loop, \random_int(1, 5));
-
-        return (new TemplateResponse(
-            200,
-            ['Content-Type' => 'text/plain']
-        ))->withTemplateData([
-            'uptime' => (\time() - $this->time),
-            'took' => (\time() - $start),
-        ]);
+        return new Response(OK, ['Content-Type' => 'text/plain'], 'Hello World!');
     }
 }
-
 ```
 
-# Routing
-
-Routing is done through annotations on the method handling the routes. Each method can handle multiple routes but it's
-recommended to only map routes that fit the the method.
-
-For example the following annotation will map the current method to `/` (***note: all routes are required to be
-prefixed with `/`***): `@Routes("/")`
-
-A multi route annotation has a slightly different syntax, in the following both `/old` and `/new` will be handled by
-the same method:
+Route parameter payload ([`PingHandler.php`](https://github.com/MammatusPHP/http-server/blob/master/etc/dev-app/PingHandler.php) and [`Ping.php`](https://github.com/MammatusPHP/http-server/blob/master/etc/dev-app/Ping.php)):
 
 ```php
-@Routes({
-    "/old",
-    "/new"
-})
-```
-
-The underlying engine for routes is [`nikic/fast-route`](https://github.com/nikic/FastRoute) which also makes complex
-routes like this one possible:
-
-```php
-@Route("/{map:(?:wow_cata_draenor|wow_cata_land|wow_cata_underwater|wow_legion_azeroth|wow_battle_for_azeroth|wow_cata_elemental_plane|wow_cata_twisting_nether|wow_comp_wotlk)}/{zoom:1|2|3|4|5|6|7|8|9|10}/{width:[0-9]{1,5}}/{height:[0-9]{1,5}}/{center:[a-zA-Z0-9\`\-\~\_\@\%]{1,35}}{blips:/blip\_center|/[a-zA-Z0-9\`\-\~\_\@\%\[\]]{3,}.+|}.{quality:png|hq.jpg|lq.jpg}")
-```
-
-The different route components like `map`, and `center` are available from the request object with:
-
-```php
-$request->getAttribute('center');
-```
-
-# Templates
-
-A route can render a template upon completion it needs an annotation and return/resolve with a `TemplateResponse`
-holding the data required for that template. For example:
-
-```php
-/**
- * @Template("root")
- */
-public function root(ServerRequestInterface $request)
+#[Vhost('frontend')]
+#[Route(HttpMethod::GET, '/ping/{name}')]
+final readonly class PingHandler
 {
-    return (new TemplateResponse(
-        200,
-        ['Content-Type' => 'text/plain']
-    ))->withTemplateData([
-        'beer' => 'Allmouth', // https://untappd.com/user/WyriHaximus/checkin/745226210
-    ]);
+    public function handle(Ping $ping): ResponseInterface
+    {
+        return new Response(OK, ['Content-Type' => 'application/json'], '{}');
+    }
+}
+```
+
+Probe routes and other attributes are documented in [mammatus/http-server-attributes](https://github.com/MammatusPHP/http-server-attributes/blob/main/README.md).
+
+# Publishing vhosts from a Composer package
+
+Set `extra.mammatus.http.server.has-vhosts` to `true` in `composer.json` so the plugin scans that package for `Vhost` implementations and attributed handlers (this package and [healthz-vhost](https://github.com/MammatusPHP/healthz-vhost) use the same flag):
+
+```json
+"extra": {
+  "mammatus": {
+    "http": {
+      "server": {
+        "has-vhosts": true
+      }
+    }
+  }
 }
 ```
 
-# Blocking operations in requests
+Application code and every scanned package contribute handlers to the same generated servers keyed by vhost name.
 
-While we aim for building a completely non-blocking application we can't escape the truth that there might always be
-parts of our application that would block the loop. For those situations there are two ways provided to deal with those
-situations:
+# Hacking this repository
 
-* Child Process (slow, spawns full PHP processes to handle the request)
-* Threads (fast, uses threads to do the work, requires ZTS version of PHP)
-
-## Child Processes
-
-Works on most if not all systems but requires a full PHP processes per worker. Start up can be slow and communication
-with the child process goes over a socket. Add the `@ChildProcess` annotation to handle that specific action in a
-child process.
-
-## Threads
-
-Works only on ZTS PHP builds, but in return starts up almost instantly, communication is directly in memory thus never
-leaving the application server. Add the `@Thread` annotation to handle that specific action in a thread.
-
-# Annotations
-
-* `@ChildProcess` - Runs controller actions inside a child process
-* `@Coroutine` - Runs controller actions inside a coroutine
-* `@Method` - Allowed HTTP methods (GET, POST, PATCH, etc)
-* `@Routes` - Routes to use the given method for
-* `@Template` - Template to use when a TemplateResponse is used
-* `@Thread` - Runs controller actions inside a thread (preferred over use child processes)
-
-# Options
-
-* `http-server.address` - The IP + Port to listen on, for example: `0.0.0.0:8080`
-* `http-server.hsts` - Whether or not to set HSTS headers
-* `http-server.public` - Public webroot to serve, note only put files in here everyone is allowed to see
-* `http-server.public.preload.cache` - Custom cache to store the preloaded webroot files, stored in memory by default
-* `http-server.middleware.prefix` - An array with react/http middleware added before the accesslog and webroot serving middleware
-* `http-server.middleware.suffix` - An array with react/http middleware added after the accesslog and webroot serving middleware and before the route middleware and request handler
-* `http-server.pool.ttl` - TTL for a child process to wait for it's next task
-* `http-server.pool.min` - Minimum number of child processes
-* `http-server.pool.max` - maximum number of child processes
-* `http-server.rewrites` - Rewrites request path internally from one path to the other, invisible for visitors
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Run `make install`, then `make contrib` while iterating and `make` before opening a pull request. Example vhost and handlers live under [`etc/dev-app/`](https://github.com/MammatusPHP/http-server/tree/master/etc/dev-app).
 
 # License
 
