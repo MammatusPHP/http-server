@@ -11,7 +11,7 @@
     "for/http-middleware-psr15-adapter": "^2.0",
     "mammatus/app": "dev-master",
     "mammatus/groups": "^0.4.0",
-    "mammatus/healthz-vhost": "^0.1.0",
+    "mammatus/healthz-vhost": "^0.1.0 || ^0.2.0",
     "mammatus/http-server-attributes": "^0.1.0 || ^0.2.0 || ^0.3.0",
     "mammatus/http-server-contracts": "^0.1.0",
     "mammatus/http-server-webroot": "^0.1.0",
