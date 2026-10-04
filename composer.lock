@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8a7268069e46353054ae9eb53fce0c8",
+    "content-hash": "e7afb6acf7f026df7ff1dbb035ae5f4f",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
