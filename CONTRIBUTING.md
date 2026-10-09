@@ -34,4 +34,6 @@ Push to your fork and [submit a pull request][pr].
 
 [pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
+WebSocket vhost options and the browser client are documented in the [README `# WebSockets` section](README.md#websockets).
+
 Contributing with an LLM? This repo includes an [`AGENTS.md`](AGENTS.md) with guidance for coding agents; pointing your agent at it helps a lot. Before you open a PR, skim through your changes so you feel comfortable with everything you're submitting.

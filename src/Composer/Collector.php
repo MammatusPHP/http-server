@@ -9,8 +9,12 @@ use Mammatus\Groups\Type;
 use Mammatus\Http\Server\Attributes\Probe as ProbeAttribute;
 use Mammatus\Http\Server\Attributes\Route as RouteAttribute;
 use Mammatus\Http\Server\Attributes\Vhost as VhostAttribute;
+use Mammatus\Http\Server\Attributes\WebSocket\Channel as ChannelAttribute;
+use Mammatus\Http\Server\Attributes\WebSocket\Rpc as RpcAttribute;
 use Mammatus\Http\Server\Configuration\Vhost as VhostContract;
 use Mammatus\Http\Server\Webroot\WebrootPath;
+use Psr\Http\Message\ServerRequestInterface;
+use ReflectionMethod;
 use Roave\BetterReflection\Reflection\ReflectionAttribute;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use Roave\BetterReflection\Reflection\ReflectionIntersectionType;
@@ -38,6 +42,11 @@ final class Collector implements ItemCollector
                 break;
             case in_array(VhostAttribute::class, array_map(static fn (ReflectionAttribute $ra): string => $ra->getName(), $class->getAttributes()), true) && in_array(RouteAttribute::class, array_map(static fn (ReflectionAttribute $ra): string => $ra->getName(), $class->getAttributes()), true):
                 yield from $this->handler($class);
+                yield from $this->webSocket($class);
+
+                break;
+            case in_array(VhostAttribute::class, array_map(static fn (ReflectionAttribute $ra): string => $ra->getName(), $class->getAttributes()), true):
+                yield from $this->webSocket($class);
 
                 break;
         }
@@ -52,7 +61,8 @@ final class Collector implements ItemCollector
         /** @var array<\ReflectionAttribute<Group>> $groupAttributes */
         $groupAttributes = new \ReflectionClass($className)->getAttributes(Group::class);
         /** @var array<\ReflectionAttribute<Group>> $groupAttributes */
-        $serviceAttributes = new \ReflectionClass($className)->getAttributes(\Mammatus\Kubernetes\Attributes\Service::class);
+        $serviceAttributes     = new \ReflectionClass($className)->getAttributes(\Mammatus\Kubernetes\Attributes\Service::class);
+        $serviceAttributeCount = count($serviceAttributes);
         /** @var array<\ReflectionAttribute<\Mammatus\Kubernetes\Attributes\Ingress>> $ingressAttributes */
         $ingressAttributes = new \ReflectionClass($className)->getAttributes(\Mammatus\Kubernetes\Attributes\Ingress::class);
         $groups            = [];
@@ -76,7 +86,7 @@ final class Collector implements ItemCollector
                 $group,
             );
 
-            foreach ($serviceAttributes as $serviceAttribute) {
+            for ($serviceAttributeIndex = 0; $serviceAttributeIndex < $serviceAttributeCount; ++$serviceAttributeIndex) {
                 yield new Service(
                     $className::name(),
                     $group->name,
@@ -174,5 +184,90 @@ final class Collector implements ItemCollector
                 }
             }
         }
+    }
+
+    /** @return iterable<ItemContract> */
+    private function webSocket(ReflectionClass $class): iterable
+    {
+        foreach (new \ReflectionClass($class->getName())->getAttributes(VhostAttribute::class) as $vhostAttribute) {
+            $vhost = $vhostAttribute->newInstance();
+
+            foreach (new \ReflectionClass($class->getName())->getAttributes(ChannelAttribute::class) as $channelAttribute) {
+                $channel = $channelAttribute->newInstance();
+
+                /** @var class-string $payloadClass */
+                $payloadClass = $channel->payloadClass !== '' ? $channel->payloadClass : $class->getName();
+
+                yield new WebSocketChannelRegistration(
+                    $vhost,
+                    $channel,
+                    $payloadClass,
+                );
+            }
+
+            foreach (new \ReflectionClass($class->getName())->getMethods() as $method) {
+                if (! $method->isPublic() || $method->isConstructor() || $method->isDestructor()) {
+                    continue;
+                }
+
+                foreach ($method->getAttributes(RpcAttribute::class) as $rpcAttribute) {
+                    $rpc = $rpcAttribute->newInstance();
+
+                    $parameters = $method->getParameters();
+
+                    if (count($parameters) === 1) {
+                        $type = $parameters[0]->getType();
+                        if ($type instanceof \ReflectionNamedType && $type->getName() === ServerRequestInterface::class) {
+                            yield new WebSocketHandler(
+                                $class->getName(),
+                                $method->getName(),
+                                $method->isStatic(),
+                                $vhost,
+                                $rpc,
+                                '',
+                                $this->namedReturnClass($method) ?? '',
+                            );
+
+                            continue;
+                        }
+                    }
+
+                    if (count($parameters) !== 2) {
+                        continue;
+                    }
+
+                    $firstType  = $parameters[0]->getType();
+                    $secondType = $parameters[1]->getType();
+                    if (
+                        ! ($firstType instanceof \ReflectionNamedType)
+                        || ! ($secondType instanceof \ReflectionNamedType)
+                        || $secondType->getName() !== ServerRequestInterface::class
+                        || $firstType->isBuiltin()
+                    ) {
+                        continue;
+                    }
+
+                    yield new WebSocketHandler(
+                        $class->getName(),
+                        $method->getName(),
+                        $method->isStatic(),
+                        $vhost,
+                        $rpc,
+                        $firstType->getName(),
+                        $this->namedReturnClass($method) ?? '',
+                    );
+                }
+            }
+        }
+    }
+
+    private function namedReturnClass(ReflectionMethod $method): string|null
+    {
+        $returnType = $method->getReturnType();
+        if (! ($returnType instanceof \ReflectionNamedType)) {
+            return null;
+        }
+
+        return $returnType->getName();
     }
 }
