@@ -24,6 +24,7 @@ use function closedir;
 use function copy;
 use function dirname;
 use function file_exists;
+use function file_get_contents;
 use function fopen;
 use function fseek;
 use function is_dir;
@@ -129,6 +130,12 @@ final class InstallerTest extends TestCase
         self::assertStringContainsString('<info>mammatus/http-server:</info> Locating Virtual Hosts', $output);
         self::assertStringContainsString('<info>mammatus/http-server:</info> Generated Virtual Host(s) config in ', $output);
         self::assertStringContainsString('<info>mammatus/http-server:</info> Found 11 Virtual Host(s)', $output);
+        $serverValuesFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR
+            . 'Kubernetes' . DIRECTORY_SEPARATOR . 'Helm' . DIRECTORY_SEPARATOR . 'ServerValues.php';
+        self::assertStringContainsString(
+            'new \\Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Service(',
+            file_get_contents($serverValuesFile) ?: '',
+        );
         //self::assertStringContainsString('<error>mammatus/cron:</error> An error occurred:  Cannot reflect "<fg=cyan>Mammatus\Cron\Manager</>": <fg=yellow>Roave\BetterReflection\Reflection\ReflectionClass "Mammatus\Cron\Generated\AbstractManager" could not be found in the located source</>', $output);
 
 //        self::assertFileExists($fileNameList);

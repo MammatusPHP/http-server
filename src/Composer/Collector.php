@@ -76,7 +76,7 @@ final class Collector implements ItemCollector
                 $group,
             );
 
-            foreach ($serviceAttributes as $serviceAttribute) {
+            if ($serviceAttributes !== []) {
                 yield new Service(
                     $className::name(),
                     $group->name,
