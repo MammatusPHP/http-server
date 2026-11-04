@@ -134,7 +134,7 @@ final class InstallerTest extends TestCase
             . 'Kubernetes' . DIRECTORY_SEPARATOR . 'Helm' . DIRECTORY_SEPARATOR . 'ServerValues.php';
         self::assertStringContainsString(
             'new \\Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Service(',
-            file_get_contents($serverValuesFile) ?: '',
+            (string) file_get_contents($serverValuesFile),
         );
         //self::assertStringContainsString('<error>mammatus/cron:</error> An error occurred:  Cannot reflect "<fg=cyan>Mammatus\Cron\Manager</>": <fg=yellow>Roave\BetterReflection\Reflection\ReflectionClass "Mammatus\Cron\Generated\AbstractManager" could not be found in the located source</>', $output);
 

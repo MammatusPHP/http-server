@@ -77,11 +77,14 @@ final class Collector implements ItemCollector
             );
 
             if ($serviceAttributes !== []) {
-                yield new Service(
-                    $className::name(),
-                    $group->name,
-                    $className::port(),
-                );
+                /** @phpstan-ignore-next-line variable.unused */
+                foreach ($serviceAttributes as $serviceAttribute) {
+                    yield new Service(
+                        $className::name(),
+                        $group->name,
+                        $className::port(),
+                    );
+                }
             }
 
             foreach ($ingressAttributes as $ingressAttribute) {
