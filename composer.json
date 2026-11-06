@@ -11,7 +11,7 @@
     "evenement/evenement": "^3.0.2",
     "eventsauce/object-hydrator": "^1.8.0",
     "for/http-middleware-psr15-adapter": "^2.0.0",
-    "guzzlehttp/psr7": "^2.7",
+    "guzzlehttp/psr7": "^2.7 || ^3.0",
     "mammatus/app": "dev-master",
     "mammatus/groups": "^0.4.0",
     "mammatus/healthz-vhost": "^0.2.1",
