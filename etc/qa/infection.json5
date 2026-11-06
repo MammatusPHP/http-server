@@ -26,6 +26,67 @@
             "ignore": [
                 "Mammatus\\Http\\Server\\Middleware\\UnformattedContent::__invoke::20"
             ]
+        },
+        "IncrementInteger": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::51",
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::52",
+                "Mammatus\\Http\\Server\\WebSocket\\Protocol\\WireMessage::decode::22"
+            ]
+        },
+        "DecrementInteger": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::51",
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::52",
+                "Mammatus\\Http\\Server\\WebSocket\\Protocol\\WireMessage::decode::22"
+            ]
+        },
+        "TrueValue": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::47",
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::49",
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::ensureHeartbeat::262"
+            ]
+        },
+        "Multiplication": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::__construct::52"
+            ]
+        },
+        "MethodCallRemoval": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Connection::send",
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::attach::99"
+            ]
+        },
+        "Concat": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::dispatchRpc::196"
+            ]
+        },
+        "ConcatOperandRemoval": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::dispatchRpc::196"
+            ]
+        },
+        "LogicalOr": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::unsubscribe::183"
+            ]
+        },
+        "ReturnRemoval": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::registerRpc::78",
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::onMessage::142",
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::onMessage::148",
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::subscribe::161",
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::detach::248"
+            ]
+        },
+        "Continue_": {
+            "ignore": [
+                "Mammatus\\Http\\Server\\WebSocket\\Hub::ensureHeartbeat::265"
+            ]
         }
     },
     "threads": 64
