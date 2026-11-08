@@ -1241,6 +1241,7 @@ dir
 directed
 directoryexists
 dirname
+discovery
 disk_free_space
 disk_total_space
 diskfreespace
@@ -1685,7 +1686,6 @@ greaterthan
 greaterthanorequal
 group_by
 groups
-guzzlehttp
 gzclose
 gzcompress
 gzdecode
@@ -2866,6 +2866,7 @@ php-di
 php-di-definitions
 php-enum
 php-file-iterator
+php-http
 php-invoker
 php-parallel-lint
 php-parser
@@ -2909,7 +2910,6 @@ polyfill-mbstring
 polyfill-php73
 polyfill-php80
 polyfill-php81
-polyfill-php82
 polyfill-php84
 polyfill-php85
 popen
@@ -3079,7 +3079,6 @@ psr-3-context-logger
 psr-3-utilities
 psr-testlogger
 psr3
-psr7
 psr7-string-stream
 public_constant_name_of
 public_method_name_of
