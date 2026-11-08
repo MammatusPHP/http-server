@@ -2909,6 +2909,7 @@ polyfill-mbstring
 polyfill-php73
 polyfill-php80
 polyfill-php81
+polyfill-php82
 polyfill-php84
 polyfill-php85
 popen
@@ -3092,7 +3093,6 @@ quoted_printable_encode
 quotemeta
 race
 rad2deg
-ralouphie
 rand
 random
 random_bytes
