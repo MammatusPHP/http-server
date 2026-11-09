@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mammatus\Http\Server\WebSocket;
 
-use GuzzleHttp\Psr7\HttpFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Ratchet\RFC6455\Handshake\PermessageDeflateOptions;
@@ -35,7 +34,7 @@ final readonly class Rfc6455UpgradeMiddleware
             return $response;
         }
 
-        $negotiator = new ServerNegotiator(new RequestVerifier(), new HttpFactory(), false);
+        $negotiator = new ServerNegotiator(new RequestVerifier(), new ResponseFactory(), false);
         $response   = $negotiator->handshake($request);
         if ($response->getStatusCode() !== 101) {
             return $response;

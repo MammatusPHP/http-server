@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Mammatus\Tests\Http\Server\WebSocket;
 
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\ServerRequest;
 use Mammatus\Http\Server\Server\WebSocket\Hydrators\Frontend as FrontendHydrator;
 use Mammatus\Http\Server\WebSocket\Connection;
 use Mammatus\Http\Server\WebSocket\Defaults;
@@ -13,6 +11,8 @@ use Mammatus\Http\Server\WebSocket\Hub;
 use Mammatus\Http\Server\WebSocket\PayloadCodec;
 use Mammatus\Http\Server\WebSocket\Rfc6455UpgradeMiddleware;
 use PHPUnit\Framework\Attributes\Test;
+use React\Http\Message\Response;
+use React\Http\Message\ServerRequest;
 use React\Stream\DuplexStreamInterface;
 use ReflectionClass;
 use ReflectionMethod;
@@ -64,11 +64,8 @@ final class Rfc6455UpgradeMiddlewareTest extends TestCase
     public function rejectsIncompleteHandshake(): void
     {
         $middleware = new Rfc6455UpgradeMiddleware($this->hub());
-        $request    = new ServerRequest('GET', '/')
-            ->withHeader('Upgrade', 'websocket')
-            ->withHeader('Sec-WebSocket-Version', '13');
         $response   = $middleware(
-            $request,
+            (new ServerRequest('GET', '/'))->withHeader('Upgrade', 'websocket')->withHeader('Sec-WebSocket-Version', '13'),
             static function (): never {
                 throw new RuntimeException('should not delegate');
             },

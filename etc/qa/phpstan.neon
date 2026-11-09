@@ -12,6 +12,9 @@ parameters:
 		- ../../tests/WebSocket/ThrowingSerializeMapper.php
 	ignoreErrors:
 		-
+			message: '#^Call to method withHeader\(\) of internal class React\\Http\\Io\\AbstractMessage from outside its root namespace React\.$#'
+			path: ../../tests/WebSocket/Rfc6455UpgradeMiddlewareTest.php
+		-
 			message: '#^Method Mammatus\\Http\\Server\\WebSocket\\WebSocketHub::__construct\(\) has parameter \$heartbeatIntervalSeconds with a nullable type declaration\.$#'
 			path: ../../src/WebSocket/WebSocketHub.php
 		-

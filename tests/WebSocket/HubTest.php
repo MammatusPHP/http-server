@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mammatus\Tests\Http\Server\WebSocket;
 
-use GuzzleHttp\Psr7\ServerRequest;
 use Mammatus\DevApp\Http\Server\WebSocket\DemoEvent;
 use Mammatus\DevApp\Http\Server\WebSocket\PingParams;
 use Mammatus\DevApp\Http\Server\WebSocket\PingResult;
@@ -24,6 +23,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ServerRequestInterface;
 use Ratchet\RFC6455\Handshake\PermessageDeflateOptions;
 use React\EventLoop\TimerInterface;
+use React\Http\Message\ServerRequest;
 use React\Promise\PromiseInterface;
 use React\Stream\CompositeStream;
 use React\Stream\DuplexStreamInterface;

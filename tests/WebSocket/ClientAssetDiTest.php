@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Mammatus\Tests\Http\Server\WebSocket;
 
-use GuzzleHttp\Psr7\ServerRequest;
 use Mammatus\Http\Server\WebSocket\ClientAsset;
 use Mammatus\Http\Server\WebSocket\Middleware\ClientAssetMiddleware;
 use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use React\Http\Message\ServerRequest;
 use RuntimeException;
 use WyriHaximus\TestUtilities\TestCase;
 
