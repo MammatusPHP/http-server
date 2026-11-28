@@ -51,7 +51,7 @@
     "monolog/monolog": "^3.12.1",
     "pimple/pimple": "^3.6.2",
     "shipmonk/dead-code-detector": "^0.14.1 || ^0.15.0 || ^1.0.0",
-    "wyrihaximus/makefiles": "^0.15.5",
+    "wyrihaximus/makefiles": "^0.16.1",
     "wyrihaximus/test-utilities": "^14.8.0"
   },
   "suggest": {
